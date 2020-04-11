@@ -1,4 +1,4 @@
-# Boxcar
+# HNC Scholar Scores
 
 ## Note: This is a work in progress, and will evolve as we fully flesh out our react/redux app
 

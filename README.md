@@ -1,4 +1,4 @@
-# Boxcar
+# HNC_scholar_scores
 
 ## ERD
 
@@ -12,7 +12,7 @@ View PROJECT_NAME ERD [here](./ER_Model.pdf)
 
 - Generate a repo based on this one (Click "Use this template" above)
 - In the new repo, do the following:
-  - Find all instances of `boxcar` (case insensitive) and replace with your project name
+  - Find all instances of `hnc_scholar_scores` (case insensitive) and replace with your project name
   - `rm README.md`
   - `mv README.template.md README.md`
   - Fill in readme

@@ -25,7 +25,7 @@ before_script:
   - export DISPLAY=:99.0
   - sleep 3
   - cp .env.example .env
-  - psql -c 'create database boxcar_test;' -U postgres
+  - psql -c 'create database hnc_scholar_scores_test;' -U postgres
   - bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare --trace
   - npm run build
