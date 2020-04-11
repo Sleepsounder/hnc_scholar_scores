@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: boxcar_development
+
+test:
+  <<: *default
+  database: boxcar_test
+
+production:
+  <<: *default
+  database: boxcar_production
+  username: boxcar
+  password: <%= ENV['BOXCAR_DATABASE_PASSWORD'] %>
