@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby "2.4.2"
+ruby "2.6.3"
 
 gem "rails", "~> 5.2.1"
 
@@ -39,6 +39,7 @@ group :development, :test do
   gem "rails-erd"
   gem "rspec-rails"
   gem "rubocop"
+  gem 'rubocop-performance'
   gem "rubocop-rspec"
   gem "selenium-webdriver"
   gem "shoulda-matchers"

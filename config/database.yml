@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: boxcar_development
+  database: hnc_scholar_scores_development
 
 test:
   <<: *default
-  database: boxcar_test
+  database: hnc_scholar_scores_test
 
 production:
   <<: *default
-  database: boxcar_production
-  username: boxcar
-  password: <%= ENV['BOXCAR_DATABASE_PASSWORD'] %>
+  database: hnc_scholar_scores_production
+  username: geoff
+  password: <%= ENV['HNC_SCHOLAR_SCORES_DATABASE_PASSWORD'] %>
