@@ -39,7 +39,7 @@ group :development, :test do
   gem "rails-erd"
   gem "rspec-rails"
   gem "rubocop"
-  gem 'rubocop-performance'
+  gem "rubocop-performance"
   gem "rubocop-rspec"
   gem "selenium-webdriver"
   gem "shoulda-matchers"
