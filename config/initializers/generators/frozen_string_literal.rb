@@ -39,6 +39,6 @@ if defined?(::Rails::Generators)
     end
   end
 
-  Rails::Generators::Actions::CreateMigration.send :prepend, GeneratorPrepend
-  Rails::Generators::NamedBase.send :prepend, TemplatePrepend
+  Rails::Generators::Actions::CreateMigration.prepend GeneratorPrepend
+  Rails::Generators::NamedBase.prepend TemplatePrepend
 end
