@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: "application#home"
+  root to: "hello#index"
+
   ActiveAdmin.routes(self)
 
   if Rails.env.development?
