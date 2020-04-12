@@ -11,4 +11,9 @@
   & .l-header__link {
     color: var(--color-white);
   }
+
+  & .l-header__button {
+    color: var(--color-black);
+    font-size: var(--font-size-sm);
+  }
 }
