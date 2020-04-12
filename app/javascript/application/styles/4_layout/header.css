@@ -14,6 +14,6 @@
 
   & .l-header__button {
     color: var(--color-black);
-    font-size: var(--font-size-sm)
+    font-size: var(--font-size-sm);
   }
 }
