@@ -9,21 +9,20 @@ class PagesController < ApplicationController
 	end
 
 	def new
-		# add change applicant available to new button in index?
+		@applicant = eligible_applicant
 	end
 
 
 	private
 
-	# def eligible_applicant
-	# 	all_elligible_applicants = Applicant.all.select do |applicant|
-	# 		applicant.available == true && not_reviewed_by_current_user(applicant)
-	# 	end
-	# 	binding.pry
-	# end 
-
-	# def not_reviewed_by_current_user(applicant)
-	# 	user_reviewed = applicant.users.any? { |user| user.id == current_user.id }
-	# end
-
+	def eligible_applicant
+		available_applicants = Applicant.where(available: true)
+		eligible_selection = available_applicants.reject do |applicant|
+			applicant.users.any? { |user| user.id == current_user.id }
+		end
+		eligible_selection.sort_by{|applicant| applicant.reviews}.first
+	end
 end
+
+
+# Category.joins(articles: [{ comments: :guest }, :tags])
