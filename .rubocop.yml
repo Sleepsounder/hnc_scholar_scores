@@ -29,8 +29,13 @@ AllCops:
 
 # Reason: Annoying and unvaluable
 Layout/TrailingEmptyLines:
+  Enabled: true
+
+Layout/Tab:
   Enabled: false
 
+Layout/IndentationWidth: 
+  Enabled: false
 # ==================== Metrics ====================
 
 # Reason: Too difficult to resolve
