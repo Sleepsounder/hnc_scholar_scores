@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: "hello#index"
+  root to: "pages#index"
+  devise_for :users
 
   ActiveAdmin.routes(self)
 
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
     mount Flipper::UI.app(Flipper), at: "/flipper"
   end
 
-  get "*path", to: "application#frontend", constraints: ->(request) { frontend_request?(request) }
+  # get "*path", to: "application#frontend", constraints: ->(request) { frontend_request?(request) }
 
   def frontend_request?(request)
     !request.xhr? && request.format.html?
