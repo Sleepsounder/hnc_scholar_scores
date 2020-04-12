@@ -19,7 +19,7 @@
 #     password_confirmation: "@bc123")
 # end
 
-# 30.times do 
+# 30.times do
 #   Applicant.create(
 #     first_name: Faker::Hipster.word,
 #     last_name: Faker::Name.last_name,
@@ -29,4 +29,3 @@
 #     reviews: 0
 #   )
 # end
-
