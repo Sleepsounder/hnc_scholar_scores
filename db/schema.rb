@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_151738) do
+ActiveRecord::Schema.define(version: 2020_04_12_191556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applicants", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "link"
+    t.boolean "available"
+    t.boolean "mccoy"
+    t.integer "reviews"
+    t.integer "financial_avg"
+    t.integer "academic_avg"
+    t.integer "recommend_avg"
+    t.integer "essay_avg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "flipper_features", force: :cascade do |t|
     t.string "key", null: false
@@ -31,6 +47,21 @@ ActiveRecord::Schema.define(version: 2020_04_12_151738) do
     t.index ["feature_key", "key", "value"], name: "index_flipper_gates_on_feature_key_and_key_and_value", unique: true
   end
 
+  create_table "scores", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "applicant_id"
+    t.text "comments"
+    t.boolean "mccoy"
+    t.integer "financial"
+    t.integer "academic"
+    t.integer "recommend"
+    t.integer "essay"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["applicant_id"], name: "index_scores_on_applicant_id"
+    t.index ["user_id"], name: "index_scores_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -39,6 +70,8 @@ ActiveRecord::Schema.define(version: 2020_04_12_151738) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
