@@ -1,4 +1,11 @@
-<p>Sup yo! I'm new!</p>
-<p><%= @applicant.first_name %></p>
-<p><%= @applicant.last_name %>
-<p>link_to Read their application, <%= @applicant.link %></p>
+<p>Here is your next Applicant!</p>
+<p><%= @applicant.first_name %> <%= @applicant.last_name %></p>
+<% if @applicant.users.count == 0 %> 
+    <p>This is their first review.</p>
+<% else %>
+    <p>They have been reviewed thus far by:</p>
+    <% @applicant.users.each do |user| %>
+        <p><%= user.first_name %> <%= user.last_name %></p>
+    <% end %>
+<% end %>
+<p><%= link_to "Read their application", @applicant.link,  target: :_blank %></p>
