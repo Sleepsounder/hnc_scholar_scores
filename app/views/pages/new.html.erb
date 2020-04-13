@@ -1,11 +1,14 @@
-<p>Here is your next Applicant!</p>
+<p>Here is your next applicant!:</p>
 <p><%= @applicant.first_name %> <%= @applicant.last_name %></p>
 <% if @applicant.users.count == 0 %> 
-    <p>This is their first review.</p>
+    <p>You will be the first to score them.</p>
 <% else %>
     <p>They have been reviewed thus far by:</p>
     <% @applicant.users.each do |user| %>
         <p><%= user.first_name %> <%= user.last_name %></p>
     <% end %>
 <% end %>
-<p><%= link_to "Read their application", @applicant.link,  target: :_blank %></p>
+<p>1. <%= link_to "View their application in a new tab.", @applicant.link,  target: :_blank %></p>
+<p>2. Fill out the score fields below.</p> 
+<p>3. Press the "submit scores" button</p>
+<%= button_to "Submit Scores" %> 

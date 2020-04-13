@@ -9,19 +9,22 @@ class PagesController < ApplicationController
 
 	def new
 		@applicant = eligible_applicant
-		# to make unavailable while being graded!
+		# to make unavailable while being graded - make user pending until submitting
+		# remember the available boolean accounts for simultaneous users in a way that other conditions don't
 		# @applicant.update(available: false)
 	end
 
 	private
 
 	def eligible_applicant
-		# TODO: make below code less n + 1 ish
-		# Instead of using available column (not needed) just search for fewer than 3 associated scores
-		available_applicants = Applicant.where(available: true)
-		eligible_selection = available_applicants.reject do |applicant|
-			applicant.users.any? { |user| user.id == current_user.id }
+		available_applicants = Applicant.select do |applicant| 
+			applicant.users.count <= 2 && 
+			applicant.users.all? { |user| user.id != current_user.id } &&
+			applicant.available?
 		end
-		eligible_selection.sort_by{|applicant| applicant.reviews}.first
+		available_applicants.sort_by{|applicant| applicant.reviews}.first
 	end
 end
+
+
+
