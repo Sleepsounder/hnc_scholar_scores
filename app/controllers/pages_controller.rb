@@ -16,7 +16,8 @@ class PagesController < ApplicationController
 	private
 
 	def eligible_applicant
-		# TODO: make below code less n + 1 ish  
+		# TODO: make below code less n + 1 ish
+		# Instead of using available column (not needed) just search for fewer than 3 associated scores
 		available_applicants = Applicant.where(available: true)
 		eligible_selection = available_applicants.reject do |applicant|
 			applicant.users.any? { |user| user.id == current_user.id }
