@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
-	def index
+  def index
 		@scores = Score.where(
-			user_id: current_user.id
-		)
+		  user_id: current_user.id
+	  )
 	end
 
 	def new

@@ -11,6 +11,13 @@ class ScoresController < ApplicationController
   private
 
   def score_params
-    params.require(:score).permit(:financial, :academic, :recommend, :essay, :comments, :applicant_id).merge({mccoy: params[:mccoy], user_id: current_user.id})
+    params.require(:score).permit(
+      :financial,
+      :academic,
+      :recommend,
+      :essay,
+      :comments,
+      :applicant_id
+    ).merge( {mccoy: params[:mccoy], user_id: current_user.id} )
   end
 end
