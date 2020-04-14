@@ -4,7 +4,7 @@
 <% @scores.each do |score| %>
 	<p>- <%= score.applicant.first_name %> <%= score.applicant.last_name %></p>
 <% end %>
-<p>To review another, click below!</p>
+<p>To start a new review, click below!</p>
 <%= button_to "Review Application", new_page_path, method: :get %>
 
 

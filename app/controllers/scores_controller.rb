@@ -3,6 +3,9 @@
 class ScoresController < ApplicationController
   def create
     Score.create(score_params)
+
+    flash[:success] = "Thank you for submitting!"
+    redirect_to pages_path
   end
 
   private
