@@ -1,6 +1,6 @@
 <h3>Hi, <%= current_user.first_name %>.</h3>
 </br>
-<p>So far, you have reviewed <%= @scores.count %> application(s):</p>
+<p>You have reviewed <%= @scores.count %> application(s):</p>
 <% @scores.each do |score| %>
 	<p>- <%= score.applicant.first_name %> <%= score.applicant.last_name %></p>
 <% end %>

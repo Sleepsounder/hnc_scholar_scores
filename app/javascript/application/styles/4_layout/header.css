@@ -1,19 +1,28 @@
 .l-header {
   background-color: var(--color-dark-gray);
   color: var(--color-white);
-  height: var(--spacing-header-height);
+  height: 2em;
   margin-top: auto;
   margin-bottom: auto;
   line-height: var(--spacing-header-height);
-  padding-left: var(--spacing-sm);
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
   font-size: var(--font-size-xl);
+  display: flex;
+  justify-content: space-between;
+
 
   & .l-header__link {
     color: var(--color-white);
   }
 
   & .l-header__button {
-    color: var(--color-black);
+    height: var(--spacing-header-height);
+    border-color: var(--color-white);
+    margin: -.5rem;
+    margin-top: .2rem;
+    display: flex;
+    color: var(--color-white);
     font-size: var(--font-size-sm);
   }
 }
