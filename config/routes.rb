@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'scores/create'
   root to: "pages#index"
   devise_for :users
   resources :pages
+  resources :scores
 
   ActiveAdmin.routes(self)
 

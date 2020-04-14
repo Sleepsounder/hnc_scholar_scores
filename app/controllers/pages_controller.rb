@@ -9,6 +9,7 @@ class PagesController < ApplicationController
 
 	def new
 		@applicant = eligible_applicant
+    @score = @applicant.scores.build
 		# to make unavailable while being graded - make user pending until submitting
 		# remember the available boolean accounts for simultaneous users in a way that other conditions don't
 		# @applicant.update(available: false)
@@ -17,8 +18,8 @@ class PagesController < ApplicationController
 	private
 
 	def eligible_applicant
-		available_applicants = Applicant.select do |applicant| 
-			applicant.users.count <= 2 && 
+		available_applicants = Applicant.select do |applicant|
+			applicant.users.count <= 2 &&
 			applicant.users.all? { |user| user.id != current_user.id } &&
 			applicant.available?
 		end
