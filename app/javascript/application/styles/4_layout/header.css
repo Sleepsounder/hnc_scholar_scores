@@ -11,7 +11,6 @@
   display: flex;
   justify-content: space-between;
 
-
   & .l-header__link {
     color: var(--color-white);
   }
@@ -19,8 +18,8 @@
   & .l-header__button {
     height: var(--spacing-header-height);
     border-color: var(--color-white);
-    margin: -.5rem;
-    margin-top: .2rem;
+    margin: -0.5rem;
+    margin-top: 0.2rem;
     display: flex;
     color: var(--color-white);
     font-size: var(--font-size-sm);
