@@ -21,6 +21,7 @@ AllCops:
     - node_modules/**/*
     - vendor/bundle/**/*
     - app/models/acasi_data_upload.rb
+    - frontend/node_modules/node-sass/src/libsass/contrib/*
     # Reason: Smarter CSV needs to make this COLUMN_HEADERS constant mutable.
   UseCache: false
 
