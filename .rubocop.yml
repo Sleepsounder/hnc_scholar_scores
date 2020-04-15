@@ -28,10 +28,10 @@ AllCops:
 
 # Reason: Annoying and unvaluable
 Layout/TrailingEmptyLines:
-  Enabled: false
+  Enabled: true
 
 Layout/IndentationWidth:
-  Enabled: false
+  Enabled: true
 
 Layout/ClosingParenthesisIndentation:
   Enabled: false
@@ -40,7 +40,7 @@ Layout/LineLength:
   Max: 100
 
 Layout/Tab:
-  Enabled: false
+  Enabled: true
 
 # ==================== Lint ====================
 

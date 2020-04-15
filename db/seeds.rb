@@ -16,7 +16,8 @@
     last_name: last_name,
     email: "#{first_name}.#{last_name}@email.com",
     password: "@bc123",
-    password_confirmation: "@bc123")
+    password_confirmation: "@bc123"
+)
 end
 
 10.times do
