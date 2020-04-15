@@ -53,9 +53,6 @@ Lint/StructNewOverride:
 Lint/ImplicitStringConcatenation:
   Enabled: false
 
-Lint/Syntax:
-  Enabled: false
-
 # ==================== Metrics ====================
 
 # Reason: Too difficult to resolve
