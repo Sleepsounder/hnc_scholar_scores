@@ -1,6 +1,6 @@
 <div class="l-header">
-<%= link_to "Here's the Header, yo!", root_path, class: 'l-header__link' %>
-<%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: 'l-header__button' %>
+    <%= link_to "HNC Scholarship Group", root_path, class: 'l-header__link' %>
+    <% unless current_user.nil? %>
+      <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: 'l-header__button' %>
+    <% end %>
 </div>
-
-<%= render 'shared/flash' %>

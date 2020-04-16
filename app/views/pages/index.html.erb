@@ -1,1 +1,10 @@
-<h1>Wassup, <%= current_user.email %>.</h1>
+<h3>Hi, <%= current_user.first_name %>.</h3>
+</br>
+<p>You have reviewed <%= @scores.count %> application(s):</p>
+<% @scores.each do |score| %>
+	<p>- <%= score.applicant.first_name %> <%= score.applicant.last_name %></p>
+<% end %>
+<p>To start a new review, click below!</p>
+<%= button_to "Review Application", new_page_path, method: :get %>
+
+
