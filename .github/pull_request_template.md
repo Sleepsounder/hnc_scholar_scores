@@ -1,8 +1,2 @@
-## Why?
-- :notebook: https://smashingboxes.atlassian.net/browse/###-###
+## What'd you do, yo? Essence an' all that...
 
-## Summary of Changes
-- List changes here
-
-### Screenshots (if applicable)
-- Show current and/or updated screenshots
