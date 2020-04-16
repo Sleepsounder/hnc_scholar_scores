@@ -11,6 +11,10 @@ class PagesController < ApplicationController
     @applicant = eligible_applicant
     @applicant.update(available: false)
     @score = @applicant.scores.build
+    return unless @applicant.scores.count < 4
+
+    # TODO: change 5.minutes below to something like 4.hours
+    ApplicantAvailable.set(wait: 5.minutes).perform_later(@applicant)
   end
 
   private

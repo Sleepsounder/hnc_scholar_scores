@@ -12,8 +12,8 @@
 <p>2. Fill out the score fields below.</p>
 <p>3. Press the "submit scores" button</p>
 <%= form_for(@score) do |f| %>
-    <% points = [0, 1, 2, 3, 4, 5] %>
-    <% ten_points = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+    <% points = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5] %>
+    <% ten_points = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10] %>
     <%= check_box_tag(:mccoy) %>
     <%= label_tag(:mccoy, "Eligible for McCoy Scholarship (hemophilia A, severe)") %><br><br>
     <%= f.label :financial, "Financial Need" %><br>

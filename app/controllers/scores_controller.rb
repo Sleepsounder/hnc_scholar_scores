@@ -2,12 +2,13 @@
 
 class ScoresController < ApplicationController
   def create
-    return unless Score.create(score_params)
-
-    flash[:success] = "Thank you for submitting!"
-    @applicant = Applicant.find(score_params[:applicant_id])
-    @applicant.update(available: true)
-    redirect_to pages_path
+    if Score.create(score_params)
+      flash[:success] = "Thank you for submitting!"
+      @applicant = Applicant.find(score_params[:applicant_id])
+      @applicant.update(available: true)
+      redirect_to pages_path
+    else render :new
+    end
   end
 
   private
