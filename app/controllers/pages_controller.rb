@@ -9,10 +9,8 @@ class PagesController < ApplicationController
 
   def new
     @applicant = eligible_applicant
+    @applicant.update(available: false)
     @score = @applicant.scores.build
-    # to make unavailable while being graded - make user pending until submitting.
-    # remember the available boolean accounts for simultaneous users in a way that other conditions don't. # rubocop:disable Layout/LineLength
-    # @applicant.update(available: false).
   end
 
   private

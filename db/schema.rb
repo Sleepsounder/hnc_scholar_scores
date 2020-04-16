@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_021729) do
+ActiveRecord::Schema.define(version: 2020_04_16_004149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,6 @@ ActiveRecord::Schema.define(version: 2020_04_14_021729) do
     t.boolean "available"
     t.boolean "mccoy"
     t.integer "reviews"
-    t.integer "financial_avg"
-    t.integer "academic_avg"
-    t.integer "recommend_avg"
-    t.integer "essay_avg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
