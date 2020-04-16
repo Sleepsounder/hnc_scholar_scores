@@ -11,21 +11,23 @@
 <p>1. <%= link_to "View their application in a new tab.", @applicant.link,  target: :_blank %></p>
 <p>2. Fill out the score fields below.</p>
 <p>3. Press the "submit scores" button</p>
-<%= form_for(@score) do |f| %>
-    <% points = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5] %>
-    <% ten_points = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10] %>
-    <%= check_box_tag(:mccoy) %>
-    <%= label_tag(:mccoy, "Eligible for McCoy Scholarship (hemophilia A, severe)") %><br><br>
-    <%= f.label :financial, "Financial Need" %><br>
-    <%= f.select :financial, points %><br><br>
-    <%= f.label :academic, "Academics" %><br>
-    <%= f.select :academic, points %><br><br>
-    <%= f.label :recommend, "Recommendations" %><br>
-    <%= f.select :recommend, points %><br><br>
-    <%= f.label :essay, "Essay/Personal/Extra-curricular/Intangible" %><br>
-    <%= f.select :essay, ten_points %><br><br>
-    <%= f.label :comments, "Comments" %><br>
-    <%= f.text_area :comments %><br><br>
-    <%= f.hidden_field :applicant_id %>
-    <%= f.submit "Submit Scores" %>
-<% end %>
+<div class_name="torps">
+  <%= form_for(@score) do |f| %>
+      <% points = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5] %>
+      <% ten_points = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10] %>
+      <%= check_box_tag(:mccoy) %>
+      <%= label_tag(:mccoy, "Eligible for McCoy Scholarship (hemophilia A, severe)") %><br><br>
+      <%= f.label :financial, "Financial Need" %><br>
+      <%= f.select :financial, points %><br><br>
+      <%= f.label :academic, "Academics" %><br>
+      <%= f.select :academic, points %><br><br>
+      <%= f.label :recommend, "Recommendations" %><br>
+      <%= f.select :recommend, points %><br><br>
+      <%= f.label :essay, "Essay/Personal/Extra-curricular/Intangible" %><br>
+      <%= f.select :essay, ten_points %><br><br>
+      <%= f.label :comments, "Comments" %><br>
+      <%= f.text_area :comments %><br><br>
+      <%= f.hidden_field :applicant_id %>
+      <%= f.submit "Submit Scores" %>
+  <% end %>
+</div>

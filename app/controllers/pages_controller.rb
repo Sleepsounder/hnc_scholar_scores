@@ -9,6 +9,7 @@ class PagesController < ApplicationController
 
   def new
     @applicant = eligible_applicant
+    # throw errors for nil class here
     @applicant.update(available: false)
     @score = @applicant.scores.build
     return unless @applicant.scores.count < 4

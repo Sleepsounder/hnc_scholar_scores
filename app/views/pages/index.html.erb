@@ -1,9 +1,13 @@
 <h3>Hi, <%= current_user.first_name %>.</h3>
 </br>
 <p>You have reviewed <%= @scores.count %> application(s):</p>
-<% @scores.each do |score| %>
-	<p>- <%= score.applicant.first_name %> <%= score.applicant.last_name %></p>
-<% end %>
+<div class="form">
+  <% @scores.each do |score| %>
+    <div class="list">
+      <ol><%= score.applicant.first_name %> <%= score.applicant.last_name %></ol>
+    </div>
+  <% end %>
+</div>
 <p>To start a new review, click below!</p>
 <%= button_to "Review New Application", new_page_path, method: :get %>
 
