@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     @applicant = eligible_applicant
     @applicant.update(available: false)
     @score = @applicant.scores.build
+    ApplicantAvailable.set(wait: 5.minutes).perform_later(@applicant)
   end
 
   private
@@ -24,3 +25,6 @@ class PagesController < ApplicationController
     available_applicants.min_by(&:reviews)
   end
 end
+
+
+GuestsCleanupJob.set(wait: 1.week).perform_later(guest)
