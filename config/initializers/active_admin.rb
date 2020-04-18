@@ -5,7 +5,6 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "HNC Scholar Scores"
-
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
@@ -54,7 +53,9 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
-  # config.authentication_method = :authenticate_admin_user!
+  config.authentication_method = :authenticate_admin_user!
+  config.skip_before_action :authenticate_user!
+
 
   # == User Authorization
   #
@@ -101,9 +102,13 @@ ActiveAdmin.setup do |config|
   # This setting changes the path where the link points to. If it's
   # a string, the strings is used as the path. If it's a Symbol, we
   # will call the method to return the path.
+
+  config.logout_link_path = :destroy_admin_user_session_path
+
+  # config.current_user_method = :current_user
   #
   # Default:
-  config.logout_link_path = :destroy_admin_user_session_path
+  # config.logout_link_path = :destroy_admin_user_session_path
 
   # This setting changes the http method used when rendering the
   # link. For example :get, :delete, :put, etc..
