@@ -31,12 +31,9 @@ end
   )
 end
 
-User.create(
+AdminUser.create!(
   first_name: "Geoff",
   last_name: "Register",
   email: "a@b.com",
-  password: "@bc123",
-  password_confirmation: "@bc123",
-  admin: true
-)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+  password: "password",
+  password_confirmation: "password") if Rails.env.development?
