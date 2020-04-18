@@ -9,6 +9,8 @@ class PagesController < ApplicationController
 
   def new
     @applicant = eligible_applicant
+    # TODO: create message saying there are no available applicants
+    # if @applicant.nil? etc...
     @applicant.update(available: false)
     @score = @applicant.scores.build
     return unless @applicant.scores.count < 4
