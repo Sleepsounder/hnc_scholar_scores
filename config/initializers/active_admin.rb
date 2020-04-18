@@ -1,12 +1,10 @@
-# frozen_string_literal: true
-
 ActiveAdmin.setup do |config|
   # == Site Title
   #
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Hnc Scholac Scores"
+  config.site_title = "HNC Scholar Scores"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -57,6 +55,8 @@ ActiveAdmin.setup do |config|
   # This setting changes the method which Active Admin calls
   # within the application controller.
   config.authentication_method = :authenticate_admin_user!
+  config.skip_before_action :authenticate_user!
+
 
   # == User Authorization
   #
@@ -93,7 +93,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # (within the application controller) to return the currently logged in user.
-  config.current_user_method = :current_admin_user
+  # config.current_user_method = :current_admin_user
 
   # == Logging Out
   #
@@ -126,7 +126,7 @@ ActiveAdmin.setup do |config|
   # This allows your users to comment on any resource registered with Active Admin.
   #
   # You can completely disable comments:
-  # config.comments = false
+  config.comments = false
   #
   # You can change the name under which comments are registered:
   # config.comments_registration_name = 'AdminComment'
@@ -165,10 +165,7 @@ ActiveAdmin.setup do |config|
   #
   # Set the localize format to display dates and times.
   # To understand how to localize your app with I18n, read more at
-  # https://guides.rubyonrails.org/i18n.html
-  #
-  # You can run `bin/rails runner 'puts I18n.t("date.formats")'` to see the
-  # available formats in your application.
+  # https://github.com/svenfuchs/i18n/blob/master/lib%2Fi18n%2Fbackend%2Fbase.rb#L52
   #
   config.localize_format = :long
 
@@ -212,7 +209,8 @@ ActiveAdmin.setup do |config|
   # To load a stylesheet:
   #   config.register_stylesheet 'my_stylesheet.css'
   #
-  # You can provide an options hash for more control, which is passed along to stylesheet_link_tag():
+  #  You can provide an options hash for more control, which is passed along to
+  #  stylesheet_link_tag():
   #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
   #
   # To load a javascript file:
@@ -234,7 +232,8 @@ ActiveAdmin.setup do |config|
   #
   #   config.namespace :admin do |admin|
   #     admin.build_menu :utility_navigation do |menu|
-  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+  #  menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: {
+  #  target: :blank }
   #       admin.add_logout_button_to_menu menu
   #     end
   #   end
@@ -243,7 +242,8 @@ ActiveAdmin.setup do |config|
   #
   #   config.namespace :admin do |admin|
   #     admin.build_menu :default do |menu|
-  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+  #  menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: {
+  #  target: :blank }
   #     end
   #   end
 
@@ -288,24 +288,11 @@ ActiveAdmin.setup do |config|
   # config.filters = true
   #
   # By default the filters include associations in a select, which means
-  # that every record will be loaded for each association (up
-  # to the value of config.maximum_association_filter_arity).
+  # that every record will be loaded for each association.
   # You can enabled or disable the inclusion
   # of those filters by default here.
   #
   # config.include_default_association_filters = true
-
-  # config.maximum_association_filter_arity = 256 # default value of :unlimited will change to 256 in a future version
-  # config.filter_columns_for_large_association, [
-  #    :display_name,
-  #    :full_name,
-  #    :name,
-  #    :username,
-  #    :login,
-  #    :title,
-  #    :email,
-  #  ]
-  # config.filter_method_for_large_association, '_starts_with'
 
   # == Head
   #
@@ -327,11 +314,4 @@ ActiveAdmin.setup do |config|
   # You can inherit it with own class and inject it for all resources
   #
   # config.order_clause = MyOrderClause
-
-  # == Webpacker
-  #
-  # By default, Active Admin uses Sprocket's asset pipeline.
-  # You can switch to using Webpacker here.
-  #
-  # config.use_webpacker = true
 end

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root to: "pages#index"
   devise_for :admin_users, ActiveAdmin::Devise.config
   get "scores/create"
-  root to: "pages#index"
   devise_for :users
   resources :pages
   resources :scores
@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   def frontend_request?(request)
     !request.xhr? && request.format.html?
   end
+  # Might be an answer to combining User paths for Admin
+  # devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
+
 end
