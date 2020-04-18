@@ -21,5 +21,4 @@ Rails.application.routes.draw do
   end
   # Might be an answer to combining User paths for Admin
   # devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
-
 end

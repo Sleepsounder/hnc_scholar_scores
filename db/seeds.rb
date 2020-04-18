@@ -10,7 +10,7 @@
 
 5.times do
   first_name = Faker::Name.first_name
-  last_name = Faker::Color.color_name
+  last_name = Faker::Color.color_name.capitalize
   User.create(
     first_name: first_name,
     last_name: last_name,
@@ -31,9 +31,12 @@ end
   )
 end
 
-AdminUser.create!(
-  first_name: "Geoff",
-  last_name: "Register",
-  email: "a@b.com",
-  password: "password",
-  password_confirmation: "password") if Rails.env.development?
+if Rails.env.development?
+  AdminUser.create!(
+    first_name: "Geoff",
+    last_name: "Register",
+    email: "a@b.com",
+    password: "@bc123",
+    password_confirmation: "@bc123"
+  )
+end
