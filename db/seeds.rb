@@ -22,7 +22,7 @@ end
 
 10.times do
   Applicant.create(
-    first_name: Faker::Dessert.topping,
+    first_name: Faker::Science.element,
     last_name: Faker::Name.last_name,
     address: Faker::Address.full_address,
     link: "https://www.hemophilia-nc.org/",
@@ -30,3 +30,12 @@ end
     reviews: 0
   )
 end
+
+User.create(
+  first_name: "Geoff",
+  last_name: "Register",
+  email: "a@b.com",
+  password: "@bc123",
+  password_confirmation: "@bc123",
+  admin: true
+)

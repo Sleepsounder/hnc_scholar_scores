@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :admin_users
   get "scores/create"
   root to: "pages#index"
   devise_for :users
