@@ -23,10 +23,10 @@ class PagesController < ApplicationController
 
   def eligible_applicant
     available_applicants = Applicant.select do |applicant|
-      applicant.users.count <= 2 &&
+      applicant.users.count <= 4 &&
         applicant.users.all? { |user| user.id != current_user.id } &&
         applicant.available?
     end
-    available_applicants.min_by(&:reviews)
+    available_applicants.min_by { |applicant| applicant.scores.count }
   end
 end
