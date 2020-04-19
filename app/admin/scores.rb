@@ -1,25 +1,16 @@
-# frozen_strin_literal: true
+# frozen_string_literal: true
 
 ActiveAdmin.register Score do
-  permit_params :applicant_id,
-                :user_id,
-                :comments,
-                :mccoy,
-                :financial,
-                :academic,
-                :recommend,
-                :essay
-
   index do
     selectable_column
     id_column
-    column :applicant_id
-    column :user_id
-    column :comments
-    column :mccoy
+    column "Applicant", :applicant_full_name
+    column "Reader", :user_full_name
+    column :mccoy_qualified
     column :financial
     column :academic
     column :recommend
     column :essay
+    column :comments
   end
 end

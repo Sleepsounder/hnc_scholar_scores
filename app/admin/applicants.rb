@@ -9,5 +9,11 @@ ActiveAdmin.register Applicant do
     column :first_name
     column :last_name
     column :address
+    column "Reviews", :review_count
+    column "McCoy Count", :mccoy_count
+    column :financial_avg
+    column :academic_avg
+    column :recommend_avg
+    column :essay_avg
   end
 end
