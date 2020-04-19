@@ -27,8 +27,6 @@ class PagesController < ApplicationController
         applicant.users.all? { |user| user.id != current_user.id } &&
         applicant.available?
     end
-    available_applicants.min_by do |applicant|
-      applicant.scores.count
-    end
+    available_applicants.min_by { |applicant| applicant.scores.count }
   end
 end
