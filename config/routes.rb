@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "pages#index"
   devise_for :admin_users, ActiveAdmin::Devise.config
   get "scores/create"
-  devise_for :users
+  devise_for :users, controllers: { sessions: "users/sessions"}
   resources :pages
   resources :scores
 
