@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: "pages#index"
+  root to: "scores#index"
   devise_for :admin_users, ActiveAdmin::Devise.config
   get "scores/create"
   devise_for :users, controllers: { sessions: "users/sessions" }
-  resources :pages
   resources :scores
 
   ActiveAdmin.routes(self)

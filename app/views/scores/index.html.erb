@@ -1,0 +1,14 @@
+<h3>Hi, <%= current_user.first_name %>.</h3>
+<br>
+<p>You have reviewed <%= @scores.count %> application(s):</p>
+<% @scores.each do |score| %>
+	<p>- <%= score.applicant.first_name %> <%= score.applicant.last_name %></p>
+<% end %>
+<select>
+    <%= options_for_select @applicants.collect{|applicant| [applicant.last_name, applicant.id]} %>
+</select>
+<br>
+<p>To pick a suggested applicant, click below!</p>
+<%= button_to "Review Suggested Application", new_score_path, method: :get %>
+
+
