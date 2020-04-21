@@ -6,7 +6,7 @@ class ScoresController < ApplicationController
       user_id: current_user.id
     )
     @score = Score.new
-    @applicants = eligible_applicants.sort_by { |a| a.last_name}
+    @applicants = eligible_applicants.sort_by(&:last_name)
     @applicant = eligible_applicants.min_by { |a| a.scores.count }
   end
 
@@ -45,18 +45,16 @@ class ScoresController < ApplicationController
     ).merge({ mccoy: params[:mccoy], user_id: current_user.id })
   end
 
-
   def eligible_applicants
-    available_applicants = Applicant.select do |applicant|
+    Applicant.select do |applicant|
       applicant.users.count < 3 &&
         applicant.users.all? { |user| user.id != current_user.id } &&
         applicant.available?
     end
-    # available_applicants.min_by { |applicant| applicant.scores.count }
   end
 
   def found_applicant
-    unless params[:format].nil?
+    if !params[:format].nil?
       Applicant.find(params[:format])
     else
       Applicant.find(params[:score][:applicant_id])

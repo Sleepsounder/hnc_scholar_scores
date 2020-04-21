@@ -1,6 +1,10 @@
 <h3>Hi, <%= current_user.first_name %>.</h3>
 <br>
-<p>You have reviewed <%= @scores.count %> application(s):</p>
+<% if @scores.count == 1%>
+  <p>You have reviewed <%= @scores.count %> application:</p>
+<% else %>
+  <p>You have reviewed <%= @scores.count %> applications:</p>
+<% end %>
 <% @scores.each do |score| %>
 	<p>- <%= score.applicant.first_name %> <%= score.applicant.last_name %></p>
 <% end %>

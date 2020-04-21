@@ -5,7 +5,12 @@ class Applicant < ApplicationRecord
   has_many :users, through: :scores
 
   def full_name_list
-    "#{last_name}, #{first_name} - #{scores.count} review(s)"
+    list_item = "#{last_name}, #{first_name} - #{scores.count}"
+    if scores.count == 1
+      "#{list_item} review"
+    else
+      "#{list_item} reviews"
+    end
   end
 
   def review_count
