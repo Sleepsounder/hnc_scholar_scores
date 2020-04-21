@@ -17,13 +17,13 @@
     <%= check_box_tag(:mccoy) %>
     <%= label_tag(:mccoy, "Eligible for McCoy Scholarship (hemophilia A, severe)") %><br><br>
     <%= f.label :financial, "Financial Need" %><br>
-    <%= f.select :financial, points, include_blank: true %><br><br>
+    <%= f.select :financial, points, prompt: true %><br><br>
     <%= f.label :academic, "Academics"%><br>
-    <%= f.select :academic, points, include_blank: true %><br><br>
+    <%= f.select :academic, points, prompt: true %><br><br>
     <%= f.label :recommend, "Recommendations" %><br>
-    <%= f.select :recommend, points, include_blank: true %><br><br>
+    <%= f.select :recommend, points, prompt: true %><br><br>
     <%= f.label :essay, "Essay/Personal/Extra-curricular/Intangible" %><br>
-    <%= f.select :essay, ten_points, include_blank: true %><br><br>
+    <%= f.select :essay, ten_points, prompt: true %><br><br>
     <%= f.label :comments, "Comments" %><br>
     <%= f.text_area :comments %><br><br>
     <%= f.hidden_field :applicant_id %>

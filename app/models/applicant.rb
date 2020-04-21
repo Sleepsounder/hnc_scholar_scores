@@ -4,6 +4,10 @@ class Applicant < ApplicationRecord
   has_many :scores
   has_many :users, through: :scores
 
+  def full_name_list
+    "#{last_name}, #{first_name} - #{scores.count} review(s)"
+  end
+
   def review_count
     scores.count
   end
