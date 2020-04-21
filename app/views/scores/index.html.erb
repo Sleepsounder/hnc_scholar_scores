@@ -1,0 +1,22 @@
+<h3>Hi, <%= current_user.first_name %>.</h3>
+<br>
+<% if @scores.count == 1%>
+  <p>You have reviewed <%= @scores.count %> application:</p>
+<% else %>
+  <p>You have reviewed <%= @scores.count %> applications:</p>
+<% end %>
+<% @scores.each do |score| %>
+	<p>- <%= score.applicant.first_name %> <%= score.applicant.last_name %></p>
+<% end %>
+<p> Choose from list:</p>
+  <%= form_for @score, url: "/scores/new", method: "get" do |f| %>
+    <%= collection_select(:score, :applicant_id, @applicants, :id, :full_name_list, prompt: true) %>
+    <%= submit_tag 'Choose' %>
+  <% end %>
+<br><br>
+<p>Or</p>
+<%= button_to "Review Application We Suggest", new_score_path(@applicant), method: :get %>
+
+
+
+
