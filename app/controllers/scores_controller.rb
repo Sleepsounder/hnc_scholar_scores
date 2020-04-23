@@ -22,6 +22,10 @@ class ScoresController < ApplicationController
     ApplicantAvailable.set(wait: 3.seconds).perform_later(@applicant)
   end
 
+  def edit
+    @score = Score.find(params[:id])
+  end
+
   def create
     if Score.create(score_params)
       flash[:success] = "Thank you for submitting!"
@@ -30,6 +34,12 @@ class ScoresController < ApplicationController
       redirect_to scores_path
     else render :new
     end
+  end
+
+  def update
+    @score = Score.find(params[:id])
+    @score.update(score_params)
+    redirect_to scores_path
   end
 
   private
