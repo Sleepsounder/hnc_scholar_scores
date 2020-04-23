@@ -3,3 +3,39 @@
   flex-direction: column;
   min-height: 100vh;
 }
+
+.applicant-count {
+  background-color: rgb(241, 247, 242);
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.inside-applicant {
+  padding: 1rem;
+}
+
+table, th, td {
+  background-color: rgb(247, 247, 247);
+  border: 1px solid #000;
+}
+
+table {
+  border-spacing: 5px;
+  width: 100%;
+  padding: 30px, 1rem, 0, 30px;
+}
+
+th, td {
+  padding: 6px;
+}
+
+.edit-button {
+  background-color: #d3774246;
+
+}
+
+.edit-button:hover {
+  /* link text color disables text color */
+  color: rgb(157, 199, 255);
+  background-color: #b6b6b6;
+}

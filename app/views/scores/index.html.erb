@@ -1,25 +1,54 @@
-<h3>Hi, <%= current_user.first_name %>.</h3>
+<h3>Hi, <%= current_user.first_name %></h3>
 <br>
-<% if @scores.count == 1%>
-  <p>You have reviewed <%= @scores.count %> application:</p>
-<% else %>
-  <p>You have reviewed <%= @scores.count %> applications:</p>
-<% end %>
-<table>
-  <% @scores.each do |score| %>
-    <tr>
-        <td><%= score.applicant.first_name %></td>
-        <td><%= score.applicant.last_name %></td>
-        <td><%= link_to "Edit", edit_score_path(score) %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="applicant-count">
+  <div class="inside-applicant">
+    <% if @scores.count == 1%>
+      <h4>You have reviewed <%= @scores.count %> application:</h4>
+    <% else %>
+      <h4>You have reviewed <%= @scores.count %> applications:</h4>
+    <% end %>
+    <% if @scores.count > 0 %>
+      <br>
+      <table class="index-table">
+        <thead class=table-head>
+          <tr>
+            <th></th>
+            <th>Applicant</th>
+            <th>Elligible for McCoy</th>
+            <th>Financial Score</th>
+            <th>Academic Score</th>
+            <th>Recommend Score</th>
+            <th>Essay Score</th>
+          </tr>
+        </thead>
+        <% @scores.each do |score| %>
+          <tbody class="table-body">
+            <tr>
+              <td class="edit-button"><%= link_to "Edit", edit_score_path(score) %></td>
+              <td class="column"><%= "#{score.applicant.last_name}, #{score.applicant.first_name}" %></td>
+              <td class="column"><%= score.mccoy %></td>
+              <td class="column"><%= score.financial %></td>
+              <td class="column"><%= score.academic %></td>
+              <td class="column"><%= score.recommend %></td>
+              <td class="column"><%= score.essay %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+      <br>
+      <br>
+    <% end %>
+  </div>
+</div>
 <br>
-<p> Choose from list:</p>
+<h4>To review a new applicant, please either:</h4>
+<br>
+<p> Choose from this list:</p>
   <%= form_for @score, url: "/scores/new", method: "get" do |f| %>
     <%= collection_select(:score, :applicant_id, @applicants, :id, :full_name_list, prompt: true) %>
     <%= submit_tag 'Choose' %>
   <% end %>
 <br><br>
-<p>Or</p>
-<%= button_to "Review Application We Suggest", new_score_path(@applicant), method: :get %>
+<h4>Or</h4>
+<br>
+<%= button_to "Review an application we suggest", new_score_path(@applicant), method: :get %>
