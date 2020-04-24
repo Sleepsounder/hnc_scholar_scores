@@ -27,9 +27,10 @@ class ScoresController < ApplicationController
   end
 
   def create
-    if Score.create(score_params)
-      flash[:success] = "Thank you for submitting!"
-      @applicant = Applicant.find(score_params[:applicant_id])
+    @score = Score.new(score_params)
+    @applicant = Applicant.find(score_params[:applicant_id])
+    if @score.save
+      flash[:notice] = "Thank you for submitting!"
       @applicant.update(available: true)
       redirect_to scores_path
     else render :new
@@ -38,8 +39,11 @@ class ScoresController < ApplicationController
 
   def update
     @score = Score.find(params[:id])
-    @score.update(score_params)
-    redirect_to scores_path
+    if @score.update(score_params)
+      flash[:notice] = "Update saved!"
+      redirect_to scores_path
+    else render :edit
+    end
   end
 
   private
