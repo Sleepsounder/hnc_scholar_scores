@@ -39,8 +39,12 @@ class ScoresController < ApplicationController
 
   def update
     @score = Score.find(params[:id])
-    @score.update(score_params)
-    redirect_to scores_path
+    if
+      @score.update(score_params)
+      flash[:notice] = "Update saved!"
+      redirect_to scores_path
+    else render :edit
+    end
   end
 
   private
