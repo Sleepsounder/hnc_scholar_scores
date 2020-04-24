@@ -30,7 +30,7 @@ class ScoresController < ApplicationController
     @score = Score.new(score_params)
     @applicant = Applicant.find(score_params[:applicant_id])
     if @score.save
-      flash[:success] = "Thank you for submitting!"
+      flash[:notice] = "Thank you for submitting!"
       @applicant.update(available: true)
       redirect_to scores_path
     else render :new

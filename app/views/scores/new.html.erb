@@ -1,6 +1,8 @@
 <% if @score.errors.any? %>
   <% @score.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+    <div class="c-flash c-flash--alert">
+      <li><%= message %></li>
+    </div>
   <% end %>
 <% end %>
 <p>Here is your applicant:</p>
