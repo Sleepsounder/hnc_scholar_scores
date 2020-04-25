@@ -8,6 +8,11 @@
   <% else %>
     <p>You have reviewed <%= @number_of_scores_reviewed %> applications:</p>
   <% end %>
+  <% if current_user.removed_applicants.count == 1 %>
+    <p>You have removed <%= current_user.removed_applicants.count %> applicant from your queue.</p>
+  <% else %>
+    <p>You have reviewed <%= current_user.removed_applicants.count %> applicants from your queue</p>
+  <% end %>
   <br>
   <h3>Review Applicants</h3>
   <h3>____________________________________</h3>

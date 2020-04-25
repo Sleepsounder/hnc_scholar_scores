@@ -1,18 +1,34 @@
 <h3>Reviewed</h3>
 <br>
 <table>
-  <% @scores.each do |score| %>
+  <thead class=table-head>
     <tr>
-        <td><%= link_to "Edit", edit_score_path(score) %></td>
-        <td><%= score.applicant.first_name %></td>
-        <td><%= score.applicant.last_name %></td>
-        <td><%= score.mccoy_qualified %></td>
-        <td><%= score.financial %></td>
-        <td><%= score.academic %></td>
-        <td><%= score.recommend %></td>
-        <td><%= score.essay %></td>
-        <td><%= score.comments %></td>
-        <td><%= score.updated_at %></td>
+      <th></th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Elligible for McCoy</th>
+      <th>Financial Score</th>
+      <th>Academic Score</th>
+      <th>Recommend Score</th>
+      <th>Essay Score</th>
+      <th>Comments</th>
+      <th>Last Updated</th>
     </tr>
+  </thead>
+  <% @scores.each do |score| %>
+    <tbody>
+      <tr>
+          <td><%= link_to "Edit", edit_score_path(score) %></td>
+          <td><%= score.applicant.first_name %></td>
+          <td><%= score.applicant.last_name %></td>
+          <td><%= score.mccoy_qualified %></td>
+          <td><%= score.financial %></td>
+          <td><%= score.academic %></td>
+          <td><%= score.recommend %></td>
+          <td><%= score.essay %></td>
+          <td><%= score.comments %></td>
+          <td><%= score.updated_at %></td>
+      </tr>
+    </tbody>
   <% end %>
 </table>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_143224) do
+ActiveRecord::Schema.define(version: 2020_04_25_204351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(version: 2020_04_19_143224) do
     t.index ["feature_key", "key", "value"], name: "index_flipper_gates_on_feature_key_and_key_and_value", unique: true
   end
 
+  create_table "removed_applicants", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "applicant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["applicant_id"], name: "index_removed_applicants_on_applicant_id"
+    t.index ["user_id"], name: "index_removed_applicants_on_user_id"
+  end
+
   create_table "scores", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "applicant_id"
@@ -98,4 +107,6 @@ ActiveRecord::Schema.define(version: 2020_04_19_143224) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "removed_applicants", "applicants"
+  add_foreign_key "removed_applicants", "users"
 end

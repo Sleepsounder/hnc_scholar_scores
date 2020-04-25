@@ -17,4 +17,8 @@ class Score < ApplicationRecord
   def mccoy_qualified
     mccoy == 1 ? "yes" : "no"
   end
+
+  def last_updated
+    # TODO: add human readable datetime
+  end
 end
