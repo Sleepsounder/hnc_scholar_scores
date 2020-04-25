@@ -9,6 +9,9 @@
     <p>You have reviewed <%= @number_of_scores_reviewed %> applications:</p>
   <% end %>
   <br>
+  <h3>Review Applicants</h3>
+  <h3>____________________________________</h3>
+  <br>
   <p> Choose from list:</p>
     <%= form_for @score, url: "/scores/new", method: "get" do |f| %>
       <%= collection_select(:score, :applicant_id, @applicants, :id, :full_name_list, prompt: true) %>
@@ -18,6 +21,7 @@
   <p>Or</p>
   <%= button_to "Review Application We Suggest", new_score_path(@applicant), method: :get %>
 <% end %>
+<h3>____________________________________</h3>
 <br>
 <% if @number_of_scores_reviewed != 0 %>
   <p><%= link_to "See Reviewed Applicants", scores_path %></p>

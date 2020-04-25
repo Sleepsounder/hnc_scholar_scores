@@ -1,9 +1,18 @@
+<h3>Reviewed</h3>
+<br>
 <table>
   <% @scores.each do |score| %>
     <tr>
+        <td><%= link_to "Edit", edit_score_path(score) %></td>
         <td><%= score.applicant.first_name %></td>
         <td><%= score.applicant.last_name %></td>
-        <td><%= link_to "Edit", edit_score_path(score) %></td>
+        <td><%= score.mccoy_qualified %></td>
+        <td><%= score.financial %></td>
+        <td><%= score.academic %></td>
+        <td><%= score.recommend %></td>
+        <td><%= score.essay %></td>
+        <td><%= score.comments %></td>
+        <td><%= score.updated_at %></td>
     </tr>
   <% end %>
 </table>
