@@ -2,7 +2,7 @@
 
 class ScoresController < ApplicationController
   def home
-    @all_scores_number = Score.all.count
+    @all_applicants_number = Applicant.all.count
     @number_of_scores_reviewed = Score.where(
       user_id: current_user.id
     ).count
@@ -18,14 +18,12 @@ class ScoresController < ApplicationController
   end
 
   def new
-    # TODO: create message saying there are no available applicants
-    # if @applicant.nil? etc...
     @applicant = found_applicant
     found_applicant.update(available: false)
     @score = found_applicant.scores.build
     return unless @applicant.scores.count < 4
 
-    # TODO: change 5.minutes below to something like 4.hours
+    # TODO: change 3.seconds below to something like 1.hour
     ApplicantAvailable.set(wait: 3.seconds).perform_later(@applicant)
   end
 
@@ -39,7 +37,7 @@ class ScoresController < ApplicationController
     if @score.save
       flash[:notice] = "Thank you for submitting!"
       @applicant.update(available: true)
-      redirect_to scores_path
+      redirect_to root_path
     else render :new
     end
   end
@@ -48,7 +46,7 @@ class ScoresController < ApplicationController
     @score = Score.find(params[:id])
     if @score.update(score_params)
       flash[:notice] = "Update saved!"
-      redirect_to scores_path
+      redirect_to root_path
     else render :edit
     end
   end

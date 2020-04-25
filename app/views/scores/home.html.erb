@@ -1,6 +1,6 @@
 <h3>Hi, <%= current_user.first_name %>.</h3>
 <br>
-<% if @number_of_scores_reviewed == @all_scores_number %>
+<% if @number_of_scores_reviewed == @all_applicants_number %>
   <% flash[:notice] = "Congratulations! You have reviewed all the applicants!" %>
 <% else %>
   <% if @number_of_scores_reviewed == 1 %>
@@ -18,5 +18,8 @@
   <p>Or</p>
   <%= button_to "Review Application We Suggest", new_score_path(@applicant), method: :get %>
 <% end %>
-<%= link_to "See Reviewed Applicants", scores_path %>
+<br>
+<% if @number_of_scores_reviewed != 0 %>
+  <p><%= link_to "See Reviewed Applicants", scores_path %></p>
+<% end %>
 
