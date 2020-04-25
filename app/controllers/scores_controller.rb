@@ -1,14 +1,20 @@
 # frozen_string_literal: true
 
 class ScoresController < ApplicationController
-  def index
+  def home
     @all_scores_number = Score.all.count
-    @scores = Score.where(
+    @number_of_scores_reviewed = Score.where(
       user_id: current_user.id
-    )
+    ).count
     @score = Score.new
     @applicants = eligible_applicants.sort_by(&:last_name)
     @applicant = eligible_applicants.min_by { |a| a.scores.count }
+  end
+
+  def index
+    @scores = Score.where(
+      user_id: current_user.id
+    )
   end
 
   def new
