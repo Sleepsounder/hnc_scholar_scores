@@ -3,6 +3,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+  # before_action :keep_previous_url
+  before_action :remove_authentication_flash_message_if_root_url_requested
+
+  def remove_authentication_flash_message_if_root_url_requested
+    if session[:user_return_to] == root_path and flash[:alert] == I18n.t('devise.failure.unauthenticated')
+      flash[:alert] = nil
+    end
+  end
 
   def after_sign_out_path_for(*)
     new_user_session_path
@@ -18,3 +26,5 @@ class ApplicationController < ActionController::Base
     root_path
   end
 end
+
+

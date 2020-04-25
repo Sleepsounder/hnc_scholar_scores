@@ -2,6 +2,7 @@
 
 class ScoresController < ApplicationController
   def index
+    @all_scores_number = Score.all.count
     @scores = Score.where(
       user_id: current_user.id
     )
