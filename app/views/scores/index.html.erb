@@ -32,3 +32,24 @@
     </tbody>
   <% end %>
 </table>
+<% if @removed_applicants.count != 0 %>
+  <br>
+  <h4>Removed from queue</h4>
+  <br>
+  <table>
+    <thead class=table-head>
+      <tr>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <% @removed_applicants.each do |removed_applicant| %>
+      <tbody>
+        <tr>
+            <td><%= removed_applicant.applicant.full_name %></td>
+            <td><%= button_to "Add back to queue", removed_applicants_destroy_path(removed_applicant), method: :delete %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+<% end %>

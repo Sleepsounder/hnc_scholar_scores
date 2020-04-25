@@ -13,6 +13,10 @@ class Applicant < ApplicationRecord
     end
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def review_count
     scores.count
   end

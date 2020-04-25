@@ -12,6 +12,14 @@ class RemovedApplicantsController < ApplicationController
   end
 
   def destroy
+    @removed_applicant = RemovedApplicant.find(params[:format])
+    if @removed_applicant.destroy
+      flash[:notice] = "Added back to queue"
+      redirect_to scores_path
+    else
+      flash[:error] = "Something went wrong"
+      redirect_to scores_path
+    end
   end
 
   private
