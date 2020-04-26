@@ -7,6 +7,7 @@ class RemovedApplicantsController < ApplicationController
       applicant_id: params[:format]
     )
     if removed_applicant.save
+      flash[:alert] = "Removed #{removed_applicant.applicant.full_name} from your queue"
       redirect_to root_path
     else
       flash[:error] = "Something went wrong."
@@ -15,9 +16,9 @@ class RemovedApplicantsController < ApplicationController
   end
 
   def destroy
-    @removed_applicant = RemovedApplicant.find(params[:format])
-    if @removed_applicant.destroy
-      flash[:notice] = "Added back to queue"
+    removed_applicant = RemovedApplicant.find(params[:format])
+    if removed_applicant.destroy
+      flash[:notice] = "Added #{removed_applicant.applicant.full_name} back to your queue"
     else
       flash[:error] = "Something went wrong"
     end
