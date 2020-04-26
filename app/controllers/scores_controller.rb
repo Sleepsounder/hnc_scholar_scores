@@ -18,8 +18,8 @@ class ScoresController < ApplicationController
 
   def new
     if params[:format].nil? && params[:score][:applicant_id].empty?
-        flash[:alert] = "Please make a selection."
-        redirect_to root_path
+      flash[:alert] = "Please make a selection."
+      redirect_to root_path
     else
       @applicant = found_applicant
       found_applicant.update(available: false)
