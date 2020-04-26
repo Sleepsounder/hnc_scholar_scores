@@ -17,13 +17,18 @@ class ScoresController < ApplicationController
   end
 
   def new
-    @applicant = found_applicant
-    found_applicant.update(available: false)
-    @score = found_applicant.scores.build
-    return unless @applicant.scores.count < 4
+    if params[:format].nil? && params[:score][:applicant_id].empty?
+        flash[:alert] = "Please make a selection."
+        redirect_to root_path
+    else
+      @applicant = found_applicant
+      found_applicant.update(available: false)
+      @score = found_applicant.scores.build
+      return unless @applicant.scores.count < 4
 
-    # TODO: change 3.seconds below to something like 1.hour
-    ApplicantAvailable.set(wait: 3.seconds).perform_later(@applicant)
+      # TODO: change 3.seconds below to something like 1.hour
+      ApplicantAvailable.set(wait: 3.seconds).perform_later(@applicant)
+    end
   end
 
   def edit
