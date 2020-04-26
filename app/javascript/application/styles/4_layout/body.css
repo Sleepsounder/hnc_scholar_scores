@@ -3,3 +3,128 @@
   flex-direction: column;
   min-height: 100vh;
 }
+
+.home-main {
+  justify-content: center;
+  text-align: center;
+}
+
+.main-section {
+  background-color: rgb(250, 251, 255);
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.select-form {
+  padding: 0.5rem;
+  border: 1px solid var(--color-black);
+  background-color: rgb(211, 243, 216);
+}
+
+h3 {
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid #cfdae2;
+  border-bottom: 1px solid #cfdae2;
+  margin: 1rem, 0, 1rem, 0;
+}
+
+h4 {
+  padding: 0.75rem;
+  text-align: center;
+  border-top: 1px solid #cfdae2;
+  border-bottom: 1px solid #cfdae2;
+  margin: 1rem, 0, 1rem, 0;
+  background-color: rgb(250, 255, 250);
+}
+
+p {
+  text-align: center;
+}
+
+table, th, td {
+  background-color: rgb(247, 247, 247);
+  outline: 1px solid #000;
+}
+
+table {
+  border-spacing: 5px;
+  width: 100%;
+}
+
+th, td {
+  text-align: center;
+  padding: 0, 2px, 0, 2px;
+}
+
+.edit-button {
+  background-color: rgb(214, 214, 214);
+  border: 1px solid var(--color-black);
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.14);
+  outline: none;
+
+  &:active {
+    box-shadow: unset;
+  }
+}
+
+.edit-button:hover {
+  /* link text color disables text color */
+  background-color: rgb(194, 219, 248);
+  color: rgb(210, 209, 219);
+  border: 1px solid var(--color-black);
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.14);
+  outline: none;
+
+  &:active {
+    box-shadow: unset;
+  }
+}
+
+.blue-link-button {
+  justify-content: center;
+}
+
+.blue-link {
+  color: var(--color-black);
+  background-color: rgb(211, 221, 243);
+  text-align: center;
+  border: 1px solid var(--color-black);
+  padding: 0.75rem;
+  font-size: 1.14rem;
+}
+
+.blue-link:hover {
+  text-decoration: none;
+  background-color: var(--color-dark-blue);
+  color: #fff;
+}
+
+.green-link {
+  text-decoration: none;
+  background-color: rgb(211, 243, 216);
+  text-align: center;
+  border: 1px solid var(--color-black);
+  padding: 1rem;
+  font-size: 1.25rem;
+}
+
+.green-link:hover {
+  background-color: var(--color-dark-green);
+  color: #fff;
+}
+
+.green-link-choose {
+  text-align: center;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  padding: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.green-link-choose:hover {
+  background-color: var(--color-dark-green);
+  color: #fff;
+}
