@@ -26,7 +26,15 @@
 }
 
 .scores-form {
-  /* justify-content: center; */
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.scores-form-div > * {
+  padding: 3rem;
 }
 
 .select-form {
@@ -60,6 +68,7 @@ p {
 li {
   margin: 2rem;
   font-size: 1.5rem;
+  padding: 1rem;
 }
 
 table, th, td {
@@ -149,7 +158,12 @@ th, td {
 }
 
 .list-items {
-  margin: auto;
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  list-style-type: none;
 }
 
 .new-link {
@@ -159,3 +173,37 @@ th, td {
 .submit-scores {
   margin: auto;
 }
+
+#mccoy-checkbox {
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  padding: 10px;/* height: 4rem; */
+}
+
+.checkboxtext {
+  padding-left: 1rem;
+  padding-top: 1rem;
+  font-size: 110%;
+  display: inline;
+}
+
+.form-selector {
+  border-top: 1px solid #cfdae2;
+  border-bottom: 1px solid #cfdae2;
+  padding: 1rem;
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: right;
+  background-color: rgb(251, 252, 251);;
+}
+
+.text-area {
+  padding: 4rem;
+}
+
+
