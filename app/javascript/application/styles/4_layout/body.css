@@ -20,7 +20,7 @@
 .select-form {
   padding: 0.5rem;
   border: 1px solid var(--color-black);
-  background-color:  rgb(211, 243, 216);
+  background-color: rgb(211, 243, 216);
 }
 
 h3 {
@@ -28,7 +28,7 @@ h3 {
   text-align: center;
   border-top: 1px solid #cfdae2;
   border-bottom: 1px solid #cfdae2;
-  margin: 1rem, 0rem, 1rem, 0rem;
+  margin: 1rem, 0, 1rem, 0;
 }
 
 h4 {
@@ -36,7 +36,7 @@ h4 {
   text-align: center;
   border-top: 1px solid #cfdae2;
   border-bottom: 1px solid #cfdae2;
-  margin: 1rem, 0rem, 1rem, 0rem;
+  margin: 1rem, 0, 1rem, 0;
   background-color: rgb(250, 255, 250);
 }
 
@@ -56,7 +56,7 @@ table {
 
 th, td {
   text-align: center;
-  padding: 0px, 2px, 0px, 2px;
+  padding: 0, 2px, 0, 2px;
 }
 
 .edit-button {
@@ -72,7 +72,7 @@ th, td {
 
 .edit-button:hover {
   /* link text color disables text color */
-  background-color:rgb(194, 219, 248);
+  background-color: rgb(194, 219, 248);
   color: rgb(210, 209, 219);
   border: 1px solid var(--color-black);
   box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.14);
