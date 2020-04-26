@@ -9,7 +9,7 @@
   text-align: center;
 }
 
-.main-section {
+.title-section {
   background-color: rgb(250, 251, 255);
   text-align: center;
   font-size: 1.5em;
@@ -42,6 +42,11 @@ h4 {
 
 p {
   text-align: center;
+}
+
+li {
+  margin: 2rem;
+  font-size: 1.5rem;
 }
 
 table, th, td {
@@ -88,6 +93,7 @@ th, td {
 }
 
 .blue-link {
+  text-decoration: none;
   color: var(--color-black);
   background-color: rgb(211, 221, 243);
   text-align: center;
@@ -116,7 +122,7 @@ th, td {
   color: #fff;
 }
 
-.green-link-choose {
+.green-link-select {
   text-align: center;
   background-color: var(--color-white);
   border: 1px solid var(--color-black);
@@ -124,7 +130,15 @@ th, td {
   font-size: 1.25rem;
 }
 
-.green-link-choose:hover {
+.green-link-select:hover {
   background-color: var(--color-dark-green);
   color: #fff;
+}
+
+.list-items {
+  margin: auto;
+}
+
+.new-link {
+  font-size: 1.5rem;
 }

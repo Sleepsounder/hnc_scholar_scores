@@ -6,21 +6,14 @@
   <% end %>
 <% end %>
 <p>Here is your applicant:</p>
-<p><%= @applicant.first_name %> <%= @applicant.last_name %></p>
-<% if @applicant.users.count == 0 %>
-    <p>You will be the first to score them.</p>
-<% else %>
-    <p>They have been reviewed thus far by:</p>
-    <% @applicant.users.each do |user| %>
-        <p><%= user.first_name %> <%= user.last_name %></p>
-    <% end %>
-<% end %>
-<p><%= link_to "Cancel This Review", root_path %></p>
-<p>----- or ------</p>
-<p><%= link_to "Cancel and Remove Them From My Queue", removed_applicants_create_path(@applicant) %></p>
-<p>1. <%= link_to "View their application in a new tab.", @applicant.link,  target: :_blank %></p>
-<p>2. Fill out the score fields below.</p>
-<p>3. Press the "submit scores" button</p>
+<div class="title-section">
+  <h3><%= @applicant.first_name %> <%= @applicant.last_name %></h3>
+</div>
+<ol class="list-items">
+  <li><%= link_to "View their application in a new tab.", @applicant.link,  target: :_blank, class: "blue-link new-link" %></li>
+  <li>Fill out the score fields below.</li>
+  <li>Press the "submit scores" button</li>
+</ol>
 <%= form_for(@score) do |f| %>
   <% points = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0] %>
   <% ten_points = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0] %>
@@ -38,4 +31,15 @@
   <%= f.text_area :comments %><br><br>
   <%= f.hidden_field :applicant_id %>
   <%= f.submit "Submit Scores" %>
+<% end %>
+<p><%= link_to "Cancel This Review", root_path %></p>
+<p>----- or ------</p>
+<p><%= link_to "Cancel and Remove Them From My Queue", removed_applicants_create_path(@applicant) %></p>
+<% if @applicant.users.count == 0 %>
+    <p>You will be the first to score <%= @applicant.full_name %>.</p>
+<% else %>
+    <p><%= @applicant.full_name %> has been reviewed thus far by:</p>
+    <% @applicant.users.each do |user| %>
+        <p><%= user.first_name %> <%= user.last_name %></p>
+    <% end %>
 <% end %>
