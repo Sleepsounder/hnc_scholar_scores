@@ -1,6 +1,6 @@
 <h3>Hi, <%= current_user.first_name %>.</h3>
 <br>
-<% if @number_of_scores_reviewed == @all_applicants_number %>
+<% if @number_of_scores_reviewed == @all_applicants_count %>
   <% flash[:notice] = "Congratulations! You have reviewed all the applicants!" %>
 <% else %>
   <% if @number_of_scores_reviewed == 1 %>
@@ -8,10 +8,12 @@
   <% else %>
     <p>You have reviewed <%= @number_of_scores_reviewed %> applications:</p>
   <% end %>
-  <% if current_user.removed_applicants.count == 1 %>
-    <p>You have removed <%= current_user.removed_applicants.count %> applicant from your queue.</p>
-  <% else %>
-    <p>You have reviewed <%= current_user.removed_applicants.count %> applicants from your queue</p>
+  <% if current_user.removed_applicants.count > 0 %>
+    <% if current_user.removed_applicants.count == 1 %>
+      <p>You have removed <%= current_user.removed_applicants.count %> applicant from your queue.</p>
+    <% else %>
+      <p>You have removed <%= current_user.removed_applicants.count %> applicants from your queue</p>
+    <% end %>
   <% end %>
   <br>
   <h3>Review Applicants</h3>
@@ -29,6 +31,6 @@
 <h3>____________________________________</h3>
 <br>
 <% if @number_of_scores_reviewed != 0 %>
-  <p><%= link_to "See Reviewed Applicants", scores_path %></p>
+  <p><%= link_to "See Applicants You Have Reviewed", scores_path %></p>
 <% end %>
 

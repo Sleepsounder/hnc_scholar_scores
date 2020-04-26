@@ -6,11 +6,13 @@ class ApplicationController < ActionController::Base
   # before_action :keep_previous_url
   before_action :remove_authentication_flash_message_if_root_url_requested
 
+  # rubocop:disable Style/GuardClause, Layout/LineLength
   def remove_authentication_flash_message_if_root_url_requested
-    if session[:user_return_to] == root_path and flash[:alert] == I18n.t('devise.failure.unauthenticated')
+    if session[:user_return_to] == root_path && flash[:alert] == I18n.t("devise.failure.unauthenticated")
       flash[:alert] = nil
     end
   end
+  # rubocop:enable Style/GuardClause, Layout/LineLength
 
   def after_sign_out_path_for(*)
     new_user_session_path
@@ -26,5 +28,3 @@ class ApplicationController < ActionController::Base
     root_path
   end
 end
-
-

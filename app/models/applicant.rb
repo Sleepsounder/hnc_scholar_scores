@@ -2,6 +2,7 @@
 
 class Applicant < ApplicationRecord
   has_many :scores
+  has_many :removed_applicants
   has_many :users, through: :scores
 
   def full_name_list

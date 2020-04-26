@@ -2,7 +2,7 @@
 
 class ScoresController < ApplicationController
   def home
-    @all_applicants_number = Applicant.all.count
+    @all_applicants_count = Applicant.all.count
     @number_of_scores_reviewed = Score.where(
       user_id: current_user.id
     ).count
@@ -12,8 +12,8 @@ class ScoresController < ApplicationController
   end
 
   def index
-    @scores = Score.where( user_id: current_user.id )
-    @removed_applicants = RemovedApplicant.where( user_id: current_user.id)
+    @scores = Score.where(user_id: current_user.id)
+    @removed_applicants = RemovedApplicant.where(user_id: current_user.id)
   end
 
   def new
@@ -67,8 +67,10 @@ class ScoresController < ApplicationController
     Applicant.select do |applicant|
       applicant.users.count < 3 &&
         applicant.users.all? { |user| user.id != current_user.id } &&
-        applicant.available?
-        # TODO: if removed_applicant join should not include
+        applicant.available? &&
+        applicant.removed_applicants.all? do |removed_applicant|
+          removed_applicant.user_id != current_user.id
+        end
     end
   end
 

@@ -2,7 +2,10 @@
 
 class RemovedApplicantsController < ApplicationController
   def create
-    removed_applicant = RemovedApplicant.new(user_id: current_user.id, applicant_id: params[:format])
+    removed_applicant = RemovedApplicant.new(
+      user_id: current_user.id,
+      applicant_id: params[:format]
+    )
     if removed_applicant.save
       redirect_to root_path
     else
@@ -15,15 +18,9 @@ class RemovedApplicantsController < ApplicationController
     @removed_applicant = RemovedApplicant.find(params[:format])
     if @removed_applicant.destroy
       flash[:notice] = "Added back to queue"
-      redirect_to scores_path
     else
       flash[:error] = "Something went wrong"
-      redirect_to scores_path
     end
-  end
-
-  private
-
-  def removed_applicant_params
+    redirect_to scores_path
   end
 end
