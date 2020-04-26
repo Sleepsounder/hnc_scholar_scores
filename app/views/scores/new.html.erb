@@ -15,8 +15,9 @@
         <p><%= user.first_name %> <%= user.last_name %></p>
     <% end %>
 <% end %>
-<p><%= link_to "Cancel", root_path %></p>
-<p><%= link_to "Remove from my queue", removed_applicants_create_path(@applicant) %></p>
+<p><%= link_to "Cancel This Review", root_path %></p>
+<p>----- or ------</p>
+<p><%= link_to "Cancel and Remove Them From My Queue", removed_applicants_create_path(@applicant) %></p>
 <p>1. <%= link_to "View their application in a new tab.", @applicant.link,  target: :_blank %></p>
 <p>2. Fill out the score fields below.</p>
 <p>3. Press the "submit scores" button</p>

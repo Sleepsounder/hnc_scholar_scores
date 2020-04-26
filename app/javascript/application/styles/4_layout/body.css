@@ -15,7 +15,12 @@
   font-size: 1.5em;
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
+}
 
+.select-form {
+  padding: 0.5rem;
+  border: 1px solid var(--color-black);
+  background-color:  rgb(211, 243, 216);
 }
 
 h3 {
@@ -37,7 +42,6 @@ h4 {
 
 p {
   text-align: center;
-  /* margin: 2rem, 0rem, 2rem, 0rem; */
 }
 
 table, th, td {
@@ -84,6 +88,7 @@ th, td {
 }
 
 .blue-link {
+  color: var(--color-black);
   background-color: rgb(211, 221, 243);
   text-align: center;
   border: 1px solid var(--color-black);
@@ -107,7 +112,19 @@ th, td {
 }
 
 .green-link:hover {
-  text-decoration: none;
+  background-color: var(--color-dark-green);
+  color: #fff;
+}
+
+.green-link-choose {
+  text-align: center;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  padding: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.green-link-choose:hover {
   background-color: var(--color-dark-green);
   color: #fff;
 }
