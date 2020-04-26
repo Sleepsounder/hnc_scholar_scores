@@ -1,24 +1,28 @@
 # frozen_string_literal: true
 
 class ScoresController < ApplicationController
-  def index
-    @scores = Score.where(
+  def home
+    @all_applicants_count = Applicant.all.count
+    @number_of_scores_reviewed = Score.where(
       user_id: current_user.id
-    )
+    ).count
     @score = Score.new
     @applicants = eligible_applicants.sort_by(&:last_name)
     @applicant = eligible_applicants.min_by { |a| a.scores.count }
   end
 
+  def index
+    @scores = Score.where(user_id: current_user.id)
+    @removed_applicants = RemovedApplicant.where(user_id: current_user.id)
+  end
+
   def new
-    # TODO: create message saying there are no available applicants
-    # if @applicant.nil? etc...
     @applicant = found_applicant
     found_applicant.update(available: false)
     @score = found_applicant.scores.build
     return unless @applicant.scores.count < 4
 
-    # TODO: change 5.minutes below to something like 4.hours
+    # TODO: change 3.seconds below to something like 1.hour
     ApplicantAvailable.set(wait: 3.seconds).perform_later(@applicant)
   end
 
@@ -32,7 +36,7 @@ class ScoresController < ApplicationController
     if @score.save
       flash[:notice] = "Thank you for submitting!"
       @applicant.update(available: true)
-      redirect_to scores_path
+      redirect_to root_path
     else render :new
     end
   end
@@ -41,9 +45,15 @@ class ScoresController < ApplicationController
     @score = Score.find(params[:id])
     if @score.update(score_params)
       flash[:notice] = "Update saved!"
-      redirect_to scores_path
+      redirect_to root_path
     else render :edit
     end
+  end
+
+  def destroy
+    @score = Score.find(params[:id])
+    @score.destroy
+    redirect_to root_path
   end
 
   private
@@ -63,7 +73,10 @@ class ScoresController < ApplicationController
     Applicant.select do |applicant|
       applicant.users.count < 3 &&
         applicant.users.all? { |user| user.id != current_user.id } &&
-        applicant.available?
+        applicant.available? &&
+        applicant.removed_applicants.all? do |removed_applicant|
+          removed_applicant.user_id != current_user.id
+        end
     end
   end
 

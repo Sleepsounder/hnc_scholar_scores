@@ -2,6 +2,7 @@
 
 class Applicant < ApplicationRecord
   has_many :scores
+  has_many :removed_applicants
   has_many :users, through: :scores
 
   def full_name_list
@@ -11,6 +12,10 @@ class Applicant < ApplicationRecord
     else
       "#{list_item} reviews"
     end
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   def review_count

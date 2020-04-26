@@ -1,0 +1,36 @@
+<h3>Hi, <%= current_user.first_name %>.</h3>
+<br>
+<% if @number_of_scores_reviewed == @all_applicants_count %>
+  <% flash[:notice] = "Congratulations! You have reviewed all the applicants!" %>
+<% else %>
+  <% if @number_of_scores_reviewed == 1 %>
+    <p>You have reviewed <%= @number_of_scores_reviewed %> application:</p>
+  <% else %>
+    <p>You have reviewed <%= @number_of_scores_reviewed %> applications:</p>
+  <% end %>
+  <% if current_user.removed_applicants.count > 0 %>
+    <% if current_user.removed_applicants.count == 1 %>
+      <p>You have removed <%= current_user.removed_applicants.count %> applicant from your queue.</p>
+    <% else %>
+      <p>You have removed <%= current_user.removed_applicants.count %> applicants from your queue</p>
+    <% end %>
+  <% end %>
+  <br>
+  <h3>Review Applicants</h3>
+  <h3>____________________________________</h3>
+  <br>
+  <p> Choose from list:</p>
+    <%= form_for @score, url: "/scores/new", method: "get" do |f| %>
+      <%= collection_select(:score, :applicant_id, @applicants, :id, :full_name_list, prompt: true) %>
+      <%= submit_tag 'Choose' %>
+    <% end %>
+  <br><br>
+  <p>Or</p>
+  <%= button_to "Review Application We Suggest", new_score_path(@applicant), method: :get %>
+<% end %>
+<h3>____________________________________</h3>
+<br>
+<% if @number_of_scores_reviewed != 0 %>
+  <p><%= link_to "See Applicants You Have Reviewed", scores_path %></p>
+<% end %>
+

@@ -1,25 +1,57 @@
-<h3>Hi, <%= current_user.first_name %>.</h3>
+<h3>Reviewed</h3>
 <br>
-<% if @scores.count == 1%>
-  <p>You have reviewed <%= @scores.count %> application:</p>
-<% else %>
-  <p>You have reviewed <%= @scores.count %> applications:</p>
-<% end %>
 <table>
-  <% @scores.each do |score| %>
+  <thead class=table-head>
     <tr>
-        <td><%= score.applicant.first_name %></td>
-        <td><%= score.applicant.last_name %></td>
-        <td><%= link_to "Edit", edit_score_path(score) %></td>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Elligible for McCoy</th>
+      <th>Financial Score</th>
+      <th>Academic Score</th>
+      <th>Recommend Score</th>
+      <th>Essay Score</th>
+      <th>Comments</th>
+      <th>Last Updated</th>
+      <th></th>
+      <th></th>
     </tr>
+  </thead>
+  <% @scores.each do |score| %>
+    <tbody>
+      <tr>
+          <td><%= score.applicant.first_name %></td>
+          <td><%= score.applicant.last_name %></td>
+          <td><%= score.mccoy_qualified %></td>
+          <td><%= score.financial %></td>
+          <td><%= score.academic %></td>
+          <td><%= score.recommend %></td>
+          <td><%= score.essay %></td>
+          <td><%= score.comments %></td>
+          <td><%= score.updated_at %></td>
+          <td><%= link_to "Edit", edit_score_path(score) %></td>
+          <td><%= button_to "Delete", score_path(score), method: :delete, confirm: "Are you sure?" %></td>
+      </tr>
+    </tbody>
   <% end %>
 </table>
-<br>
-<p> Choose from list:</p>
-  <%= form_for @score, url: "/scores/new", method: "get" do |f| %>
-    <%= collection_select(:score, :applicant_id, @applicants, :id, :full_name_list, prompt: true) %>
-    <%= submit_tag 'Choose' %>
-  <% end %>
-<br><br>
-<p>Or</p>
-<%= button_to "Review Application We Suggest", new_score_path(@applicant), method: :get %>
+<% if @removed_applicants.count != 0 %>
+  <br>
+  <h4>Removed from queue</h4>
+  <br>
+  <table>
+    <thead class=table-head>
+      <tr>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <% @removed_applicants.each do |removed_applicant| %>
+      <tbody>
+        <tr>
+            <td><%= removed_applicant.applicant.full_name %></td>
+            <td><%= button_to "Add back to queue", removed_applicants_destroy_path(removed_applicant), method: :delete %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+<% end %>
