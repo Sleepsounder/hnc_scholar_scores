@@ -3,7 +3,6 @@
 <table>
   <thead class=table-head>
     <tr>
-      <th></th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Elligible for McCoy</th>
@@ -13,12 +12,13 @@
       <th>Essay Score</th>
       <th>Comments</th>
       <th>Last Updated</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <% @scores.each do |score| %>
     <tbody>
       <tr>
-          <td><%= link_to "Edit", edit_score_path(score) %></td>
           <td><%= score.applicant.first_name %></td>
           <td><%= score.applicant.last_name %></td>
           <td><%= score.mccoy_qualified %></td>
@@ -28,6 +28,8 @@
           <td><%= score.essay %></td>
           <td><%= score.comments %></td>
           <td><%= score.updated_at %></td>
+          <td><%= link_to "Edit", edit_score_path(score) %></td>
+          <td><%= button_to "Delete", score_path(score), method: :delete, confirm: "Are you sure?" %></td>
       </tr>
     </tbody>
   <% end %>
