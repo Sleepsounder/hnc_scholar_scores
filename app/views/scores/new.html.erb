@@ -39,20 +39,24 @@
       <%= f.select :essay, ten_points, prompt: true %>
       &nbsp<%= f.label :essay, "Essay/Personal/Extra-curricular/Intangible" %>
     </p>
-    <p><%= f.label :comments, "Comments" %></p>
+    <p><%= f.label :comments, "Comments (optional)" %></p>
     <p><%= f.text_area :comments, class: "text-area" %></p>
     <p><%= f.hidden_field :applicant_id %></p>
     <p><%= f.submit "Submit Scores", class: "green-link" %></p>
   <% end %>
 </div>
-<p><%= link_to "Cancel This Review", root_path %></p>
-<p>----- or ------</p>
-<p><%= link_to "Cancel and Remove Them From My Queue", removed_applicants_create_path(@applicant) %></p>
-<% if @applicant.users.count == 0 %>
-    <p>You will be the first to score <%= @applicant.full_name %>.</p>
-<% else %>
-    <p><%= @applicant.full_name %> has been reviewed thus far by:</p>
-    <% @applicant.users.each do |user| %>
-        <p><%= user.first_name %> <%= user.last_name %></p>
-    <% end %>
-<% end %>
+<div class="reviewed-by-text">
+  <% if @applicant.users.count == 0 %>
+      <ul>You will be the first to score <%= @applicant.full_name %>.</ul>
+  <% else %>
+      <ul><%= @applicant.full_name %> has been reviewed thus far by:</ul>
+      <% @applicant.users.each do |user| %>
+          <li><%= user.first_name %> <%= user.last_name %></li>
+      <% end %>
+  <% end %>
+</div>
+<div class="cancel-buttons-div">
+  <p><%= link_to "Cancel This Review", root_path, class: "red-link" %></p>
+  <p>----- or ------</p>
+  <p><%= link_to "Cancel and remove #{@applicant.full_name} from my queue", removed_applicants_create_path(@applicant), class: "red-link" %></p>
+</div>
