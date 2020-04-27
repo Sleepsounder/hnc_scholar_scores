@@ -5,36 +5,57 @@
     </div>
   <% end %>
 <% end %>
-<p><%= @score.applicant.first_name %> <%= @score.applicant.last_name %></p>
-<% if @score.applicant.users.count == 0 %>
-    <p>You will be the first to score them.</p>
-<% else %>
-    <p>They have been reviewed thus far by:</p>
-    <% @score.applicant.users.each do |user| %>
-        <p><%= user.first_name %> <%= user.last_name %></p>
-    <% end %>
-<% end %>
-<p><%= link_to "Cancel", root_path %></p>
-<p>1. <%= link_to "View their application in a new tab.", @score.applicant.link,  target: :_blank %></p>
-<p>2. Fill out the score fields below.</p>
-<p>3. Press the "submit scores" button</p>
-<div>
-  <%= form_for @score, as: :score, url: score_path do |f| %>
-      <% points = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0] %>
-      <% ten_points = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0] %>
-      <%= check_box_tag(:mccoy, 1, f.object.mccoy?) %>
-      <%= label_tag(:mccoy, "Eligible for McCoy Scholarship (hemophilia A, severe)") %><br><br>
-      <%= f.label :financial, "Financial Need" %><br>
-      <%= f.select :financial, points, selected: @score.financial %><br><br>
-      <%= f.label :academic, "Academics"%><br>
-      <%= f.select :academic, points, selected: @score.academic %><br><br>
-      <%= f.label :recommend, "Recommendations" %><br>
-      <%= f.select :recommend, points, selected: @score.recommend %><br><br>
-      <%= f.label :essay, "Essay/Personal/Extra-curricular/Intangible" %><br>
-      <%= f.select :essay, ten_points, selected: @score.essay.to_s %><br><br>
-      <%= f.label :comments, "Comments" %><br>
-      <%= f.text_area :comments %><br><br>
-      <%= f.hidden_field :applicant_id %>
-      <%= f.submit "Submit Scores" %>
+<p>Your applicant is:</p>
+<div class="title-section">
+  <h3><%= @applicant.first_name %> <%= @applicant.last_name %></h3>
+</div>
+<ol class="list-items">
+  <li>1. <%= link_to "View their application in a new tab.", @applicant.link,  target: :_blank, class: "blue-link new-link" %></li>
+  <li>2. Fill out the Scores Form below.</li>
+  <li>3. Press the "submit scores" button</li>
+</ol>
+<div class="scores-form-div">
+  <h2 class="scores-form-title">Scores Form</h2>
+  <%= form_for @score, as: :score, url: score_path, html: { class: "scores-form" } do |f| %>
+    <% points = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0] %>
+    <% ten_points = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0] %>
+    <p>
+      <%= check_box_tag(:mccoy, 1, f.object.mccoy?, class: "mccoy-checkbox") %>
+      <%= label_tag(:mccoy, "Eligible for McCoy Scholarship (hemophilia A, severe)") %>
+    </p>
+    <p class="form-selector">
+      <%= f.select :financial, points, prompt: true, class: "form-selector-label" %>
+      &nbsp<%= f.label :financial, "Financial Need" %>
+    </p>
+    <p class="form-selector">
+      <%= f.select :academic, points, prompt: true %>
+      &nbsp<%= f.label :academic, "Academics"%>
+    </p>
+    <p class="form-selector">
+      <%= f.select :recommend, points, prompt: true %>
+      &nbsp<%= f.label :recommend, "Recommendations" %>
+    </p>
+    <p class="form-selector">
+      <%= f.select :essay, ten_points, prompt: true %>
+      &nbsp<%= f.label :essay, "Essay/Personal/Extra-curricular/Intangible" %>
+    </p>
+    <p><%= f.label :comments, "Comments (optional)" %></p>
+    <p><%= f.text_area :comments, class: "text-area" %></p>
+    <p><%= f.hidden_field :applicant_id %></p>
+    <p><%= f.submit "Submit Scores", class: "green-link" %></p>
   <% end %>
 </div>
+<div class="reviewed-by-text">
+  <% if @applicant.users.count == 0 %>
+      <ul>You are the first to score <%= @applicant.full_name %>.</ul>
+  <% else %>
+      <ul><%= @applicant.full_name %> has been reviewed thus far by:</ul>
+      <% @applicant.users.each do |user| %>
+          <li><%= user.first_name %> <%= user.last_name %></li>
+      <% end %>
+  <% end %>
+</div>
+<div class="cancel-buttons-div">
+  <p><%= link_to "Cancel This Edit", scores_path, class: "red-link" %></p>
+</div>
+
