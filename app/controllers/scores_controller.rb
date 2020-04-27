@@ -33,6 +33,7 @@ class ScoresController < ApplicationController
 
   def edit
     @score = Score.find(params[:id])
+    @applicant = Applicant.find(@score.applicant_id)
   end
 
   def create

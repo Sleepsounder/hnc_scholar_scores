@@ -9,12 +9,36 @@
   text-align: center;
 }
 
-.main-section {
+.title-section {
   background-color: rgb(250, 251, 255);
   text-align: center;
   font-size: 1.5em;
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
+}
+
+.scores-form-div {
+  background-color: rgb(250, 255, 250);
+  padding: 2rem;
+  font-size: 1.5rem;
+  border-top: 2px solid var(--color-dark-gray);
+  border-bottom: 2px solid var(--color-dark-gray);
+}
+
+.scores-form {
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.scores-form-div > * {
+  padding: 1.5rem;
+}
+
+.scores-form-title {
+  text-align: center;
 }
 
 .select-form {
@@ -42,6 +66,13 @@ h4 {
 
 p {
   text-align: center;
+  font-size: 1.5rem;
+}
+
+li {
+  margin: 2rem;
+  font-size: 1.5rem;
+  padding: 1rem;
 }
 
 table, th, td {
@@ -88,6 +119,7 @@ th, td {
 }
 
 .blue-link {
+  text-decoration: none;
   color: var(--color-black);
   background-color: rgb(211, 221, 243);
   text-align: center;
@@ -116,7 +148,7 @@ th, td {
   color: #fff;
 }
 
-.green-link-choose {
+.green-link-select {
   text-align: center;
   background-color: var(--color-white);
   border: 1px solid var(--color-black);
@@ -124,7 +156,82 @@ th, td {
   font-size: 1.25rem;
 }
 
-.green-link-choose:hover {
+.green-link-select:hover {
   background-color: var(--color-dark-green);
   color: #fff;
+}
+
+.list-items {
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  list-style-type: none;
+}
+
+.new-link {
+  font-size: 1.5rem;
+}
+
+.submit-scores {
+  margin: auto;
+}
+
+.mccoy-checkbox {
+  transform: scale(2);
+  padding: 4rem;
+}
+
+.checkboxtext {
+  padding-left: 1rem;
+  padding-top: 1rem;
+  font-size: 110%;
+  display: inline;
+}
+
+.form-selector {
+  border-top: 1px solid #cfdae2;
+  border-bottom: 1px solid #cfdae2;
+  padding: 1rem;
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  background-color: rgb(251, 252, 251);
+}
+
+.text-area {
+  width: 36rem;
+  height: 7rem;
+}
+
+.cancel-buttons-div {
+  margin: 4em 0 2em 0;
+}
+
+.red-link {
+  text-decoration: none;
+  color: var(--color-black);
+  background-color: rgb(243, 211, 211);
+  border: 1px solid var(--color-black);
+  padding: 0.75rem;
+  font-size: 1.14rem;
+}
+
+.red-link:hover {
+  text-decoration: none;
+  background-color: var(--color-dark-red);
+  color: #fff;
+}
+
+.reviewed-by-text {
+  margin-top: 1rem;
+  /* border-bottom: 2px solid var(--color-dark-gray); */
+}
+
+.reviewed-by-text > * {
+  text-align: center;
+  font-size: 1.5rem;
 }
