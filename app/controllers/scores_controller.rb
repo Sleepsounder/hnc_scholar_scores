@@ -36,6 +36,7 @@ class ScoresController < ApplicationController
   end
 
   def create
+    binding.pry
     @score = Score.new(score_params)
     @applicant = Applicant.find(score_params[:applicant_id])
     if @score.save

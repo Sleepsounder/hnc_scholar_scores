@@ -37,7 +37,7 @@
   padding: 1.5rem;
 }
 
-#scores-form-title {
+.scores-form-title {
   text-align: center;
 }
 
@@ -178,13 +178,9 @@ th, td {
   margin: auto;
 }
 
-#mccoy-checkbox {
-  -ms-transform: scale(2); /* IE */
-  -moz-transform: scale(2); /* FF */
-  -webkit-transform: scale(2); /* Safari and Chrome */
-  -o-transform: scale(2); /* Opera */
+.mccoy-checkbox {
   transform: scale(2);
-  padding: 10px;/* height: 4rem; */
+  padding: 4rem;
 }
 
 .checkboxtext {
@@ -203,13 +199,14 @@ th, td {
   margin-left: auto;
   margin-right: auto;
   text-align: left;
-  background-color: rgb(251, 252, 251);;
+  background-color: rgb(251, 252, 251);
 }
 
 .text-area {
   width: 36rem;
   height: 7rem;
 }
+
 .cancel-buttons-div {
   margin: 4em 0 2em 0;
 }
