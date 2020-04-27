@@ -21,8 +21,8 @@
   background-color: rgb(250, 255, 250);
   padding: 2rem;
   font-size: 1.5rem;
-  border-top: 1px solid #cfdae2;
-  border-bottom: 1px solid #cfdae2;
+  border-top: 3px solid #9db39e;
+  border-bottom: 3px solid #9db39e;
 }
 
 .scores-form {
@@ -35,6 +35,10 @@
 
 .scores-form-div > * {
   padding: 3rem;
+}
+
+#scores-form-title {
+  text-align: center;
 }
 
 .select-form {
@@ -198,7 +202,7 @@ th, td {
   float: none;
   margin-left: auto;
   margin-right: auto;
-  text-align: right;
+  text-align: left;
   background-color: rgb(251, 252, 251);;
 }
 
