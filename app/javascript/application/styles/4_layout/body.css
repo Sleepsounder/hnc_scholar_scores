@@ -17,6 +17,10 @@
   margin-top: 1.5rem;
 }
 
+#score-header {
+  margin-top: 35px;
+}
+
 .scores-form-div {
   background-color: rgb(250, 255, 250);
   padding: 2rem;
@@ -78,10 +82,6 @@ li {
 #index-title {
   font-size: 42px;
   background-color: rgb(255, 244, 233);
-}
-
-th {
-  /* background-color: rgb(239, 248, 246); */
 }
 
 th, td {
@@ -165,6 +165,12 @@ th, td {
   margin: auto;
 }
 
+.mccoy-checkbox-div {
+  text-align: left;
+  margin-bottom: 30px;
+  padding-left: 25px;
+}
+
 .mccoy-checkbox {
   transform: scale(2);
   padding: 4rem;
@@ -177,16 +183,16 @@ th, td {
   display: inline;
 }
 
-.form-selector {
-  border-top: 1px solid #cfdae2;
-  border-bottom: 1px solid #cfdae2;
-  padding: 1rem;
-  display: block;
-  float: none;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-  background-color: rgb(251, 252, 251);
+.new-score-selectors-table {
+  margin-bottom: 50px;
+}
+
+.score-select-td {
+  min-width: 500px;
+  padding: 25px;
+  border-bottom: 1px solid var(--color-light-gray);
+  border-top: 1px solid var(--color-light-gray);
+
 }
 
 .text-area {
