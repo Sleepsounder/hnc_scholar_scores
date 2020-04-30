@@ -1,10 +1,10 @@
 .c-flash {
   background-color: var(--color-dark-gray);
   color: var(--color-black);
-  height: var(--spacing-md);
+  height: var(--spacing-sm);
   margin-top: auto;
   margin-bottom: auto;
-  line-height: var(--spacing-md);
+  line-height: var(--spacing-sm);
   padding-left: var(--spacing-sm);
   padding-top: var(--spacing-md);
   padding-bottom: var(--spacing-md);
@@ -19,5 +19,6 @@
 }
 
 .c-flash--alert {
-  background-color: var(--color-red);
+  color: var(--color-white);
+  background-color: var(--color-dark-red);
 }

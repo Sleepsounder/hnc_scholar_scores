@@ -5,45 +5,45 @@
     </div>
   <% end %>
 <% end %>
-<p>Your applicant is:</p>
+<p class="score-header">Your applicant is:</p>
 <div class="title-section">
   <h3><%= @applicant.first_name %> <%= @applicant.last_name %></h3>
 </div>
 <ol class="list-items">
-  <li>1. <%= link_to "View their application in a new tab.", @applicant.link,  target: :_blank, class: "blue-link new-link" %></li>
+  <li>1. <%= link_to "View #{@applicant.first_name}'s application in a new tab.", @applicant.link,  target: :_blank, class: "blue-link new-link" %></li>
   <li>2. Fill out the Scores Form below.</li>
   <li>3. Press the "submit scores" button</li>
 </ol>
 <div class="scores-form-div">
   <h2 class="scores-form-title">Scores Form</h2>
-  <%= form_for(@score, html: { class: "scores-form" }) do |f| %>
-    <% points = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0] %>
-    <% ten_points = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0] %>
-    <p>
-      <%= check_box_tag(:mccoy, "1", false, class: "mccoy-checkbox") %>&nbsp&nbsp&nbsp&#x2B05
-      <%= label_tag(:mccoy, "Eligible for McCoy Scholarship (hemophilia A, severe)", class: "checkboxtext") %>
-    </p>
-    <p class="form-selector">
-      <%= f.select :financial, points, prompt: true, class: "form-selector-label" %>
-      &nbsp<%= f.label :financial, "Financial Need" %>
-    </p>
-    <p class="form-selector">
-      <%= f.select :academic, points, prompt: true %>
-      &nbsp<%= f.label :academic, "Academics"%>
-    </p>
-    <p class="form-selector">
-      <%= f.select :recommend, points, prompt: true %>
-      &nbsp<%= f.label :recommend, "Recommendations" %>
-    </p>
-    <p class="form-selector">
-      <%= f.select :essay, ten_points, prompt: true %>
-      &nbsp<%= f.label :essay, "Essay/Personal/Extra-curricular/Intangible" %>
-    </p>
-    <p><%= f.label :comments, "Comments (optional)" %></p>
-    <p><%= f.text_area :comments, class: "text-area" %></p>
-    <p><%= f.hidden_field :applicant_id %></p>
-    <p><%= f.submit "Submit Scores", class: "green-link" %></p>
-  <% end %>
+    <%= form_for(@score, html: { class: "scores-form" }) do |f| %>
+      <% points = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0] %>
+      <% ten_points = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0] %>
+      <div class="mccoy-checkbox-div">
+        <%= check_box_tag(:mccoy, "1", false, class: "mccoy-checkbox") %>&nbsp&nbsp&nbsp&#x2B05
+        <%= label_tag(:mccoy, "Eligible for McCoy Scholarship (hemophilia A, severe)", class: "checkboxtext") %>
+      </div>
+      <table class="new-score-selectors-table">
+        <tr>
+          <td class="score-select-td"><%= f.label :financial, "Financial Need", class: "form-label" %></td>
+          <td class="score-select-td"><%= f.select :financial, points, prompt: true, class: "selector" %></td>
+        </tr>
+          <td class="score-select-td"><%= f.label :academic, "Academics", class: "form-label" %></td>
+          <td class="score-select-td"><%= f.select :academic, points, prompt: true, class: "selector" %></td>
+        </tr>
+          <td class="score-select-td"><%= f.label :recommend, "Recommendations", class: "form-label" %></td>
+          <td class="score-select-td"><%= f.select :recommend, points, prompt: true, class: "selector" %></td>
+        </tr>
+        <tr>
+          <td class="score-select-td"><%= f.label :essay, "Essay/Personal/Extra-curricular/Intangible", class: "form-label" %></td>
+          <td class="score-select-td"><%= f.select :essay, ten_points, prompt: true, class: "selector" %></td>
+        </tr>
+      </table>
+      <p><%= f.label :comments, "Comments (optional)" %></p>
+      <p><%= f.text_area :comments, class: "text-area" %></p>
+      <p><%= f.hidden_field :applicant_id %></p>
+      <p><%= f.submit "Submit Scores", class: "green-link" %></p>
+    <% end %>
 </div>
 <div class="reviewed-by-text">
   <% if @applicant.users.count == 0 %>

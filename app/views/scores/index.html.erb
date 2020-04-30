@@ -1,51 +1,65 @@
-<h3>Reviewed</h3>
+<h3 class="index-title" >Applicants You Have Reviewed</h3>
 <br>
-<table class="applicant-table">
-  <thead class=table-head>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Elligible for McCoy</th>
-      <th>Financial Score</th>
-      <th>Academic Score</th>
-      <th>Recommend Score</th>
-      <th>Essay Score</th>
-      <th>Comments</th>
-      <th>Last Updated</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <% @scores.each do |score| %>
-    <tbody>
+<div style="overflow-x:auto;">
+  <table class="applicant-table">
+    <thead class=table-head>
       <tr>
-          <td><%= score.applicant.first_name %></td>
-          <td><%= score.applicant.last_name %></td>
-          <td><%= score.mccoy_qualified %></td>
-          <td><%= score.financial %></td>
-          <td><%= score.academic %></td>
-          <td><%= score.recommend %></td>
-          <td><%= score.essay %></td>
-          <td><%= score.comments %></td>
-          <td><%= score.updated_at %></td>
-          <td class="edit-button"><%= link_to "Edit", edit_score_path(score) %></td>
-          <td class="delete-button"><%= button_to "Delete", score_path(score), method: :delete, confirm: "Are you sure?" %></td>
+        <th class="th-non-link">Last Name</th>
+        <th class="th-non-link">First Name</th>
+        <th class="th-non-link">Elligible for McCoy</th>
+        <th class="th-non-link">Financial Score</th>
+        <th class="th-non-link">Academic Score</th>
+        <th class="th-non-link">Recommend Score</th>
+        <th class="th-non-link">Essay Score</th>
+        <th class="th-non-link">Comments</th>
+        <th class="th-non-link">Last Updated</th>
+        <th></th>
+        <th></th>
       </tr>
-    </tbody>
-  <% end %>
-</table>
-<% if @removed_applicants.count != 0 %>
-  <br>
-  <h4>Removed from queue</h4>
-  <br>
-  <table>
-    <% @removed_applicants.each do |removed_applicant| %>
+    </thead>
+    <% @scores.each do |score| %>
       <tbody>
         <tr>
-            <td><%= removed_applicant.applicant.full_name %></td>
-            <td><%= button_to "Add back to queue", removed_applicants_destroy_path(removed_applicant), method: :delete %></td>
+          <td class="td-non-link"><%= score.applicant.last_name %></td>
+          <td class="td-non-link"><%= score.applicant.first_name %></td>
+          <td class="td-non-link"><%= score.mccoy_qualified %></td>
+          <td class="td-non-link"><%= score.financial %></td>
+          <td class="td-non-link"><%= score.academic %></td>
+          <td class="td-non-link"><%= score.recommend %></td>
+          <td class="td-non-link"><%= score.essay %></td>
+          <td class="td-non-link"><%= score.comments %></td>
+          <td class="td-non-link"><%= score.updated_at %></td>
+          <td><%= link_to "Edit",
+                          edit_score_path(score),
+                          class: "green-link" %>
+          </td>
+          <td><%= button_to "Delete",
+                            score_path(score),
+                            method: :delete,
+                            confirm: "Are you sure?",
+                            class: "red-link" %>
+          </td>
         </tr>
       </tbody>
     <% end %>
   </table>
+</div>
+<% if @removed_applicants.count != 0 %>
+  <div class="removed-queue">
+    <h5 class="removed-title" >Applicants You Have Removed From Your Queue</h5>
+    <table>
+      <% @removed_applicants.each do |removed_applicant| %>
+        <tr class="index-removed-list">
+          <td class="removed-list"><%= removed_applicant.applicant.last_name %></td>
+          <td class="removed-list"><%= removed_applicant.applicant.first_name %></td>
+          <td class="removed-list"><%= button_to "Add back to queue",
+                          removed_applicants_destroy_path(removed_applicant),
+                          method: :delete,
+                          class: "blue-link" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 <% end %>
+
