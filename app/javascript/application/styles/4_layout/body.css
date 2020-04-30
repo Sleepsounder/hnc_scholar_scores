@@ -92,6 +92,10 @@ th, td {
   border-bottom: 1px solid #000;
 }
 
+.th-non-link {
+  border-right: 1px solid #000;
+}
+
 .td-non-link {
   vertical-align: bottom;
   overflow: hidden;
@@ -247,10 +251,20 @@ th, td {
 }
 
 .removed-queue {
-  margin-top: 50px;
+  margin-top: 75px;
+}
 
+#removed-title {
+  font-size: 23px;
 }
 
 .removed-list {
   text-align: left;
+  font-size: 24px;
+  padding: 13px;
+  max-width: 300px;
+}
+
+.index-removed-list {
+  border-bottom: 1px solid var(--color-dark-gray);
 }

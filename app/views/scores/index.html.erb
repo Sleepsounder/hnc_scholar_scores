@@ -4,15 +4,15 @@
   <table class="applicant-table">
     <thead class=table-head>
       <tr>
-        <th>Last Name</th>
-        <th>First Name</th>
-        <th>Elligible for McCoy</th>
-        <th>Financial Score</th>
-        <th>Academic Score</th>
-        <th>Recommend Score</th>
-        <th>Essay Score</th>
-        <th>Comments</th>
-        <th>Last Updated</th>
+        <th class="th-non-link">Last Name</th>
+        <th class="th-non-link">First Name</th>
+        <th class="th-non-link">Elligible for McCoy</th>
+        <th class="th-non-link">Financial Score</th>
+        <th class="th-non-link">Academic Score</th>
+        <th class="th-non-link">Recommend Score</th>
+        <th class="th-non-link">Essay Score</th>
+        <th class="th-non-link">Comments</th>
+        <th class="th-non-link">Last Updated</th>
         <th></th>
         <th></th>
       </tr>
@@ -46,15 +46,20 @@
 </div>
 <% if @removed_applicants.count != 0 %>
   <div class="removed-queue">
-    <h2>Removed You Removed From Your Queue</h2>
-    <ol>
+    <h5 id="removed-title" >Applicants You Have Removed From Your Queue</h5>
+    <table>
       <% @removed_applicants.each do |removed_applicant| %>
-        <li>
-            <p class="removed-list" ><%= removed_applicant.applicant.full_name %></p>
-            <%= button_to "Add back to queue", removed_applicants_destroy_path(removed_applicant), method: :delete, class: "blue-link" %>
-        </li>
+        <tr class="index-removed-list">
+          <td class="removed-list"><%= removed_applicant.applicant.last_name %></td>
+          <td class="removed-list"><%= removed_applicant.applicant.first_name %></td>
+          <td class="removed-list"><%= button_to "Add back to queue",
+                          removed_applicants_destroy_path(removed_applicant),
+                          method: :delete,
+                          class: "blue-link" %>
+          </td>
+        </tr>
       <% end %>
-    </ol>
+    </table>
   </div>
 <% end %>
 
