@@ -1,4 +1,4 @@
-<h3 id="index-title" >Applicants You Have Reviewed</h3>
+<h3 class="index-title" >Applicants You Have Reviewed</h3>
 <br>
 <div style="overflow-x:auto;">
   <table class="applicant-table">
@@ -46,7 +46,7 @@
 </div>
 <% if @removed_applicants.count != 0 %>
   <div class="removed-queue">
-    <h5 id="removed-title" >Applicants You Have Removed From Your Queue</h5>
+    <h5 class="removed-title" >Applicants You Have Removed From Your Queue</h5>
     <table>
       <% @removed_applicants.each do |removed_applicant| %>
         <tr class="index-removed-list">
