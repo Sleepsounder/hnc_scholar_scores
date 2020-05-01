@@ -12,7 +12,7 @@
 .title-section {
   background-color: rgb(250, 251, 255);
   text-align: center;
-  font-size: 1.5em;
+  font-size: 35px;
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
 }
@@ -80,7 +80,7 @@ li {
 }
 
 .index-title {
-  font-size: 42px;
+  font-size: 35px;
   background-color: rgb(255, 244, 233);
 }
 
@@ -101,6 +101,10 @@ th, td {
   text-overflow: ellipsis;
   white-space: nowrap;
   border-right: 1px solid #000;
+}
+
+.td-date {
+  max-width: 200px;
 }
 
 .edit-button {

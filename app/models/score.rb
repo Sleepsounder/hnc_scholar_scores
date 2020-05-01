@@ -18,7 +18,7 @@ class Score < ApplicationRecord
     mccoy == 1 ? "yes" : "no"
   end
 
-  def last_updated
-    # TODO: add human readable datetime
+  def human_date
+    updated_at.strftime("%b %d %I:%M%p")
   end
 end
