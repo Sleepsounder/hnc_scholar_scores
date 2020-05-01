@@ -28,7 +28,7 @@
           <td class="td-non-link"><%= score.recommend %></td>
           <td class="td-non-link"><%= score.essay %></td>
           <td class="td-non-link"><%= score.comments %></td>
-          <td class="td-non-link"><%= score.updated_at %></td>
+          <td class="td-non-link td-date"><%= score.human_date %></td>
           <td><%= link_to "Edit",
                           edit_score_path(score),
                           class: "green-link" %>

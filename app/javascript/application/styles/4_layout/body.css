@@ -103,6 +103,10 @@ th, td {
   border-right: 1px solid #000;
 }
 
+.td-date {
+  max-width: 200px;
+}
+
 .edit-button {
   background-color: rgb(214, 214, 214);
   border: 1px solid var(--color-black);
