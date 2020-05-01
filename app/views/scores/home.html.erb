@@ -2,8 +2,9 @@
   <h3>Hi, <%= current_user.first_name %>!</h3>
 </div>
 <br>
-<% if @number_of_scores_reviewed + current_user.removed_applicants.count == @all_applicants_count %>
-  <% flash[:notice] = "Congratulations! You have reviewed all the applicants in your queue!" %>
+<% if @applicants.count == 0 %>
+  <!-- Wording of this message? -->
+  <% flash[:notice] = "Congratulations! Your scoring work is done!" %>
   <p><%= link_to "See Applicants You Have Reviewed", scores_path, class: "blue-link" %></p>
 <% else %>
   <% if @number_of_scores_reviewed != 0 %>
