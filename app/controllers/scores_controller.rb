@@ -2,7 +2,6 @@
 
 class ScoresController < ApplicationController
   def home
-    @all_applicants_count = Applicant.all.count
     @number_of_scores_reviewed = Score.where(
       user_id: current_user.id
     ).count
