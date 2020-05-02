@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_204351) do
+ActiveRecord::Schema.define(version: 2020_05_02_221506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 2020_04_25_204351) do
     t.string "last_name"
     t.string "address"
     t.string "link"
-    t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "available"
   end
 
   create_table "flipper_features", force: :cascade do |t|
@@ -67,6 +67,21 @@ ActiveRecord::Schema.define(version: 2020_04_25_204351) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["feature_key", "key", "value"], name: "index_flipper_gates_on_feature_key_and_key_and_value", unique: true
+  end
+
+  create_table "pending_scores", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "applicant_id"
+    t.text "comments"
+    t.integer "mccoy"
+    t.float "financial"
+    t.float "academic"
+    t.float "recommend"
+    t.float "essay"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["applicant_id"], name: "index_pending_scores_on_applicant_id"
+    t.index ["user_id"], name: "index_pending_scores_on_user_id"
   end
 
   create_table "removed_applicants", force: :cascade do |t|
@@ -107,6 +122,8 @@ ActiveRecord::Schema.define(version: 2020_04_25_204351) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "pending_scores", "applicants"
+  add_foreign_key "pending_scores", "users"
   add_foreign_key "removed_applicants", "applicants"
   add_foreign_key "removed_applicants", "users"
 end
