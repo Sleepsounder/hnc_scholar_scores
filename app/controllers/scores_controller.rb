@@ -31,7 +31,10 @@ class ScoresController < ApplicationController
     else
       @applicant = found_applicant
       @score = found_applicant.scores.build
-      return unless @applicant.scores.count < 4
+      @score.pending = true
+      @score.save!(validate: false)
+      # don't remember why I added:
+      # return unless @applicant.scores.count < 4
 
       # TODO: change 3.seconds below to something like 1.hour
       ApplicantAvailable.set(wait: 3.seconds).perform_later(@applicant)
