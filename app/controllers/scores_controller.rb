@@ -2,12 +2,21 @@
 
 class ScoresController < ApplicationController
   def home
-    @number_of_scores_reviewed = Score.where(
-      user_id: current_user.id
-    ).count
-    @score = Score.new
-    @applicants = eligible_applicants.sort_by(&:last_name)
-    @applicant = eligible_applicants.min_by { |a| a.scores.count }
+    if current_user.scores.any? { |score| score.pending? }
+      @number_of_scores_reviewed = Score.where(
+        user_id: current_user.id
+      ).count
+      @score = Score.where(user_id: current_user.id, pending: true).first
+      @applicants = eligible_applicants.sort_by(&:last_name)
+      @applicant = Applicant.find(@score.applicant_id)
+    else
+      @number_of_scores_reviewed = Score.where(
+        user_id: current_user.id
+      ).count
+      @score = Score.new
+      @applicants = eligible_applicants.sort_by(&:last_name)
+      @applicant = eligible_applicants.min_by { |a| a.scores.count }
+    end
   end
 
   def index
@@ -21,7 +30,6 @@ class ScoresController < ApplicationController
       redirect_to root_path
     else
       @applicant = found_applicant
-      found_applicant.update(available: false)
       @score = found_applicant.scores.build
       return unless @applicant.scores.count < 4
 
@@ -40,7 +48,6 @@ class ScoresController < ApplicationController
     @applicant = Applicant.find(score_params[:applicant_id])
     if @score.save
       flash[:notice] = "Thank you for submitting!"
-      @applicant.update(available: true)
       redirect_to root_path
     else render :new
     end
@@ -48,8 +55,9 @@ class ScoresController < ApplicationController
 
   def update
     @score = Score.find(params[:id])
+    @score[:pending] = false
     if @score.update(score_params)
-      flash[:notice] = "Update saved!"
+      flash[:notice] = "Saved #{@score.applicant.full_name}'s scores!"
       redirect_to root_path
     else render :edit
     end
@@ -70,7 +78,8 @@ class ScoresController < ApplicationController
       :recommend,
       :essay,
       :comments,
-      :applicant_id
+      :applicant_id,
+      :pending
     ).merge({ mccoy: params[:mccoy], user_id: current_user.id })
   end
 
@@ -78,7 +87,6 @@ class ScoresController < ApplicationController
     Applicant.select do |applicant|
       applicant.users.count < 3 &&
         applicant.users.all? { |user| user.id != current_user.id } &&
-        applicant.available? &&
         applicant.removed_applicants.all? do |removed_applicant|
           removed_applicant.user_id != current_user.id
         end
