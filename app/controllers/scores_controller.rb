@@ -21,7 +21,8 @@ class ScoresController < ApplicationController
       redirect_to root_path
     else
       @applicant = found_applicant
-      found_applicant.update(available: false)
+      # change to creating new pending score
+      # found_applicant.update(available: false)
       @score = found_applicant.scores.build
       return unless @applicant.scores.count < 4
 
@@ -40,13 +41,15 @@ class ScoresController < ApplicationController
     @applicant = Applicant.find(score_params[:applicant_id])
     if @score.save
       flash[:notice] = "Thank you for submitting!"
-      @applicant.update(available: true)
+      # change to deleting pending score
+      # @applicant.update(available: true)
       redirect_to root_path
     else render :new
     end
   end
 
   def update
+    binding.pry
     @score = Score.find(params[:id])
     if @score.update(score_params)
       flash[:notice] = "Update saved!"
@@ -78,7 +81,6 @@ class ScoresController < ApplicationController
     Applicant.select do |applicant|
       applicant.users.count < 3 &&
         applicant.users.all? { |user| user.id != current_user.id } &&
-        applicant.available? &&
         applicant.removed_applicants.all? do |removed_applicant|
           removed_applicant.user_id != current_user.id
         end

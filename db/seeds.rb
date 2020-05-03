@@ -25,9 +25,7 @@ end
     first_name: Faker::Science.element,
     last_name: Faker::Name.last_name,
     address: Faker::Address.full_address,
-    link: "https://www.hemophilia-nc.org/",
-    available: true,
-    reviews: 0
+    link: "https://www.hemophilia-nc.org/"
   )
 end
 
