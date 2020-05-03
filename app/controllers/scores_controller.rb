@@ -49,7 +49,6 @@ class ScoresController < ApplicationController
   end
 
   def update
-    binding.pry
     @score = Score.find(params[:id])
     if @score.update(score_params)
       flash[:notice] = "Update saved!"
