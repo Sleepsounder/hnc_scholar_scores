@@ -5,11 +5,11 @@ class ScoresController < ApplicationController
     @number_of_scores_reviewed = current_user.scores.count
     @score = Score.new
     @applicants = eligible_applicants.sort_by(&:last_name)
-    if !current_user.pending_score.nil?
-      @applicant = Applicant.find(current_user.pending_score.applicant_id)
-    else
-      @applicant = eligible_applicants.min_by { |a| a.scores.count }
-    end
+    @applicant = if !current_user.pending_score.nil?
+                   Applicant.find(current_user.pending_score.applicant_id)
+                 else
+                   eligible_applicants.min_by { |a| a.scores.count }
+                 end
   end
 
   def index
@@ -24,11 +24,11 @@ class ScoresController < ApplicationController
     else
       @applicant = found_applicant
       @score = found_applicant.scores.build
-      @pending_score = current_user.pending_score or
-        PendingScore.create(
-          user_id: current_user.id,
-          applicant_id: @applicant.id
-        )
+      @pending_score = current_user.pending_score ||
+                       PendingScore.create(
+                         user_id: current_user.id,
+                         applicant_id: @applicant.id
+                       )
       # Dunno Why I added this
       # return unless @applicant.scores.count < 3
 
@@ -84,7 +84,7 @@ class ScoresController < ApplicationController
 
   def eligible_applicants
     Applicant.select do |applicant|
-      (applicant.users.count) + (applicant.pending_scores.count) < 3 &&
+      applicant.users.count + applicant.pending_scores.count < 3 &&
         applicant.users.all? { |user| user.id != current_user.id } &&
         applicant.removed_applicants.all? do |removed_applicant|
           removed_applicant.user_id != current_user.id
