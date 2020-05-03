@@ -71,12 +71,6 @@ ActiveRecord::Schema.define(version: 2020_05_02_223842) do
   create_table "pending_scores", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "applicant_id"
-    t.text "comments"
-    t.integer "mccoy"
-    t.float "financial"
-    t.float "academic"
-    t.float "recommend"
-    t.float "essay"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["applicant_id"], name: "index_pending_scores_on_applicant_id"

@@ -6,18 +6,21 @@
   <!-- Wording of this message? -->
   <% flash[:notice] = "Congratulations! Your scoring work is done!" %>
 <% else %>
-  <% if @number_of_scores_reviewed != 0 %>
+  <% if @number_of_scores_reviewed > 0 %>
     <% if @number_of_scores_reviewed == 1 %>
       <p>You have reviewed <%= @number_of_scores_reviewed %> application.</p>
     <% else %>
       <p>You have reviewed <%= @number_of_scores_reviewed %> applications.</p>
     <% end %>
+      <p><%= link_to "See Applications You Have Reviewed", scores_path, class: "blue-link" %></p>
+  <% else %>
+      <p>You have not reviewed anyone yet.</p>
   <% end %>
-  <p><%= link_to "See Applications You Have Reviewed", scores_path, class: "blue-link" %></p>
+  <% if current_user.scores.count %>
+  <% end %>
   <% if !current_user.pending_score.nil? %>
-    <% @pending_score = current_user.pending_score %>
     <h4>Sup yo, you got a pending applicant.</h4>
-    <p><%= link_to "Continue \#{applicant full name}'s Scoring", edit_pending_score_path(@pending_score), class: "green-link" %></p>
+    <p><%= button_to "Continue \#{applicant full name}'s Scoring", new_score_path(@applicant), method: :get, class: "green-link" %></p>
   <% else %>
     <div class="home-main">
       <div class="title-section">

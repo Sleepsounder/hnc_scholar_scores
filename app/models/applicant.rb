@@ -5,7 +5,6 @@ class Applicant < ApplicationRecord
   has_many :removed_applicants
   has_many :users, through: :scores
   has_many :pending_scores
-  has_many :users, through: :pending_scores
 
   def full_name_list
     list_item = "#{last_name}, #{first_name} - #{scores.count}"

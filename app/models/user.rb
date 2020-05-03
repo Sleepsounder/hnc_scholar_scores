@@ -5,7 +5,6 @@ class User < ApplicationRecord
   has_many :applicants, through: :scores
   has_many :removed_applicants
   has_one :pending_score
-  has_one :applicant, through: :pending_score
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end
