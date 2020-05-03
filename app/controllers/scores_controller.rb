@@ -29,11 +29,8 @@ class ScoresController < ApplicationController
                          user_id: current_user.id,
                          applicant_id: @applicant.id
                        )
-      # Dunno Why I added this
-      # return unless @applicant.scores.count < 3
 
-      # TODO: change Job 3.seconds below to something like 1.hour
-      # ApplicantAvailable.set(wait: 3.seconds).perform_later(@applicant)
+      ApplicantAvailable.set(wait: 18.hours).perform_later(@pending_score)
     end
   end
 
