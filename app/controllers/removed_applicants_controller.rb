@@ -7,12 +7,19 @@ class RemovedApplicantsController < ApplicationController
       applicant_id: params[:format]
     )
     if removed_applicant.save
+      current_user.pending_score.destroy
       flash[:notice] = "Removed #{removed_applicant.applicant.full_name} from your queue"
       redirect_to root_path
     else
       flash[:alert] = "Something went wrong."
       render root_path
     end
+  end
+
+  def delete_pending_score
+    current_user.pending_score.destroy
+    flash[:notice] = "Cancelled Review"
+    redirect_to root_path
   end
 
   def destroy

@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 class ApplicantAvailable < ActiveJob::Base
-  def perform(applicant)
-    make_applicant_available(applicant)
+  def perform(pending_score)
+    delete_pending_score(pending_score)
   end
 
   private
 
-  def make_applicant_available(applicant)
-    applicant.update(available: true)
+  def delete_pending_score(pending_score)
+    return if pending_score.nil?
+
+    pending_score.destroy
   end
 end

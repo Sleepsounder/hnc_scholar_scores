@@ -2,16 +2,18 @@
 
 class ScoresController < ApplicationController
   def home
-    @number_of_scores_reviewed = Score.where(
-      user_id: current_user.id
-    ).count
+    @number_of_scores_reviewed = current_user.scores.count
     @score = Score.new
     @applicants = eligible_applicants.sort_by(&:last_name)
-    @applicant = eligible_applicants.min_by { |a| a.scores.count }
+    @applicant = if !current_user.pending_score.nil?
+                   Applicant.find(current_user.pending_score.applicant_id)
+                 else
+                   eligible_applicants.min_by { |a| a.scores.count }
+                 end
   end
 
   def index
-    @scores = Score.where(user_id: current_user.id)
+    @scores = Score.where(user_id: current_user.id).sort_by(&:updated_at).reverse
     @removed_applicants = RemovedApplicant.where(user_id: current_user.id)
   end
 
@@ -21,12 +23,14 @@ class ScoresController < ApplicationController
       redirect_to root_path
     else
       @applicant = found_applicant
-      found_applicant.update(available: false)
       @score = found_applicant.scores.build
-      return unless @applicant.scores.count < 4
+      @pending_score = current_user.pending_score ||
+                       PendingScore.create(
+                         user_id: current_user.id,
+                         applicant_id: @applicant.id
+                       )
 
-      # TODO: change 3.seconds below to something like 1.hour
-      ApplicantAvailable.set(wait: 3.seconds).perform_later(@applicant)
+      ApplicantAvailable.set(wait: 18.hours).perform_later(@pending_score)
     end
   end
 
@@ -39,8 +43,9 @@ class ScoresController < ApplicationController
     @score = Score.new(score_params)
     @applicant = Applicant.find(score_params[:applicant_id])
     if @score.save
+      @pending_score = PendingScore.find_by(user_id: current_user.id)
+      @pending_score.destroy
       flash[:notice] = "Thank you for submitting!"
-      @applicant.update(available: true)
       redirect_to root_path
     else render :new
     end
@@ -76,9 +81,8 @@ class ScoresController < ApplicationController
 
   def eligible_applicants
     Applicant.select do |applicant|
-      applicant.users.count < 3 &&
+      applicant.users.count + applicant.pending_scores.count < 3 &&
         applicant.users.all? { |user| user.id != current_user.id } &&
-        applicant.available? &&
         applicant.removed_applicants.all? do |removed_applicant|
           removed_applicant.user_id != current_user.id
         end

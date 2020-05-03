@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get "scores/create"
   devise_for :users, controllers: { sessions: "users/sessions" }
   resources :scores
+  resources :pending_scores
   get "removed_applicants/create"
+  get "removed_applicants/delete_pending_score"
   delete "removed_applicants/destroy"
 
   ActiveAdmin.routes(self)
