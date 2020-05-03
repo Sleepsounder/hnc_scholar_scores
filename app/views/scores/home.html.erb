@@ -3,7 +3,6 @@
 </div>
 <br>
 <% if @applicants.count == 0 %>
-  <!-- Wording of this message? -->
   <% flash[:notice] = "Congratulations! Your scoring work is done!" %>
 <% else %>
   <% if @number_of_scores_reviewed > 0 %>
@@ -18,25 +17,25 @@
   <% end %>
   <% if current_user.scores.count %>
   <% end %>
-  <% if !current_user.pending_score.nil? %>
-    <h4>Look's like you have a pending applicant score.</h4>
-    <p><%= button_to "Continue Scoring #{current_user.pending_score.applicant.full_name}", new_score_path(@applicant), method: :get, class: "green-link" %></p>
-  <% else %>
-    <div class="home-main">
-      <div class="title-section">
-        <h4>To Review New Applicants:</h4>
-      </div>
-      <p><%= button_to "Review An Application We Suggest", new_score_path(@applicant), method: :get, class: "green-link" %></p>
-      <p>----- or -----</p>
-      <p> Choose from the list:</p>
-      <div class="select-form">
-        <%= form_for @score, url: "/scores/new", method: "get" do |f| %>
-          <%= collection_select(:score, :applicant_id, @applicants, :id, :full_name_list, prompt: true) %>
-          <%= submit_tag 'Choose', class: "green-link-select" %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+  <div class="home-main">
+    <% if !current_user.pending_score.nil? %>
+      <h4>Pending score: <%= current_user.pending_score.applicant.full_name %></h4>
+      <p><%= button_to "Continue Scoring #{current_user.pending_score.applicant.first_name}", new_score_path(@applicant), method: :get, class: "green-link" %></p>
+    <% else %>
+        <div class="title-section">
+          <h4>To Review New Applicants:</h4>
+        </div>
+        <p><%= button_to "Review An Application We Suggest", new_score_path(@applicant), method: :get, class: "green-link" %></p>
+        <p>----- or -----</p>
+        <p> Choose from the list:</p>
+        <div class="select-form">
+          <%= form_for @score, url: "/scores/new", method: "get" do |f| %>
+            <%= collection_select(:score, :applicant_id, @applicants, :id, :full_name_list, prompt: true) %>
+            <%= submit_tag 'Choose', class: "green-link-select" %>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
 <% end %>
 
 

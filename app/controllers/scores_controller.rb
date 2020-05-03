@@ -13,7 +13,7 @@ class ScoresController < ApplicationController
   end
 
   def index
-    @scores = Score.where(user_id: current_user.id)
+    @scores = Score.where(user_id: current_user.id).sort_by(&:updated_at).reverse
     @removed_applicants = RemovedApplicant.where(user_id: current_user.id)
   end
 
@@ -24,7 +24,11 @@ class ScoresController < ApplicationController
     else
       @applicant = found_applicant
       @score = found_applicant.scores.build
-      PendingScore.create(user_id: current_user.id, applicant_id: @applicant.id)
+      @pending_score = current_user.pending_score or
+        PendingScore.create(
+          user_id: current_user.id,
+          applicant_id: @applicant.id
+        )
       # Dunno Why I added this
       # return unless @applicant.scores.count < 3
 

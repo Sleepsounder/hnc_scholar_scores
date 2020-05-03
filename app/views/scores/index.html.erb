@@ -4,6 +4,7 @@
   <table class="applicant-table">
     <thead class=table-head>
       <tr>
+        <th class="th-non-link">Submitted</th>
         <th class="th-non-link">Last Name</th>
         <th class="th-non-link">First Name</th>
         <th class="th-non-link">Elligible for McCoy</th>
@@ -12,7 +13,6 @@
         <th class="th-non-link">Recommend Score</th>
         <th class="th-non-link">Essay Score</th>
         <th class="th-non-link">Comments</th>
-        <th class="th-non-link">Last Updated</th>
         <th></th>
         <th></th>
       </tr>
@@ -20,6 +20,7 @@
     <% @scores.each do |score| %>
       <tbody>
         <tr>
+          <td class="td-non-link td-date"><%= score.human_date %></td>
           <td class="td-non-link"><%= score.applicant.last_name %></td>
           <td class="td-non-link"><%= score.applicant.first_name %></td>
           <td class="td-non-link"><%= score.mccoy_qualified %></td>
@@ -28,7 +29,6 @@
           <td class="td-non-link"><%= score.recommend %></td>
           <td class="td-non-link"><%= score.essay %></td>
           <td class="td-non-link"><%= score.comments %></td>
-          <td class="td-non-link td-date"><%= score.human_date %></td>
           <td><%= link_to "Edit",
                           edit_score_path(score),
                           class: "green-link" %>
@@ -44,6 +44,12 @@
     <% end %>
   </table>
 </div>
+<!-- <% if !current_user.pending_score.nil? %>
+  <div class="index-pending">
+    <h4>Pending score: <%= current_user.pending_score.applicant.full_name %></h4>
+    <p><%= button_to "Continue Scoring #{current_user.pending_score.applicant.first_name}", new_score_path(@applicant), method: :get, class: "green-link" %></p>
+  </div>
+<% end %> -->
 <% if @removed_applicants.count != 0 %>
   <div class="removed-queue">
     <h5 class="removed-title" >Applicants You Have Removed From Your Queue</h5>

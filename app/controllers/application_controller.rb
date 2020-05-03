@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
-  # before_action :keep_previous_url
+  before_action :set_cache_headers
   before_action :remove_authentication_flash_message_if_root_url_requested
 
   # rubocop:disable Style/GuardClause, Layout/LineLength
@@ -18,9 +18,11 @@ class ApplicationController < ActionController::Base
     new_user_session_path
   end
 
-  # def frontend
-  #   render file: "public/index.html", layout: false
-  # end
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
 
   def after_sign_in_path_for(resource)
     return super if resource.is_a?(AdminUser)
