@@ -19,8 +19,8 @@
   <% if current_user.scores.count %>
   <% end %>
   <% if !current_user.pending_score.nil? %>
-    <h4>Sup yo, you got a pending applicant.</h4>
-    <p><%= button_to "Continue \#{applicant full name}'s Scoring", new_score_path(@applicant), method: :get, class: "green-link" %></p>
+    <h4>Look's like you have a pending applicant score.</h4>
+    <p><%= button_to "Continue Scoring #{current_user.pending_score.applicant.full_name}", new_score_path(@applicant), method: :get, class: "green-link" %></p>
   <% else %>
     <div class="home-main">
       <div class="title-section">

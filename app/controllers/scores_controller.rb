@@ -80,7 +80,7 @@ class ScoresController < ApplicationController
 
   def eligible_applicants
     Applicant.select do |applicant|
-      applicant.users.count < 3 &&
+      (applicant.users.count) + (applicant.pending_scores.count) < 3 &&
         applicant.users.all? { |user| user.id != current_user.id } &&
         applicant.removed_applicants.all? do |removed_applicant|
           removed_applicant.user_id != current_user.id
