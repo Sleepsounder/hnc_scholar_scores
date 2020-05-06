@@ -61,14 +61,14 @@
                  {
                    class: "red-link",
                    onclick: "return confirm('Are you sure you want to cancel this score?')"
-                 }
-
-                    %></p>
+                 } %>
+  </p>
   <p>----- or ------</p>
   <p><%= link_to "Cancel and remove #{@applicant.full_name} from my queue",
                  removed_applicants_create_path(@applicant),
                  {
                    class: "red-link",
                    onclick: "return confirm('Are you sure you want to cancel this score and remove #{@applicant.full_name} from your queue?')"
-                 } %></p>
+                 } %>
+  </p>
 </div>
