@@ -383,6 +383,7 @@ DEPENDENCIES
   flipper-active_record (~> 0.16)
   flipper-ui (~> 0.16)
   foreman
+  jquery-rails
   letter_opener
   listen (>= 3.0.5, < 3.2)
   mailgun-ruby (~> 1.1)
