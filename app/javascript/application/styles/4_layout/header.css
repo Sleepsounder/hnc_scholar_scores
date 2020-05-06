@@ -26,8 +26,8 @@
   }
 
   & .l-header__button:hover {
-      background-color: var(--color-white);
-      color: var(--color-dark-gray);
-      cursor: pointer;
+    background-color: var(--color-white);
+    color: var(--color-dark-gray);
+    cursor: pointer;
   }
 }
