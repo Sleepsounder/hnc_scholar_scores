@@ -35,9 +35,11 @@
           </td>
           <td><%= button_to "Delete",
                             score_path(score),
-                            method: :delete,
-                            confirm: "Are you sure?",
-                            class: "red-link" %>
+                            {
+                              class: "red-link",
+                              onclick: "return confirm('Are you sure you want to delete this score?')", # rubocop:disable Style/LineLength
+                              method: :delete
+                            } %>
           </td>
         </tr>
       </tbody>
