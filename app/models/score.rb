@@ -19,6 +19,6 @@ class Score < ApplicationRecord
   end
 
   def human_date
-    updated_at.strftime("%b %d %I:%M%p")
+    (updated_at - 4.hours).strftime("%b %d %I:%M%p")
   end
 end
