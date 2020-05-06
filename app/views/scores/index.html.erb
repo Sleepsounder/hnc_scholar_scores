@@ -1,51 +1,55 @@
-<h3 class="index-title" >Applicants You Have Reviewed</h3>
-<br>
-<div style="overflow-x:auto;">
-  <table class="applicant-table">
-    <thead class=table-head>
-      <tr>
-        <th class="th-non-link">Submitted</th>
-        <th class="th-non-link">Last Name</th>
-        <th class="th-non-link">First Name</th>
-        <th class="th-non-link">Elligible for McCoy</th>
-        <th class="th-non-link">Financial Score</th>
-        <th class="th-non-link">Academic Score</th>
-        <th class="th-non-link">Recommend Score</th>
-        <th class="th-non-link">Essay Score</th>
-        <th class="th-non-link">Comments</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <% @scores.each do |score| %>
-      <tbody>
+<% if @scores.empty? %>
+  <h3 class="index-title" >You have not reviewed any applicants.</h3>
+<% else %>
+  <h3 class="index-title" >Applicants You Have Reviewed</h3>
+  <br>
+  <div style="overflow-x:auto;">
+    <table class="applicant-table">
+      <thead class=table-head>
         <tr>
-          <td class="td-non-link td-date"><%= score.human_date %></td>
-          <td class="td-non-link"><%= score.applicant.last_name %></td>
-          <td class="td-non-link"><%= score.applicant.first_name %></td>
-          <td class="td-non-link"><%= score.mccoy_qualified %></td>
-          <td class="td-non-link"><%= score.financial %></td>
-          <td class="td-non-link"><%= score.academic %></td>
-          <td class="td-non-link"><%= score.recommend %></td>
-          <td class="td-non-link"><%= score.essay %></td>
-          <td class="td-non-link"><%= score.comments %></td>
-          <td><%= link_to "Edit",
-                          edit_score_path(score),
-                          class: "green-link" %>
-          </td>
-          <td><%= button_to "Delete",
-                            score_path(score),
-                            {
-                              class: "red-link",
-                              onclick: "return confirm('Are you sure you want to delete this score?')", # rubocop:disable Style/LineLength
-                              method: :delete
-                            } %>
-          </td>
+          <th class="th-non-link">Submitted</th>
+          <th class="th-non-link">Last Name</th>
+          <th class="th-non-link">First Name</th>
+          <th class="th-non-link">Elligible for McCoy</th>
+          <th class="th-non-link">Financial Score</th>
+          <th class="th-non-link">Academic Score</th>
+          <th class="th-non-link">Recommend Score</th>
+          <th class="th-non-link">Essay Score</th>
+          <th class="th-non-link">Comments</th>
+          <th></th>
+          <th></th>
         </tr>
-      </tbody>
-    <% end %>
-  </table>
-</div>
+      </thead>
+      <% @scores.each do |score| %>
+        <tbody>
+          <tr>
+            <td class="td-non-link td-date"><%= score.human_date %></td>
+            <td class="td-non-link"><%= score.applicant.last_name %></td>
+            <td class="td-non-link"><%= score.applicant.first_name %></td>
+            <td class="td-non-link"><%= score.mccoy_qualified %></td>
+            <td class="td-non-link"><%= score.financial %></td>
+            <td class="td-non-link"><%= score.academic %></td>
+            <td class="td-non-link"><%= score.recommend %></td>
+            <td class="td-non-link"><%= score.essay %></td>
+            <td class="td-non-link"><%= score.comments %></td>
+            <td><%= link_to "Edit",
+                            edit_score_path(score),
+                            class: "green-link" %>
+            </td>
+            <td><%= button_to "Delete",
+                              score_path(score),
+                              {
+                                class: "red-link",
+                                onclick: "return confirm('Are you sure you want to delete this score?')", # rubocop:disable Style/LineLength
+                                method: :delete
+                              } %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+<% end %>
 <!-- <% if !current_user.pending_score.nil? %>
   <div class="index-pending">
     <h4>Pending score: <%= current_user.pending_score.applicant.full_name %></h4>

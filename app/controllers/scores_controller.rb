@@ -63,7 +63,7 @@ class ScoresController < ApplicationController
   def destroy
     @score = Score.find(params[:id])
     @score.destroy
-    redirect_to root_path
+    redirect_to scores_path
   end
 
   private
