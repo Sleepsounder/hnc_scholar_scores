@@ -154,6 +154,7 @@ th, td {
   text-decoration: none;
   background-color: var(--color-dark-blue);
   color: #fff;
+  cursor: pointer;
 }
 
 .list-items {
@@ -224,6 +225,7 @@ th, td {
   text-decoration: none;
   background-color: var(--color-dark-red);
   color: #fff;
+  cursor: pointer;
 }
 
 .green-link {
@@ -238,6 +240,7 @@ th, td {
 .green-link:hover {
   background-color: var(--color-dark-green);
   color: #fff;
+  cursor: pointer;
 }
 
 .green-link-select {
@@ -251,6 +254,7 @@ th, td {
 .green-link-select:hover {
   background-color: var(--color-dark-green);
   color: #fff;
+  cursor: pointer;
 }
 
 .reviewed-by-text {
