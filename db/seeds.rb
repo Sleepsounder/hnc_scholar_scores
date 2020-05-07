@@ -20,14 +20,14 @@
 )
 end
 
-10.times do
-  Applicant.create(
-    first_name: Faker::Science.element,
-    last_name: Faker::Name.last_name,
-    address: Faker::Address.full_address,
-    link: "https://www.hemophilia-nc.org/"
-  )
-end
+# 10.times do
+#   Applicant.create(
+#     first_name: Faker::Science.element,
+#     last_name: Faker::Name.last_name,
+#     address: Faker::Address.full_address,
+#     link: "https://www.hemophilia-nc.org/"
+#   )
+# end
 
 if Rails.env.development?
   AdminUser.create!(
@@ -38,3 +38,66 @@ if Rails.env.development?
     password_confirmation: "@bc123"
   )
 end
+
+
+# examples to create
+Applicant.create(
+  first_name: "",
+  middle_initial: "",
+  last_name: "",
+  address: "",
+  city: "",
+  state: "",
+  zip_code: "",
+  link: "",
+  application_received: date
+)
+
+
+
+
+
+array_of_hashes = [
+  {
+    first_name: "",
+    middle_initial: "",
+    last_name: "",
+    address: "",
+    city: "",
+    state: "",
+    zip_code: "",
+    link: "",
+    application_received: date
+  },
+    first_name: "",
+    middle_initial: "",
+    last_name: "",
+    address: "",
+    city: "",
+    state: "",
+    zip_code: "",
+    link: "",
+    application_received: date
+  },
+  {
+    first_name: "",
+    middle_initial: "",
+    last_name: "",
+    address: "",
+    city: "",
+    state: "",
+    zip_code: "",
+    link: "",
+    application_received: date
+  },
+    first_name: "",
+    middle_initial: "",
+    last_name: "",
+    address: "",
+    city: "",
+    state: "",
+    zip_code: "",
+    link: "",
+    application_received: date
+  }
+]
