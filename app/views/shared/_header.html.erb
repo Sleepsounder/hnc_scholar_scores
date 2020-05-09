@@ -1,11 +1,12 @@
 <div class="l-header">
-    <%= link_to "HNC Scholar Scores", root_path, class: "l-header__link" %>
-    <% unless current_user.nil? %>
-      <div class="header-name-div">
-        <p class="header-name"><%= current_user.full_name %></p>
-      </div>
-      <%= button_to "Home", root_path, method: :get, class: "l-header__button" %>
-      <%= button_to "My Scores", scores_path, method: :get, class: "l-header__button" %>
-      <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "l-header__button" %>
-    <% end %>
+  <%= image_tag("HNC-Logo-RGB-vert-color-smaller.png", size: "130x80", alt: "Edit Entry") %>
+  <%= link_to "HNC Scholar Scores", root_path, class: "l-header__link" %>
+  <% unless current_user.nil? %>
+    <div class="header-name-div">
+      <p class="header-name"><%= current_user.full_name %></p>
+    </div>
+    <%= button_to "Home", root_path, method: :get, class: "l-header__button" %>
+    <%= button_to "My Scores", scores_path, method: :get, class: "l-header__button" %>
+    <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "l-header__button" %>
+  <% end %>
 </div>

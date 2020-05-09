@@ -1,7 +1,7 @@
 .l-header {
   background-color: var(--color-dark-gray);
   color: var(--color-white);
-  height: 2em;
+  height: 3em;
   margin-top: auto;
   margin-bottom: auto;
   line-height: var(--spacing-header-height);
@@ -13,6 +13,7 @@
 
   & .l-header__link {
     color: var(--color-white);
+    padding-top: 1.2rem;
   }
 
   & .l-header__button {
@@ -20,6 +21,7 @@
     border-color: var(--color-white);
     text-align: center;
     margin: auto;
+    margin-top: 1.3rem;
     display: flex;
     color: var(--color-white);
     font-size: var(--font-size-sm);
@@ -39,7 +41,7 @@
   & .header-name {
     text-align: center;
     margin: auto;
-    padding: 1rem 0 1rem 0;
+    padding: 1.8rem 0 1rem 0;
     display: flex;
     color: var(--color-white);
     font-size: var(--font-size-lg);
