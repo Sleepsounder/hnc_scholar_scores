@@ -1,7 +1,7 @@
 .l-header {
   background-color: var(--color-dark-gray);
   color: var(--color-white);
-  height: 3em;
+  height: 3.5em;
   margin-top: auto;
   margin-bottom: auto;
   line-height: var(--spacing-header-height);
