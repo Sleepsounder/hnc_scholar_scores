@@ -7,13 +7,14 @@
 <% end %>
 <p class="score-header">Your applicant is:</p>
 <div class="title-section">
-  <h3><%= @applicant.first_name %> <%= @applicant.last_name %></h3>
+  <h3>
+    <%= @applicant.first_name %> <%= @applicant.last_name %>
+    <%= link_to "View #{@applicant.first_name}'s application in a new tab.",
+                @applicant.link,
+                target: :_blank,
+                class: "blue-link application-link" %>
+  </h3>
 </div>
-<ol class="list-items">
-  <li>1. <%= link_to "View #{@applicant.first_name}'s application in a new tab.", @applicant.link,  target: :_blank, class: "blue-link new-link" %></li>
-  <li>2. Fill out the Scores Form below.</li>
-  <li>3. Press the "submit scores" button</li>
-</ol>
 <div class="scores-form-div">
   <h2 class="scores-form-title">Scores Form</h2>
     <%= form_for @score, as: :score, url: score_path, html: { class: "scores-form" } do |f| %>
