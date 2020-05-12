@@ -174,17 +174,17 @@ th, td {
   padding-left: 25px;
 }
 
-.mccoy-checkbox {
+.checkbox {
   transform: scale(2);
   padding: 4rem;
 }
 
-.checkboxtext {
+/* .checkboxtext {
   padding-left: 1rem;
   padding-top: 1rem;
   font-size: 110%;
   display: inline;
-}
+} */
 
 .new-score-selectors-table {
   margin-bottom: 50px;
