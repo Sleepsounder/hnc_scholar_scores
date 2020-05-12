@@ -2,6 +2,7 @@
 
 class ScoresController < ApplicationController
   def home
+    # TODO: Eager load - takes way to long to load home page.
     @number_of_scores_reviewed = current_user.scores.count
     @score = Score.new
     @applicants = eligible_applicants.sort_by(&:last_name)
