@@ -29,20 +29,20 @@
       </div>
       <table class="new-score-selectors-table">
         <tr class="score-select-div">
+          <td class="score-select-td"><%= f.label :financial, "Financial Need", class: "form-label"  %></td>
           <td class="score-select-td"><%= f.select :financial, financial_need, prompt: "Enter Rating", class: "selector" %></td>
-          <td class="score-select-td"><%= f.label :financial, "Financial Need" %></td>
         </tr>
         <tr class="score-select-div">
-          <td class="score-select-td"><%= f.select :academic, academics, prompt: "Enter Rating", class: "selector" %></td>
           <td class="score-select-td"><%= f.label :academic, "Academics", class: "form-label" %></td>
+          <td class="score-select-td"><%= f.select :academic, academics, prompt: "Enter Rating", class: "selector" %></td>
         </tr>
         <tr class="score-select-div">
-          <td class="score-select-td"><%= f.select :recommend, recommendations, prompt: "Enter Rating", class: "selector" %></td>
           <td class="score-select-td"><%= f.label :recommend, "Recommendations", class: "form-label" %></td>
+          <td class="score-select-td"><%= f.select :recommend, recommendations, prompt: "Enter Rating", class: "selector" %></td>
         </tr>
         <tr class="score-select-div">
-          <td class="score-select-td"><%= f.select :essay, ten_points, prompt: "Enter Rating", class: "selector" %></td>
           <td class="score-select-td"><%= f.label :essay, "Reader Impressions", class: "form-label" %></td>
+          <td class="score-select-td"><%= f.select :essay, ten_points, prompt: "Enter Rating", class: "selector" %></td>
         </tr>
       </table>
       <p><%= f.label :comments, "Comments (optional)" %></p>

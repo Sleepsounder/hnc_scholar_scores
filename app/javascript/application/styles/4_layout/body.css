@@ -104,17 +104,17 @@ td.score-select-td {
 }
 
 .score-select-td {
-  min-width: 500px;
+  min-width: 100px;
 }
 
 .score-select-div {
   display: flex;
   justify-content: space-between;
-  min-width: 500px;
+  /* min-width: 200px; */
 }
 
 .selector {
-  max-width: 90%;
+  /* max-width: 90%; */
 }
 
 .th-non-link {
@@ -130,7 +130,7 @@ td.score-select-td {
 }
 
 .form-label {
-  line-height: 1.2;
+  line-height: 1.1;
   justify-content: right;
 }
 
