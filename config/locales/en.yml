@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      score:
+        financial: "Financial Score"
+        academic: "Academic Score"
+        recommend: "Recommendation Score"
+        essay: Impression Score
