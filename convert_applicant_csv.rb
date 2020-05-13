@@ -4,9 +4,9 @@ require "csv"
 require "pry"
 
 class CreateSeedFromCsv
-  # database_key_names = [:first_name, :last_name, :address, :link, :middle_initial, :city, :state, :zip_code, :application_received] # rubocop:disable Style/LineLength
+  # database_key_names = [:first_name, :last_name, :address, :link, :middle_initial, :city, :state, :zip_code, :application_received] # rubocop:disable Layout/LineLength
   # run this in irb on command line - note , the single quotes in parentheses is whatever file name:
-  # ruby -r "./convert_applicant_csv.rb" -e "CreateSeedFromCsv.execute('../../file_name_from_desktop.csv')" # rubocop:disable Style/LineLength
+  # ruby -r "./convert_applicant_csv.rb" -e "CreateSeedFromCsv.execute('../../file_name_from_desktop.csv')" # rubocop:disable Layout/LineLength
 
   def self.execute(file)
     csv_data = read_file(file)
