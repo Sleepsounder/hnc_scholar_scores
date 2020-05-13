@@ -16,8 +16,8 @@
           <th class="th-non-link">Recommend Score</th>
           <th class="th-non-link">Essay Score</th>
           <th class="th-non-link">Comments</th>
-          <th></th>
-          <th></th>
+          <th class="th-non-link"></th>
+          <th class="th-non-link-last"></th>
         </tr>
       </thead>
       <% @scores.each do |score| %>
@@ -31,18 +31,21 @@
             <td class="td-non-link"><%= score.academic %></td>
             <td class="td-non-link"><%= score.recommend %></td>
             <td class="td-non-link"><%= score.essay %></td>
-            <td class="td-non-link"><%= score.comments %></td>
-            <td><%= link_to "Edit",
-                            edit_score_path(score),
-                            class: "green-link" %>
+            <td class="td-non-link comments"><%= score.comments %></td>
+            <td class="td-non-link">
+              <%= button_to "Edit",
+                          edit_score_path(score),
+                          method: :get,
+                          class: "green-link" %>
             </td>
-            <td><%= button_to "Delete",
-                              score_path(score),
-                              {
-                                class: "red-link",
-                                onclick: "return confirm('Are you sure you want to delete this score?')", # rubocop:disable Style/LineLength
-                                method: :delete
-                              } %>
+            <td class="td-non-link">
+              <%= button_to "Delete",
+                            score_path(score),
+                            {
+                              class: "red-link",
+                              onclick: "return confirm('Are you sure you want to delete this score?')", # rubocop:disable Style/LineLength
+                              method: :delete
+                            } %>
             </td>
           </tr>
         </tbody>
