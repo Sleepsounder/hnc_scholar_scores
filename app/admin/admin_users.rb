@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register AdminUser do
+  actions :all, except: [:destroy]
   permit_params :email, :password, :password_confirmation, :first_name, :last_name
 
   index do
@@ -9,8 +10,6 @@ ActiveAdmin.register AdminUser do
     column :first_name
     column :last_name
     column :email
-    column :current_sign_in_at
-    column :sign_in_count
     column :created_at
     actions
   end

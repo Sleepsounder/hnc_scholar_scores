@@ -78,13 +78,15 @@ class ScoresController < ApplicationController
       :comments,
       :applicant_id,
       :career,
-      :bd
+      :bd,
+      :disqualified
     ).merge({ mccoy: params[:mccoy], user_id: current_user.id })
   end
 
   def eligible_applicants
     Applicant.select do |applicant|
-      applicant.users.count + applicant.pending_scores.count < 3 &&
+      !applicant.disqualified? &&
+        applicant.users.count + applicant.pending_scores.count < 3 &&
         applicant.users.all? { |user| user.id != current_user.id } &&
         applicant.removed_applicants.all? do |removed_applicant|
           removed_applicant.user_id != current_user.id
