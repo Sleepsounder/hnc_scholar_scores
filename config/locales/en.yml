@@ -37,4 +37,6 @@ en:
         financial: "Financial Score"
         academic: "Academic Score"
         recommend: "Recommendation Score"
-        essay: Impression Score
+        essay: "Impression Score"
+        bd: "BD/Relationship"
+

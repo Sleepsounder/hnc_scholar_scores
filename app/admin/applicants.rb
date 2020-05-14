@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Applicant do
-  permit_params :first_name, :last_name, :address
+  actions :all, except: [:destroy]
+  permit_params :first_name, :last_name, :address, :disqualified
 
   index do
     selectable_column
@@ -15,5 +16,7 @@ ActiveAdmin.register Applicant do
     column :academic_avg
     column :recommend_avg
     column :essay_avg
+    column :disqualified
+    actions
   end
 end

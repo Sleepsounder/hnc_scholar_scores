@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_004910) do
+ActiveRecord::Schema.define(version: 2020_05_14_020230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_004910) do
     t.string "state"
     t.string "zip_code"
     t.date "application_received"
+    t.boolean "disqualified"
   end
 
   create_table "flipper_features", force: :cascade do |t|

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Score do
+  actions :all, except: [:destroy]
   index do
     selectable_column
     id_column
@@ -14,5 +15,6 @@ ActiveAdmin.register Score do
     column :career
     column :bd
     column :comments
+    actions
   end
 end
