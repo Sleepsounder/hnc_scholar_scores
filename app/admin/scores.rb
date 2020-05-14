@@ -11,6 +11,8 @@ ActiveAdmin.register Score do
     column :academic
     column :recommend
     column :essay
+    column :career
+    column :bd
     column :comments
   end
 end
