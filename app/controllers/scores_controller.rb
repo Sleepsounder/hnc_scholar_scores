@@ -76,7 +76,9 @@ class ScoresController < ApplicationController
       :recommend,
       :essay,
       :comments,
-      :applicant_id
+      :applicant_id,
+      :career,
+      :bd
     ).merge({ mccoy: params[:mccoy], user_id: current_user.id })
   end
 

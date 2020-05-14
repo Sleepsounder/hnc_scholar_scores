@@ -45,10 +45,17 @@
           <td class="score-select-td"><%= f.select :essay, ten_points, prompt: "Enter Rating", class: "selector" %></td>
         </tr>
       </table>
-      <p><%= f.label :comments, "Comments (optional)" %></p>
-      <p><%= f.text_area :comments, class: "text-area" %></p>
-      <p><%= f.hidden_field :applicant_id %></p>
-      <p><%= f.submit "Submit Scores", class: "green-link" %></p>
+      <h4>--- Optional ---</h4>
+      <div class="optional-div">
+        <p><%= f.label :career, "Career" %></p>
+        <p><%= f.text_field :career, class: "text-field" %></p>
+        <p><%= f.label :bd, "BD/Relationship" %></p>
+        <p><%= f.text_field :bd, class: "text-field" %></p>
+        <p><%= f.label :comments, "Comments" %></p>
+        <p><%= f.text_area :comments, class: "text-area" %></p>
+        <p><%= f.hidden_field :applicant_id %></p>
+        <p><%= f.submit "Submit Scores", class: "green-link" %></p>
+      </div>
     <% end %>
 </div>
 <div class="reviewed-by-text">
