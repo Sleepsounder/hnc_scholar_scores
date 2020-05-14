@@ -15,6 +15,8 @@
           <th class="th-non-link">Acad</th>
           <th class="th-non-link">Recs</th>
           <th class="th-non-link">Impression</th>
+          <th class="th-non-link">Career</th>
+          <th class="th-non-link">BD/Relationship</th>
           <th class="th-non-link">Comments</th>
           <th class="th-non-link"></th>
           <th class="th-non-link-last"></th>
@@ -31,6 +33,8 @@
             <td class="td-non-link"><%= score.academic %></td>
             <td class="td-non-link"><%= score.recommend %></td>
             <td class="td-non-link"><%= score.essay %></td>
+            <td class="td-non-link comments"><%= score.career %></td>
+            <td class="td-non-link comments"><%= score.bd %></td>
             <td class="td-non-link comments"><%= score.comments %></td>
             <td class="td-non-link">
               <%= button_to "Edit",

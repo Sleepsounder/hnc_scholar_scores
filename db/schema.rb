@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_025054) do
+ActiveRecord::Schema.define(version: 2020_05_14_004910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,8 @@ ActiveRecord::Schema.define(version: 2020_05_07_025054) do
     t.float "academic"
     t.float "recommend"
     t.float "essay"
+    t.string "career"
+    t.string "bd"
     t.index ["applicant_id"], name: "index_scores_on_applicant_id"
     t.index ["user_id"], name: "index_scores_on_user_id"
   end
