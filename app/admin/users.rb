@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register User do
+  menu label: "Readers"
   actions :all, except: [:destroy]
   permit_params :email, :first_name, :last_name
+  config.clear_action_items!
 
-  index do
+  action_item only: :index do
+    link_to "New Reader", "/admin/users/new"
+  end
+
+  index title: "Readers" do
     selectable_column
     id_column
     column :first_name

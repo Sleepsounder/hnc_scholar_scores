@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: "scores#home"
   devise_for :admin_users, ActiveAdmin::Devise.config
   get "scores/create"
   devise_for :users, controllers: { sessions: "users/sessions" }
@@ -10,11 +9,16 @@ Rails.application.routes.draw do
   get "removed_applicants/create"
   get "removed_applicants/delete_pending_score"
   delete "removed_applicants/destroy"
+  root to: "scores#home"
 
   ActiveAdmin.routes(self)
 
   if Rails.env.development?
     mount Flipper::UI.app(Flipper), at: "/flipper"
+  end
+
+  devise_scope :admin_user do
+    get "/admin/logout", to: "active_admin/devise/sessions#destroy"
   end
 
   # get "*path", to: "application#frontend", constraints: ->(request) { frontend_request?(request) }
