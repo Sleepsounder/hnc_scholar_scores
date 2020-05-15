@@ -42,8 +42,4 @@ en:
   active_admin:
     resources:
       user:
-        # new_user: "New Reader"
-        # edit_user: "Edit Reader"
-        # delete_user: "Reader"
-        # show_user: "Reader"
-        # index_user: "Reader"
+        new_user: "New Reader"

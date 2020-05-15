@@ -8,27 +8,99 @@
 #   puts "done" unless Rails.env.test?
 # end
 
-# 5.times do
-#   first_name = Faker::Name.first_name
-#   last_name = Faker::Color.color_name.capitalize
-#   User.create(
-#     first_name: first_name,
-#     last_name: last_name,
-#     email: "#{first_name}.#{last_name}@email.com",
-#     password: "@bc123",
-#     password_confirmation: "@bc123"
-# )
-# end
+# ------------- Admin Users --------------
 
-if Rails.env.development?
-  AdminUser.create!(
-    first_name: "Geoff",
-    last_name: "Register",
-    email: "a@b.com",
-    password: "@bc123",
-    password_confirmation: "@bc123"
-  )
-end
+AdminUser.create!(
+  first_name: "Charles",
+  last_name: "Register",
+  email: ENV["CR_ADMIN_EMAIL"],
+  password: ENV["CR_PASSWORD"],
+  password_confirmation: ENV["CR_PASSWORD"]
+)
+
+AdminUser.create!(
+  first_name: "Geoff",
+  last_name: "Register",
+  email: ENV["GR_EMAIL"],
+  password: ENV["GR_PASSWORD"],
+  password_confirmation: ENV["GR_PASSWORD"]
+)
+
+# ------------- Readers ---------------
+
+User.create!(
+  first_name: "Marvin",
+  last_name: "Pipkin",
+  email: ENV["MP_EMAIL"],
+  password: ENV["MP_PASSWORD"],
+  password_confirmation: ENV["MP_PASSWORD"]
+)
+
+User.create!(
+  first_name: "Amy",
+  last_name: "Shair",
+  email: ENV["AS_EMAIL"],
+  password: ENV["AS_PASSWORD"],
+  password_confirmation: ENV["AS_PASSWORD"]
+)
+
+User.create!(
+  first_name: "Phil",
+  last_name: "Poovey",
+  email: ENV["PP_EMAIL"],
+  password: ENV["PP_PASSWORD"],
+  password_confirmation: ENV["PP_PASSWORD"]
+)
+
+User.create!(
+  first_name: "Lenore",
+  last_name: "Guidoni",
+  email: ENV["LG_EMAIL"],
+  password: ENV["LG_PASSWORD"],
+  password_confirmation: ENV["LG_PASSWORD"]
+)
+
+User.create!(
+  first_name: "Linda",
+  last_name: "Kurtz",
+  email: ENV["LK_EMAIL"],
+  password: ENV["LK_PASSWORD"],
+  password_confirmation: ENV["LK_PASSWORD"]
+)
+
+User.create!(
+  first_name: "Allen",
+  last_name: "Kurtz",
+  email: ENV["AK_EMAIL"],
+  password: ENV["AK_PASSWORD"],
+  password_confirmation: ENV["AK_PASSWORD"]
+)
+
+User.create!(
+  first_name: "Kathy",
+  last_name: "Register",
+  email: ENV["KR_EMAIL"],
+  password: ENV["KR_PASSWORD"],
+  password_confirmation: ENV["KR_PASSWORD"]
+)
+
+User.create!(
+  first_name: "Charlie",
+  last_name: "Register",
+  email: ENV["CR_EMAIL"],
+  password: ENV["CR_PASSWORD"],
+  password_confirmation: ENV["CR_PASSWORD"]
+)
+
+User.create!(
+  first_name: "Steve",
+  last_name: "Peretti",
+  email: ENV["SP_EMAIL"],
+  password: ENV["SP_PASSWORD"],
+  password_confirmation: ENV["SP_PASSWORD"]
+)
+
+# ---------------- Applicants -------------------
 
 Applicant.create(
   first_name: "Juliana",
