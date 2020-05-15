@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register User do
+  menu label: "Readers"
   actions :all, except: [:destroy]
   permit_params :email, :first_name, :last_name
 
-  index do
+  index title: "Readers" do
     selectable_column
     id_column
     column :first_name
