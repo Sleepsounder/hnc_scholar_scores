@@ -28,17 +28,16 @@ class CreateSeedFromCsv
 
   def self.map_link_and_column_names(array_of_hashes)
     array_of_hashes.map do |hash|
-      link = hash[:dir] + hash[:filename]
       {
         first_name: hash[:first_name],
         middle_initial: hash[:mi],
         last_name: hash[:last_name],
         address: hash[:address],
-        link: link,
+        link: hash[:filename],
         city: hash[:city],
         state: hash[:state],
         zip_code: hash[:zip].to_s,
-        application_received: parse_date(hash[:application_receipt_date_mmddyy])
+        application_received: parse_date(hash[:receipt])
       }
     end
   end
