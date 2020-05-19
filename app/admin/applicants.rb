@@ -19,4 +19,17 @@ ActiveAdmin.register Applicant do
     column :disqualified
     actions
   end
+
+  csv force_quotes: true, col_sep: ';' do
+    column :first_name
+    column :last_name
+    column :financial_avg
+    column :academic_avg
+    column :recommend_avg
+    column :essay_avg
+    column :disqualified
+    column "Reader 1" do |applicant|
+      @reader = applicant.users.first.first_name
+    end
+  end
 end
