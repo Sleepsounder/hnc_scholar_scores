@@ -41,7 +41,7 @@ Layout/ClosingParenthesisIndentation:
 Layout/LineLength:
   Max: 100
 
-Layout/Tab:
+Layout/IndentationStyle:
   Enabled: true
 
 # ==================== Lint ====================
