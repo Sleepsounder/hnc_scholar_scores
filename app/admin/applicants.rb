@@ -3,12 +3,15 @@
 ActiveAdmin.register Applicant do
   actions :all, except: [:destroy]
   permit_params :first_name, :last_name, :address, :disqualified
+  filter :last_name
+  filter :first_name
+  filter :users, label: "Readers"
 
   index do
     selectable_column
     id_column
-    column :first_name
     column :last_name
+    column :first_name
     column "Reviews", :review_count
     column "McCoy Count", :mccoy_count
     column :financial_avg
@@ -19,7 +22,7 @@ ActiveAdmin.register Applicant do
     actions
   end
 
-  csv force_quotes: true, col_sep: ";" do
+  csv do
     column :id
     column :last_name
     column :first_name

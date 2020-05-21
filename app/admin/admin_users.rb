@@ -3,6 +3,7 @@
 ActiveAdmin.register AdminUser do
   actions :all, except: [:destroy]
   permit_params :email, :password, :password_confirmation, :first_name, :last_name
+  config.filters = false
 
   index do
     selectable_column
@@ -13,13 +14,6 @@ ActiveAdmin.register AdminUser do
     column :created_at
     actions
   end
-
-  filter :first_name
-  filter :last_name
-  filter :email
-  filter :current_sign_in_at
-  filter :sign_in_count
-  filter :created_at
 
   form do |f|
     f.inputs do

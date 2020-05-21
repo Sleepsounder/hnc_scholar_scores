@@ -44,6 +44,12 @@ Layout/LineLength:
 Layout/IndentationStyle:
   Enabled: true
 
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
 # ==================== Lint ====================
 
 Lint/RaiseException:
@@ -103,6 +109,12 @@ Style/HashTransformKeys:
   Enabled: true
 
 Style/HashTransformValues:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/SlicingWithRange:
   Enabled: true
 
 # Reason: user.has_valid_role? reads better than user.valid_role?

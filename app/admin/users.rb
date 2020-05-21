@@ -5,6 +5,7 @@ ActiveAdmin.register User do
   actions :all, except: [:destroy]
   permit_params :email, :first_name, :last_name
   config.clear_action_items!
+  config.filters = false
 
   action_item only: :index do
     link_to "New Reader", "/admin/users/new"
@@ -16,8 +17,6 @@ ActiveAdmin.register User do
     column :first_name
     column :last_name
     column :email
-    column :current_sign_in_at
-    column :sign_in_count
     column :created_at
     actions
   end
