@@ -17,6 +17,7 @@ ActiveAdmin.register User do
     column :first_name
     column :last_name
     column :email
+    column "Review Count", :number_of_reviews
     column :created_at
     actions
   end
