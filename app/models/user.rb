@@ -15,4 +15,8 @@ class User < ApplicationRecord
   def initials
     "#{first_name.first}#{last_name.first}"
   end
+
+  def number_of_reviews
+    scores.count
+  end
 end
