@@ -15,13 +15,7 @@ ActiveAdmin.register Score do
     column "Ac", :academic
     column "Rec", :recommend
     column "Imp", :essay
-    column :career do |score|
-      if score.career.length >= 10
-        "#{score.career.slice(0, 10)}..."
-      else
-        score.career
-      end
-    end
+    column "Career", :career_admin
     column "BD", :bd_admin
     column "Comments", :comments_admin
     actions
