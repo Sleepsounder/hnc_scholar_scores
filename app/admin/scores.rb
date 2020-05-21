@@ -22,20 +22,8 @@ ActiveAdmin.register Score do
         score.career
       end
     end
-    column "BD", :bd do |score|
-      if score.bd.length >= 10
-        "#{score.bd.slice(0, 10)}..."
-      else
-        score.bd
-      end
-    end
-    column :comments do |score|
-      if score.comments.length >= 10
-        "#{score.comments.slice(0, 10)}..."
-      else
-        score.comments
-      end
-    end
+    column "BD", :bd_admin
+    column "Comments", :comments_admin
     actions
   end
 end
