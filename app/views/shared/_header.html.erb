@@ -1,6 +1,12 @@
 <div class="l-header">
-  <%= image_tag("HNC-Logo-RGB-notext-transparent-250x126.png", size: "159x80", alt: "Edit Entry") %>
-  <%= link_to "HNC Scholar Scores", root_path, class: "l-header__link" %>
+  <div class="header-title">
+    <div class="header-logo">
+      <%= image_tag("HNC-Logo-RGB-notext-transparent-250x126.png",
+          size: "159x80",
+          alt: "Edit Entry") %>
+    </div>
+    <%= link_to "HNC Scholar Scores", root_path, class: "l-header__link" %>
+  </div>
   <% unless current_user.nil? %>
     <div class="header-name-div">
       <p class="header-name"><%= current_user.full_name %></p>
