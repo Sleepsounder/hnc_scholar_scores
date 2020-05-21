@@ -37,4 +37,20 @@ class Score < ApplicationRecord
   def recommend_to_s
     RECOMMENDATIONS.select { |string| string.to_f == recommend }
   end
+
+  def bd_admin
+    if bd.length >= 10
+      "#{bd.slice(0, 10)}..."
+    else
+      bd
+    end
+  end
+
+  def comments_admin
+    if comments.length >= 10
+      "#{comments.slice(0, 10)}..."
+    else
+      comments
+    end
+  end
 end
