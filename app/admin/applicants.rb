@@ -10,16 +10,18 @@ ActiveAdmin.register Applicant do
   index do
     selectable_column
     id_column
+    column "DQ", :disqualified
     column :last_name
     column :first_name
+    column :city
+    column :state
     column "Reviews", :review_count
-    column "McCoy Count", :mccoy_count
+    column "McCoy", :mccoy_count
     column "Fin Avg", :financial_avg
     column "Acad Avg", :academic_avg
     column "Rec Avg", :recommend_avg
     column "Imp Avg", :imp_avg
     column :non_fin_avg
-    column "DQ", :disqualified
     actions
   end
 

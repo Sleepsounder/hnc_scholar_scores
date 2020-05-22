@@ -38,35 +38,59 @@ class Applicant < ApplicationRecord
   def financial_avg
     return if scores.empty?
 
-    total = scores.inject(0) { |sum, score| sum + score.financial }
-    (total / scores.count).round(2)
+    financial_scores = scores.map(&:financial)
+    best_scores = if financial_scores.count == 3
+                    financial_scores.max_by(2) { |n| n }
+                  else
+                    financial_scores
+                  end
+    total = best_scores.inject(0) { |sum, float| sum + float }
+    (total / best_scores.count).round(2)
   end
 
   def academic_avg
     return if scores.empty?
 
-    total = scores.inject(0) { |sum, score| sum + score.academic }
-    (total / scores.count).round(2)
+    academic_scores = scores.map(&:academic)
+    best_scores = if academic_scores.count == 3
+                    academic_scores.max_by(2) { |n| n }
+                  else
+                    academic_scores
+                  end
+    total = best_scores.inject(0) { |sum, float| sum + float }
+    (total / best_scores.count).round(2)
   end
 
   def recommend_avg
     return if scores.empty?
 
-    total = scores.inject(0) { |sum, score| sum + score.recommend }
-    (total / scores.count).round(2)
+    recommend_scores = scores.map(&:recommend)
+    best_scores = if recommend_scores.count == 3
+                    recommend_scores.max_by(2) { |n| n }
+                  else
+                    recommend_scores
+                  end
+    total = best_scores.inject(0) { |sum, float| sum + float }
+    (total / best_scores.count).round(2)
   end
 
   def imp_avg
     return if scores.empty?
 
-    total = scores.inject(0) { |sum, score| sum + score.essay }
-    (total / scores.count).round(2)
+    essay_scores = scores.map(&:essay)
+    best_scores = if essay_scores.count == 3
+                    essay_scores.max_by(2) { |n| n }
+                  else
+                    essay_scores
+                  end
+    total = best_scores.inject(0) { |sum, float| sum + float }
+    (total / best_scores.count).round(2)
   end
 
   def non_fin_avg
     return if scores.empty?
 
-    ((academic_avg + recommend_avg + imp_avg) / scores.count).round(2)
+    academic_avg + recommend_avg + imp_avg
   end
 
   def dq
