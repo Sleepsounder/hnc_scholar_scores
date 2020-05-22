@@ -17,7 +17,7 @@ ActiveAdmin.register Applicant do
     column "Fin Avg", :financial_avg
     column "Acad Avg", :academic_avg
     column "Rec Avg", :recommend_avg
-    column "Imp Avg", :essay_avg
+    column "Imp Avg", :imp_avg
     column :non_fin_avg
     column "DQ", :disqualified
     actions
@@ -49,6 +49,7 @@ ActiveAdmin.register Applicant do
     column :financial_avg
     column :academic_avg
     column :recommend_avg
-    column :essay_avg
+    column :imp_avg
+    column :non_fin_avg
   end
 end

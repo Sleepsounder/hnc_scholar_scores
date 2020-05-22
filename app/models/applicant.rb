@@ -56,7 +56,7 @@ class Applicant < ApplicationRecord
     (total / scores.count).round(2)
   end
 
-  def essay_avg
+  def imp_avg
     return if scores.empty?
 
     total = scores.inject(0) { |sum, score| sum + score.essay }
@@ -66,7 +66,7 @@ class Applicant < ApplicationRecord
   def non_fin_avg
     return if scores.empty?
 
-    ((academic_avg + recommend_avg + essay_avg) / scores.count).round(2)
+    ((academic_avg + recommend_avg + imp_avg) / scores.count).round(2)
   end
 
   def dq
