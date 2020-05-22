@@ -39,6 +39,8 @@ class Score < ApplicationRecord
   end
 
   def career_admin
+    return if nil?
+
     if career.length >= 10
       "#{career.slice(0, 10)}..."
     else
@@ -47,6 +49,8 @@ class Score < ApplicationRecord
   end
 
   def bd_admin
+    return if nil?
+
     if bd.length >= 10
       "#{bd.slice(0, 10)}..."
     else
@@ -55,6 +59,8 @@ class Score < ApplicationRecord
   end
 
   def comments_admin
+    return if nil?
+
     if comments.length >= 10
       "#{comments.slice(0, 10)}..."
     else
