@@ -14,11 +14,12 @@ ActiveAdmin.register Applicant do
     column :first_name
     column "Reviews", :review_count
     column "McCoy Count", :mccoy_count
-    column :financial_avg
-    column :academic_avg
-    column :recommend_avg
-    column :essay_avg
-    column :disqualified
+    column "Fin Avg", :financial_avg
+    column "Acad Avg", :academic_avg
+    column "Rec Avg", :recommend_avg
+    column "Imp Avg", :essay_avg
+    column :non_fin_avg
+    column "DQ", :disqualified
     actions
   end
 
@@ -32,19 +33,19 @@ ActiveAdmin.register Applicant do
     column :r1_fin
     column :r1_ac
     column :r1_rec
-    column :r1_ess
+    column :r1_imp
     column :reader_2
     column :r2_mc
     column :r2_fin
     column :r2_ac
     column :r2_rec
-    column :r2_ess
+    column :r2_imp
     column :reader_3
     column :r3_mc
     column :r3_fin
     column :r3_ac
     column :r3_rec
-    column :r3_ess
+    column :r3_imp
     column :financial_avg
     column :academic_avg
     column :recommend_avg

@@ -63,6 +63,12 @@ class Applicant < ApplicationRecord
     (total / scores.count).round(2)
   end
 
+  def non_fin_avg
+    return if scores.empty?
+
+    ((academic_avg + recommend_avg + essay_avg) / scores.count).round(2)
+  end
+
   def dq
     if disqualified == true
       "yes"
@@ -104,7 +110,7 @@ class Applicant < ApplicationRecord
     @reader1_score.first.recommend
   end
 
-  def r1_ess
+  def r1_imp
     return if @reader1_score.nil?
 
     @reader1_score.first.essay
@@ -143,7 +149,7 @@ class Applicant < ApplicationRecord
     @reader2_score.first.recommend
   end
 
-  def r2_ess
+  def r2_imp
     return if @reader2_score.nil?
 
     @reader2_score.first.essay
@@ -182,7 +188,7 @@ class Applicant < ApplicationRecord
     @reader3_score.first.recommend
   end
 
-  def r3_ess
+  def r3_imp
     return if @reader3_score.nil?
 
     @reader3_score.first.essay
