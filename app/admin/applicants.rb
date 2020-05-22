@@ -16,7 +16,7 @@ ActiveAdmin.register Applicant do
     column :city
     column :state
     column "Reviews", :review_count
-    column "McCoy Count", :mccoy_count
+    column "McCoy", :mccoy_count
     column "Fin Avg", :financial_avg
     column "Acad Avg", :academic_avg
     column "Rec Avg", :recommend_avg
