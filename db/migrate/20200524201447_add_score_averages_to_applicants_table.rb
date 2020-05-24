@@ -7,6 +7,6 @@ class AddScoreAveragesToApplicantsTable < ActiveRecord::Migration[5.2]
     add_column :applicants, :rec_avg, :float
     add_column :applicants, :imp_avg, :float
     add_column :applicants, :non_fin_avg, :float
-    add_column :applicants, :reviews, :integer, default:
+    add_column :applicants, :reviews, :integer, default: 0
   end
 end
