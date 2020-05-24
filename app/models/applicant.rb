@@ -28,7 +28,7 @@ class Applicant < ApplicationRecord
 
       true_count += score.mccoy
     end
-    if true_count == 0
+    if true_count.zero?
       "none"
     elsif true_count == scores.count
       "all"
