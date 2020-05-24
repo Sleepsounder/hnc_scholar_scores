@@ -19,10 +19,6 @@ class Applicant < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  def review_count
-    scores.count
-  end
-
   def mccoy_count
     return if scores.empty?
 
@@ -32,65 +28,13 @@ class Applicant < ApplicationRecord
 
       true_count += score.mccoy
     end
-    "#{true_count} of #{scores.count}"
-  end
-
-  def financial_avg
-    return if scores.empty?
-
-    financial_scores = scores.map(&:financial)
-    best_scores = if financial_scores.count == 3
-                    financial_scores.max_by(2) { |n| n }
-                  else
-                    financial_scores
-                  end
-    total = best_scores.inject(0) { |sum, float| sum + float }
-    (total / best_scores.count).round(2)
-  end
-
-  def academic_avg
-    return if scores.empty?
-
-    academic_scores = scores.map(&:academic)
-    best_scores = if academic_scores.count == 3
-                    academic_scores.max_by(2) { |n| n }
-                  else
-                    academic_scores
-                  end
-    total = best_scores.inject(0) { |sum, float| sum + float }
-    (total / best_scores.count).round(2)
-  end
-
-  def recommend_avg
-    return if scores.empty?
-
-    recommend_scores = scores.map(&:recommend)
-    best_scores = if recommend_scores.count == 3
-                    recommend_scores.max_by(2) { |n| n }
-                  else
-                    recommend_scores
-                  end
-    total = best_scores.inject(0) { |sum, float| sum + float }
-    (total / best_scores.count).round(2)
-  end
-
-  def imp_avg
-    return if scores.empty?
-
-    essay_scores = scores.map(&:essay)
-    best_scores = if essay_scores.count == 3
-                    essay_scores.max_by(2) { |n| n }
-                  else
-                    essay_scores
-                  end
-    total = best_scores.inject(0) { |sum, float| sum + float }
-    (total / best_scores.count).round(2)
-  end
-
-  def non_fin_avg
-    return if scores.empty?
-
-    academic_avg + recommend_avg + imp_avg
+    if true_count == 0
+      "none"
+    elsif true_count == scores.count
+      "all"
+    else
+      "#{true_count} of #{scores.count}"
+    end
   end
 
   def dq

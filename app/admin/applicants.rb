@@ -15,12 +15,12 @@ ActiveAdmin.register Applicant do
     column :first_name
     column :city
     column :state
-    column "Reviews", :review_count
+    column :reviews
     column "McCoy", :mccoy_count
-    column "Fin Avg", :financial_avg
-    column "Acad Avg", :academic_avg
-    column "Rec Avg", :recommend_avg
-    column "Imp Avg", :imp_avg
+    column :fin_avg
+    column :acad_avg
+    column :rec_avg
+    column :imp_avg
     column :non_fin_avg
     actions
   end
@@ -29,6 +29,7 @@ ActiveAdmin.register Applicant do
     column :id
     column :last_name
     column :first_name
+    column :reviews
     column :dq
     column :reader_1
     column :r1_mc
@@ -48,9 +49,9 @@ ActiveAdmin.register Applicant do
     column :r3_ac
     column :r3_rec
     column :r3_imp
-    column :financial_avg
-    column :academic_avg
-    column :recommend_avg
+    column :fin_avg
+    column :acad_avg
+    column :rec_avg
     column :imp_avg
     column :non_fin_avg
   end
