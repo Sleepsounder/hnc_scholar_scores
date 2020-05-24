@@ -21,7 +21,7 @@ gem "flipper-active_record", "~> 0.16"
 gem "flipper-ui", "~> 0.16"
 gem "mailgun-ruby", "~> 1.1"
 gem "pg", "~> 1.1.0"
-gem "puma", "~> 3.12"
+gem "puma", "~> 3.12.6"
 gem "uglifier", "~> 4.1"
 gem "webpacker", "~> 3.5"
 
