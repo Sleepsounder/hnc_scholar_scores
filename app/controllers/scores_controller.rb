@@ -48,6 +48,7 @@ class ScoresController < ApplicationController
       @pending_score.destroy
       flash[:notice] = "Thank you for submitting!"
       redirect_to root_path
+      ApplicantScoreAverages.perform_later(@applicant)
     else render :new
     end
   end
@@ -57,6 +58,7 @@ class ScoresController < ApplicationController
     if @score.update(score_params)
       flash[:notice] = "Update saved!"
       redirect_to root_path
+      ApplicantScoreAverages.perform_later(@score.applicant)
     else render :edit
     end
   end
@@ -65,6 +67,7 @@ class ScoresController < ApplicationController
     @score = Score.find(params[:id])
     @score.destroy
     redirect_to scores_path
+    ApplicantScoreAverages.perform_later(@score.applicant)
   end
 
   private
