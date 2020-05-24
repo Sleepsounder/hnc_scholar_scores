@@ -16,6 +16,9 @@ ActiveAdmin.register Applicant do
     column :city
     column :state
     column :reviews
+    column "Reviewers" do |applicant|
+      applicant.users.map { |user| user.initials }.join(', ')
+    end
     column "McCoy", :mccoy_count
     column :fin_avg
     column :acad_avg
