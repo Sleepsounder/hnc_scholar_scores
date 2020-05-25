@@ -9,12 +9,12 @@ class ScoresController < ApplicationController
     @applicant = if !current_user.pending_score.nil?
                    Applicant.find(current_user.pending_score.applicant_id)
                  else
-                   eligible_applicants.min_by { |a| a.scores.count }
+                   @applicants.min_by { |a| a.scores.count }
                  end
   end
 
   def index
-    @scores = Score.where(user_id: current_user.id).sort_by(&:updated_at).reverse
+    @scores = Score.includes([:applicant]).where(user_id: current_user.id).sort_by(&:updated_at).reverse # rubocop:disable Layout/LineLength
     @removed_applicants = RemovedApplicant.where(user_id: current_user.id)
   end
 
@@ -87,7 +87,7 @@ class ScoresController < ApplicationController
   end
 
   def eligible_applicants
-    Applicant.select do |applicant|
+    Applicant.includes([:scores], [:users], [:removed_applicants]).select do |applicant|
       !applicant.disqualified? &&
         applicant.users.count + applicant.pending_scores.count < 3 &&
         applicant.users.all? { |user| user.id != current_user.id } &&
