@@ -7,6 +7,12 @@ ActiveAdmin.register Score do
   filter :applicant_last_name, as: :string, label: "Applicant Last Name"
 
   index do
+    # For creating an ordered list
+    # 35 needs to be set to same page size in active_admin.rb => config.default_per_page = 35
+    @index = 35 * ((params[:page] || 1).to_i - 1)
+    column do
+      @index += 1
+    end
     selectable_column
     id_column
     column "Applicant", :applicant_full_name
