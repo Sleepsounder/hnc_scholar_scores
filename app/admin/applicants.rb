@@ -28,6 +28,22 @@ ActiveAdmin.register Applicant do
     actions
   end
 
+  form do |f|
+    f.inputs do
+      f.input :first_name
+      f.input :last_name
+      f.input :address
+      f.input :link
+      f.input :middle_initial
+      f.input :city
+      f.input :state
+      f.input :zip_code
+      f.input :application_received, as: :datepicker
+      f.input :disqualified, as: :boolean
+      f.submit
+    end
+  end
+
   csv do
     column :id
     column :last_name

@@ -20,3 +20,9 @@
 td {
   border-right: 1px solid gray;
 }
+
+input[disabled="disabled"],
+input[disabled] {
+  background-color: #F4F4F4;
+  border: 0px solid #F4F4F4 !important;
+}
