@@ -9,12 +9,12 @@ class ScoresController < ApplicationController
     @applicant = if !current_user.pending_score.nil?
                    Applicant.find(current_user.pending_score.applicant_id)
                  else
-                  @applicants.min_by { |a| a.scores.count }
+                   @applicants.min_by { |a| a.scores.count }
                  end
   end
 
   def index
-    @scores = Score.includes([:applicant]).where(user_id: current_user.id).sort_by(&:updated_at).reverse
+    @scores = Score.includes([:applicant]).where(user_id: current_user.id).sort_by(&:updated_at).reverse # rubocop:disable Layout/LineLength
     @removed_applicants = RemovedApplicant.where(user_id: current_user.id)
   end
 
