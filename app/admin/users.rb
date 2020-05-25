@@ -18,7 +18,6 @@ ActiveAdmin.register User do
     column :last_name
     column :email
     column "Review Count", :number_of_reviews
-    column :created_at
     actions
   end
 
@@ -27,6 +26,9 @@ ActiveAdmin.register User do
       row :first_name
       row :last_name
       row :email
+      row "Review Count" do
+        user.number_of_reviews
+      end
     end
   end
 
