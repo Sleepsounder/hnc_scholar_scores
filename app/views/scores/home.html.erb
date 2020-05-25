@@ -15,8 +15,6 @@
   <% else %>
       <p>You have not reviewed anyone yet.</p>
   <% end %>
-  <% if current_user.scores.count %>
-  <% end %>
   <div class="home-main">
     <% if !current_user.pending_score.nil? %>
       <p>You have a pending score: <%= current_user.pending_score.applicant.full_name %></p>
