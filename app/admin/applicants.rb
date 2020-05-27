@@ -119,6 +119,7 @@ ActiveAdmin.register Applicant do
     column :acad_avg
     column :rec_avg
     column :imp_avg
+    column "Mc cnt", &:mccoy_count
     column :non_fin_avg
   end
 end

@@ -19,13 +19,13 @@ ActiveAdmin.register Score do
     end
     selectable_column
     id_column
-    column :applicant_name, sortable: "applicants.last_name" do |score|
+    column "Applicant Name", sortable: "applicants.last_name" do |score|
       score.applicant.full_name
     end
-    column :reader_name, sortable: "users.last_name" do |score|
+    column "Reader Name", sortable: "users.last_name" do |score|
       score.user.full_name
     end
-    column "McCoy", :mccoy_qualified
+    column "McCoy", :mccoy_qualified, sortable: "mccoy"
     column "Fin", :financial
     column "Ac", :academic
     column "Rec", :recommend
