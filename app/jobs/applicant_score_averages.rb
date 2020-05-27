@@ -16,20 +16,23 @@ class ApplicantScoreAverages < ActiveJob::Base
         rec_avg: nil,
         imp_avg: nil,
         non_fin_avg: nil,
-        reviews: 0
+        reviews: 0,
+        mccoy_count: ""
       )
     else
       fin_avg = score_avg(scores.map(&:financial))
       acad_avg = score_avg(scores.map(&:academic))
       rec_avg = score_avg(scores.map(&:recommend))
       imp_avg = score_avg(scores.map(&:essay))
+      mccoy_count = mccoy_to_string(scores.map(&:mccoy))
       applicant.update(
         fin_avg: fin_avg,
         acad_avg: acad_avg,
         rec_avg: rec_avg,
         imp_avg: imp_avg,
         non_fin_avg: acad_avg + rec_avg + imp_avg,
-        reviews: scores.count
+        reviews: scores.count,
+        mccoy_count: mccoy_count
       )
     end
   end
@@ -42,5 +45,21 @@ class ApplicantScoreAverages < ActiveJob::Base
                   end
     total = best_scores.inject(0) { |sum, float| sum + float }
     (total / best_scores.count).round(2)
+  end
+
+  def mccoy_to_string(mccoy_array)
+    true_count = 0
+    mccoy_array.each do |mccoy|
+      next if mccoy.nil?
+
+      true_count += mccoy
+    end
+    if true_count.zero?
+      "none"
+    elsif true_count == mccoy_array.count
+      "all"
+    else
+      "#{true_count} of #{mccoy_array.count}"
+    end
   end
 end

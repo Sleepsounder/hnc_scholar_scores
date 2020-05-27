@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_201447) do
+ActiveRecord::Schema.define(version: 2020_05_27_002403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_05_24_201447) do
     t.float "imp_avg"
     t.float "non_fin_avg"
     t.integer "reviews", default: 0
+    t.string "mccoy_count"
   end
 
   create_table "flipper_features", force: :cascade do |t|

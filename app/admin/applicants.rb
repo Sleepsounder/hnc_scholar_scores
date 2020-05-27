@@ -15,6 +15,7 @@ ActiveAdmin.register Applicant do
   filter :last_name
   filter :first_name
   filter :users, label: "Readers"
+  filter :mccoy_count, label: "McCoy"
 
   index do
     # For creating an ordered list
