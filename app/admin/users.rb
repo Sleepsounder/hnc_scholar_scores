@@ -6,7 +6,6 @@ ActiveAdmin.register User do
   permit_params :email, :first_name, :last_name, :password, :password_reset
   config.clear_action_items!
   config.filters = false
-
   action_item only: :index do
     link_to "New Reader", "/admin/users/new"
   end
@@ -17,7 +16,7 @@ ActiveAdmin.register User do
     column :first_name
     column :last_name
     column :email
-    column "Review Count", :number_of_reviews
+    column "Reviews", :number_of_reviews
     actions
   end
 

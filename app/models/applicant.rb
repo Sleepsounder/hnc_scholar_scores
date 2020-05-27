@@ -16,25 +16,7 @@ class Applicant < ApplicationRecord
   end
 
   def full_name
-    "#{first_name} #{last_name}"
-  end
-
-  def mccoy_count
-    return if scores.empty?
-
-    true_count = 0
-    scores.each do |score|
-      next if score.mccoy.nil?
-
-      true_count += score.mccoy
-    end
-    if true_count.zero?
-      "none"
-    elsif true_count == scores.count
-      "all"
-    else
-      "#{true_count} of #{scores.count}"
-    end
+    "#{last_name} #{first_name}"
   end
 
   def dq

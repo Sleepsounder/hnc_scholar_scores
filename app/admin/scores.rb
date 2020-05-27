@@ -3,8 +3,12 @@
 ActiveAdmin.register Score do
   actions :all, except: [:destroy]
   permit_params :financial, :mccoy, :academic, :recommend, :essay, :comments, :bd, :career
-  filter :user_last_name, as: :string, label: "Reader Last Name"
   filter :applicant_last_name, as: :string, label: "Applicant Last Name"
+  filter :user_last_name, as: :string, label: "Reader Last Name"
+  filter :mccoy, label: "McCoy (1 = yes, 0 = no)"
+  scope :joined, default: true do |scores|
+    scores.includes %i[applicant user]
+  end
 
   index do
     # For creating an ordered list
@@ -15,9 +19,13 @@ ActiveAdmin.register Score do
     end
     selectable_column
     id_column
-    column "Applicant", :applicant_full_name
-    column "Reader", :user_full_name
-    column "McCoy", :mccoy_qualified
+    column "Applicant Name", sortable: "applicants.last_name" do |score|
+      score.applicant.full_name
+    end
+    column "Reader Name", sortable: "users.last_name" do |score|
+      score.user.full_name
+    end
+    column "McCoy", :mccoy_qualified, sortable: "mccoy"
     column "Fin", :financial
     column "Ac", :academic
     column "Rec", :recommend
