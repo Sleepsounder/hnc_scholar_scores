@@ -6,8 +6,8 @@ ActiveAdmin.register Score do
   filter :applicant_last_name, as: :string, label: "Applicant Last Name"
   filter :user_last_name, as: :string, label: "Reader Last Name"
   filter :mccoy, label: "McCoy (1 = yes, 0 = no)"
-  scope :joined, :default => true do |scores|
-    scores.includes [:applicant, :user]
+  scope :joined, default: true do |scores|
+    scores.includes %i[applicant user]
   end
 
   index do
