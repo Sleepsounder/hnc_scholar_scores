@@ -2,6 +2,7 @@
 
 ActiveAdmin.register Applicant do
   actions :all, except: [:destroy]
+  config.sort_order = "last_name_asc"
   permit_params :first_name,
                 :last_name,
                 :address,
@@ -24,11 +25,8 @@ ActiveAdmin.register Applicant do
     column do
       @index += 1
     end
-    selectable_column
-    id_column
+    column "Name", sortable: :last_name, &:full_name
     column "DQ", :disqualified
-    column :last_name
-    column :first_name
     column :city
     column :state
     column "McCoy", :mccoy_count

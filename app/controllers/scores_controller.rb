@@ -80,8 +80,11 @@ class ScoresController < ApplicationController
             end
     params.require(:score).permit(
       :financial,
+      :financial_to_s,
       :academic,
+      :academic_to_s,
       :recommend,
+      :recommend_to_s,
       :essay,
       :comments,
       :applicant_id,
