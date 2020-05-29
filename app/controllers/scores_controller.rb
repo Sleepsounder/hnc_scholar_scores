@@ -73,10 +73,10 @@ class ScoresController < ApplicationController
   private
 
   def score_params
-    mccoy = if params[:score][:mccoy].nil?
+    mccoy = if params[:mccoy].nil?
               0
             else
-              1
+              params[:mccoy]
             end
     params.require(:score).permit(
       :financial,
