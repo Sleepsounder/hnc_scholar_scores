@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_002403) do
+ActiveRecord::Schema.define(version: 2020_05_28_233630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_002403) do
     t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "mccoy"
+    t.integer "mccoy", default: 0
     t.float "financial"
     t.float "academic"
     t.float "recommend"

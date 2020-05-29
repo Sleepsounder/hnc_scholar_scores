@@ -73,6 +73,11 @@ class ScoresController < ApplicationController
   private
 
   def score_params
+    mccoy = if params[:score][:mccoy].nil?
+              0
+            else
+              1
+            end
     params.require(:score).permit(
       :financial,
       :academic,
@@ -83,7 +88,7 @@ class ScoresController < ApplicationController
       :career,
       :bd,
       :disqualified
-    ).merge({ mccoy: params[:mccoy], user_id: current_user.id })
+    ).merge({ mccoy: mccoy, user_id: current_user.id })
   end
 
   def eligible_applicants
