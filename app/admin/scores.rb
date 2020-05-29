@@ -11,6 +11,38 @@ ActiveAdmin.register Score do
     scores.includes %i[applicant user]
   end
 
+  controller do
+    def update
+      @score = Score.find(params[:id])
+      if @score.update(score_params)
+        flash[:notice] = "Update saved!"
+        redirect_to admin_scores_path
+        ApplicantScoreAverages.perform_later(@score.applicant)
+      else render edit_admin_score_path
+      end
+    end
+
+    private
+
+    def score_params
+      mccoy = if params[:score][:mccoy].nil?
+                0
+              else
+                1
+              end
+      params.require(:score).permit(
+        :financial,
+        :academic,
+        :recommend,
+        :essay,
+        :comments,
+        :career,
+        :bd,
+        :disqualified
+      ).merge({ mccoy: mccoy })
+    end
+  end
+
   index do
     # For creating an ordered list
     # 35 needs to be set to same page size in active_admin.rb => config.default_per_page = 35
@@ -34,8 +66,12 @@ ActiveAdmin.register Score do
     column "Career", :career_admin
     column "BD", :bd_admin
     column "Comments", :comments_admin
-    column :created_at
-    column :updated_at
+    column :created_at, sortable: "created_at" do |score|
+      score.created_at - 4.hours
+    end
+    column :updated_at, sortable: "updated_at" do |score|
+      score.updated_at - 4.hours
+    end
     actions
   end
 
