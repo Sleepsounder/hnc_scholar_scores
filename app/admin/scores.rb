@@ -67,10 +67,10 @@ ActiveAdmin.register Score do
     column "BD", :bd_admin
     column "Comments", :comments_admin
     column :created_at, sortable: "created_at" do |score|
-      score.created_at - 4.hours
+      (score.created_at - 4.hours).strftime("%b %d %I:%M%P")
     end
     column :updated_at, sortable: "updated_at" do |score|
-      score.updated_at - 4.hours
+      (score.updated_at - 4.hours).strftime("%b %d %I:%M%P")
     end
     actions
   end
