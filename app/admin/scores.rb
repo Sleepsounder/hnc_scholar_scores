@@ -2,6 +2,7 @@
 
 ActiveAdmin.register Score do
   actions :all, except: [:destroy]
+  config.clear_action_items!
   permit_params :financial, :mccoy, :academic, :recommend, :essay, :comments, :bd, :career
   filter :applicant_last_name, as: :string, label: "Applicant Last Name"
   filter :user_last_name, as: :string, label: "Reader Last Name"
@@ -33,6 +34,8 @@ ActiveAdmin.register Score do
     column "Career", :career_admin
     column "BD", :bd_admin
     column "Comments", :comments_admin
+    column :created_at
+    column :updated_at
     actions
   end
 
