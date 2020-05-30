@@ -12,15 +12,11 @@ ActiveAdmin.register Score do
   end
 
   order_by(:applicant_name) do |order_clause|
-    %w[applicants.last_name applicants.first_name].map { |column|
-      "#{column} #{order_clause.order}"
-    }.join(", ")
+    %w[applicants.last_name applicants.first_name].map { |column| "#{column} #{order_clause.order}" }.join(", ") # rubocop:disable Layout/LineLength
   end
 
   order_by(:reader_name) do |order_clause|
-    %w[users.last_name users.first_name].map { |column|
-      "#{column} #{order_clause.order}"
-    }.join(", ")
+    %w[users.last_name users.first_name].map { |column| "#{column} #{order_clause.order}" }.join(", ") # rubocop:disable Layout/LineLength
   end
 
   controller do

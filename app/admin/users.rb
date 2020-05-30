@@ -12,9 +12,7 @@ ActiveAdmin.register User do
   config.sort_order = "reader_name_asc"
 
   order_by(:reader_name) do |order_clause|
-    %w[users.last_name users.first_name].map { |column|
-      "#{column} #{order_clause.order}"
-    }.join(", ")
+    %w[users.last_name users.first_name].map { |column| "#{column} #{order_clause.order}" }.join(", ") # rubocop:disable Layout/LineLength
   end
 
   index title: "Readers" do

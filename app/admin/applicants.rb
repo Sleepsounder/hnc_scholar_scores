@@ -19,9 +19,7 @@ ActiveAdmin.register Applicant do
   config.sort_order = "applicant_name_asc"
 
   order_by(:applicant_name) do |order_clause|
-    %w[applicants.last_name applicants.first_name].map { |column|
-      "#{column} #{order_clause.order}"
-    }.join(", ")
+    %w[applicants.last_name applicants.first_name].map { |column| "#{column} #{order_clause.order}" }.join(", ") # rubocop:disable Layout/LineLength
   end
 
   index do
