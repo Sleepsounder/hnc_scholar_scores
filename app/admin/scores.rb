@@ -11,6 +11,18 @@ ActiveAdmin.register Score do
     scores.includes %i[applicant user]
   end
 
+  order_by(:applicant_name) do |order_clause|
+    %w[applicants.last_name applicants.first_name].map { |column|
+      "#{column} #{order_clause.order}"
+    }.join(", ")
+  end
+
+  order_by(:reader_name) do |order_clause|
+    %w[users.last_name users.first_name].map { |column|
+      "#{column} #{order_clause.order}"
+    }.join(", ")
+  end
+
   controller do
     def update
       @score = Score.find(params[:id])
@@ -50,12 +62,11 @@ ActiveAdmin.register Score do
     column do
       @index += 1
     end
-    selectable_column
     id_column
-    column "Applicant Name", sortable: "applicants.last_name" do |score|
+    column "Applicant Name", sortable: :applicant_name do |score|
       score.applicant.full_name
     end
-    column "Reader Name", sortable: "users.last_name" do |score|
+    column "Reader Name", sortable: :reader_name do |score|
       score.user.full_name
     end
     column "McCoy", :mccoy_qualified, sortable: "mccoy"

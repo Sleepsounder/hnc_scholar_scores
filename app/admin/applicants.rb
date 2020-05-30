@@ -2,7 +2,6 @@
 
 ActiveAdmin.register Applicant do
   actions :all, except: [:destroy]
-  config.sort_order = "last_name_asc"
   permit_params :first_name,
                 :last_name,
                 :address,
@@ -17,6 +16,13 @@ ActiveAdmin.register Applicant do
   filter :first_name
   filter :users, label: "Readers"
   filter :mccoy_count, label: "McCoy"
+  config.sort_order = "applicant_name_asc"
+
+  order_by(:applicant_name) do |order_clause|
+    %w[applicants.last_name applicants.first_name].map { |column|
+      "#{column} #{order_clause.order}"
+    }.join(", ")
+  end
 
   index do
     # For creating an ordered list
@@ -25,7 +31,7 @@ ActiveAdmin.register Applicant do
     column do
       @index += 1
     end
-    column "Name", sortable: :last_name, &:full_name
+    column "Applicant Name", sortable: :applicant_name, &:full_name
     column "DQ", :disqualified
     column :city
     column :state

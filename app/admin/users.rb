@@ -9,12 +9,16 @@ ActiveAdmin.register User do
   action_item only: :index do
     link_to "New Reader", "/admin/users/new"
   end
+  config.sort_order = "reader_name_asc"
+
+  order_by(:reader_name) do |order_clause|
+    %w[users.last_name users.first_name].map { |column|
+      "#{column} #{order_clause.order}"
+    }.join(", ")
+  end
 
   index title: "Readers" do
-    selectable_column
-    id_column
-    column :first_name
-    column :last_name
+    column "Reader Name", sortable: :reader_name, &:full_name
     column :email
     column "Reviews", :number_of_reviews
     actions
