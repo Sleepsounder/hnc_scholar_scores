@@ -9,7 +9,7 @@ class ScoresController < ApplicationController
     @applicant = if !current_user.pending_score.nil?
                    Applicant.find(current_user.pending_score.applicant_id)
                  else
-                   @applicants.min_by { |a| a.scores.count }
+                   @applicants.min_by { |a| a.scores.count + a.pending_scores.count }
                  end
   end
 
