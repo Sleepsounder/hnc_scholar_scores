@@ -40,6 +40,9 @@ ActiveAdmin.register Applicant do
     column :imp_avg
     column :non_fin_avg
     column :reviews
+    column "Pending" do |applicant|
+      applicant.pending_scores.count
+    end
     column "Reviewers" do |applicant|
       applicant.users.map(&:initials).join(", ")
     end
