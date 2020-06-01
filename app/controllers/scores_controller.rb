@@ -6,11 +6,10 @@ class ScoresController < ApplicationController
     @number_of_scores_reviewed = current_user.scores.count
     @score = Score.new
     @applicants = eligible_applicants.sort_by(&:last_name)
-    @applicant = if !current_user.pending_score.nil?
-                   Applicant.find(current_user.pending_score.applicant_id)
-                 else
-                   @applicants.min_by { |a| (a.reviews + a.pending_scores.count) }
-                 end
+    unless current_user.pending_score.nil?
+      @pending_applicant = Applicant.find(current_user.pending_score.applicant_id)
+    end
+    @applicant = @applicants.min_by { |a| (a.reviews + a.pending_scores.count) }
   end
 
   def index
