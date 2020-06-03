@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Score do
-  actions :all, except: [:destroy]
   config.clear_action_items!
   permit_params :financial, :mccoy, :academic, :recommend, :essay, :comments, :bd, :career
   filter :applicant_last_name, as: :string, label: "Applicant Last Name"
@@ -29,6 +28,13 @@ ActiveAdmin.register Score do
         ApplicantScoreAverages.perform_later(@score.applicant)
       else render edit_admin_score_path
       end
+    end
+
+    def destroy
+      @score = Score.find(params[:id])
+      @score.destroy
+      redirect_to admin_scores_path
+      ApplicantScoreAverages.perform_later(@score.applicant)
     end
 
     private
