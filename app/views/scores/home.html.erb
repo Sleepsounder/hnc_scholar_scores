@@ -16,9 +16,9 @@
       <p>You have not reviewed anyone yet.</p>
   <% end %>
   <div class="home-main">
-    <% if !current_user.pending_score.nil? %>
-      <p>You have a pending score: <%= current_user.pending_score.applicant.full_name %></p>
-      <p><%= button_to "Continue Scoring #{current_user.pending_score.applicant.first_name}", new_score_path(@applicant), method: :get, class: "green-link" %></p>
+    <% unless @pending_applicant.nil? %>
+      <p>You have a pending score: <%= @pending_applicant.full_name %></p>
+      <p><%= button_to "Continue Scoring #{@pending_applicant.first_name}", new_score_path(@pending_applicant), method: :get, class: "green-link" %></p>
     <% else %>
       <div class="title-section">
         <h4>To Review New Applicants:</h4>
