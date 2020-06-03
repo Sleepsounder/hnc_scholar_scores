@@ -120,11 +120,11 @@ ActiveAdmin.register Applicant do
     column :r3_ac
     column :r3_rec
     column :r3_imp
-    column :fin_avg
     column :acad_avg
     column :rec_avg
     column :imp_avg
-    column "Mc cnt", &:mccoy_count
+    column :fin_avg
     column :non_fin_avg
+    column "Mc cnt", &:mccoy_count
   end
 end
