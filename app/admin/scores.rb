@@ -40,10 +40,10 @@ ActiveAdmin.register Score do
     private
 
     def score_params
-      mccoy = if params[:score][:mccoy].nil?
-                0
-              else
+      mccoy = if params[:score][:mccoy] == "1"
                 1
+              else
+                0
               end
       params.require(:score).permit(
         :financial,
