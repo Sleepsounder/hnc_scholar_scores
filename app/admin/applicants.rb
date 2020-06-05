@@ -101,6 +101,11 @@ ActiveAdmin.register Applicant do
     column :dq
     column :last_name
     column :first_name
+    column "Middle", &:middle_initial
+    column :address
+    column :city
+    column :state
+    column :zip_code
     column :reviews
     column :reader_1
     column :r1_mc

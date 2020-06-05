@@ -43,4 +43,11 @@ ActiveAdmin.register User do
       f.submit
     end
   end
+
+  csv do
+    column "Reader Name", &:full_name
+    column "Rdr Intls", &:initials
+    column :email
+    column "Reviews", &:number_of_reviews
+  end
 end

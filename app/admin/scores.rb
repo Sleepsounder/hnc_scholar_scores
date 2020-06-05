@@ -125,4 +125,27 @@ ActiveAdmin.register Score do
       f.submit
     end
   end
+
+  csv do
+    column :id
+    column "Applicant" do |score|
+      score.applicant.full_name
+    end
+    column "Reader" do |score|
+      score.user.full_name
+    end
+    column "Rdr Intls" do |score|
+      score.user.initials
+    end
+    column "McCoy", &:mccoy_qualified
+    column "Fin", &:financial
+    column "Ac", &:academic
+    column "Rec", &:recommend
+    column "Imp", &:essay
+    column :career
+    column :bd
+    column :comments
+    column :created_at
+    column :updated_at
+  end
 end
