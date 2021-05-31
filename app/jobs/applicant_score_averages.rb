@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ApplicantScoreAverages < ActiveJob::Base
+class ApplicantScoreAverages < ApplicationJob
   def perform(applicant)
     update_applicant_score_averages(applicant)
   end

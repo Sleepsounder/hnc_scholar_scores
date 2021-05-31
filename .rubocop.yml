@@ -1,4 +1,6 @@
-require: rubocop-rspec
+require:
+  - rubocop-rspec
+  - rubocop-rails
 
 AllCops:
   Exclude:
@@ -121,6 +123,9 @@ Style/SlicingWithRange:
 Naming/PredicateName:
   Enabled: false
 
+Naming/VariableNumber:
+  Enabled: false
+
 # Reason: In some cases, `if !` reads better than `unless`
 Style/IfUnlessModifier:
   Enabled: false
@@ -176,6 +181,9 @@ Style/NumericLiterals:
 Rails:
   Enabled: true
 
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
 # Reason: Added staging
 # Commented out - not being recognized in new Rails 5.2.4.2 version
 # Rails/UnknownEnv:
@@ -222,3 +230,9 @@ RSpec/NamedSubject:
 # Reason: Team preference
 RSpec/NotToNot:
   EnforcedStyle: to_not
+
+Lint/FloatComparison:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
