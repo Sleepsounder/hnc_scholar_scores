@@ -29,14 +29,6 @@ AdminUser.create!(
 # ------------- Readers ---------------
 
 User.create!(
-  first_name: "Marvin",
-  last_name: "Pipkin",
-  email: ENV["MP_EMAIL"],
-  password: ENV["MP_PASSWORD"],
-  password_confirmation: ENV["MP_PASSWORD"]
-)
-
-User.create!(
   first_name: "Amy",
   last_name: "Shair",
   email: ENV["AS_EMAIL"],
