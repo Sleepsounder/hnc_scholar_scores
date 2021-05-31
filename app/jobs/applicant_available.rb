@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ApplicantAvailable < ActiveJob::Base
+class ApplicantAvailable < ApplicationJob
   def perform(pending_score)
     delete_pending_score(pending_score)
   end

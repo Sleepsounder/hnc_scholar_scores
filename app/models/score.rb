@@ -23,9 +23,10 @@ class Score < ApplicationRecord
 
   def mccoy_qualified
     # == 0 instead of .zero? allows for nil values
-    if mccoy == 1
+    case mccoy
+    when 1
       "yes"
-    elsif mccoy == 0 # rubocop:disable Style/NumericPredicate
+    when 0
       "no"
     else
       "nil"
