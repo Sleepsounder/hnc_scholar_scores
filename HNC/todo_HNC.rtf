@@ -1,0 +1,113 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs46 \cf0 \ul \ulc0 ToDo:
+\fs24 \ulnone \
+\
+- mccoy values on scores tab in active admin sort by nil, 1, 0 or 0, 1, nil - so saying 0 or nil both equal \'93no\'94 does not allow for sorting properly\
+- inform pops csv downloads are not curated on other activeadmin classes\
+\
+\
+active_admin:\
+	- customize csv downloads for scores and readers too\
+	- review count on readers sortable/add to users table and active job\
+\
+
+\fs46 \ul Bugs
+\fs24 \ulnone \
+(Probably not a bug => Index Page\
+	Should not get a flash notice in admin: \'93Congratulations! Your scoring work is done!\'94 )\
+\
+
+\fs46 \ul Nice-To-Have
+\fs24 \ulnone \
+- Better N+1 mitigation\
+- Devise Trackable\
+- Admin panel:\
+	- add dashboard stats (rank highest?)\
+- organize css files\
+- Figure out this JQuery shit so you have accurate paths, buttons and data confirm functioning\
+\
+
+\fs46 \ul Done:
+\fs24 \ulnone \
+- Choose from list of eligible\
+- Request Applicant suggestion\
+- User can edit/update previous submissions\
+- errors\
+- validations\
+- BUG: values in drop downs for score edit view are fickle\
+- strong params\
+Index Page with\
+	- table of removed Applicants and ability to add back to queue\
+	- If no applicants reviewed, should see message.\
+\
+- If reader has reviewed ALL applicants, should get notice? (errors out)\
+- Opt out of Review \'93Please remove this applicant from my queue\'94\
+- Cancel button\
+- Index Page with\
+	- table of removed Applicants and ability to add back to queue\
+\
+- Removed from queue alert\
+- Styling\
+	- New and Edit Pages\
+	- Index Page\
+	- Nav bar\
+\
+- Instead of \'93available\'94 boolean - create a join for when users are editing applicants - delete join when canceling or submitting - add scores, \'93save but don\'92t submit\'94, \'93cancel this score review\'94 or \'93submit scores\'94\
+- When Canceling or removing from queue needs to make applicant available again\
+- Home Page\
+	- If no applicants reviewed, but applicant removed from queue should still see index tab\
+\
+- Alert \'93Are you sure?\'94 when deleting\
+- Mouse hover for Home and My Scores links\
+Middle Initial\
+- Errors\
+	- add top margin to flash messages?\
+- Admin panel:\
+	- figure out the friggin sign out button!\
+	- add number of applicants reviewed to users\
+	- Initials for Readers\
+	- Edit score in admin throws error\
+	- remove averages from edit applicant admin\
+	- Put Applicant Score Averages in an Active job and create new fields so it does not calculate 	  every time active admin loads?\
+	- configure csv downloads (right now it simply shows the model columns and values)\
+- do we need \'93Signed In successfully\'94 message?\
+- Env vars in QA\
+- Create Prod\
+- Upgrade\
+- Backup\
+- Add line number to admin panels for easy indexing\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs40 \cf0 \ul Rando:
+\fs24 \ulnone \
+heroku ps\
+heroku ps:stop run.6704\
+\
+\
+128563479\
+\
+\
+\
+\
+\
+\
+=> <ActionController::Parameters \{"controller"=>"scores", "action"=>"edit", "id"=>"1"\} permitted: false>\
+\
+\
+=> <ActionController::Parameters \{"controller"=>"scores", "action"=>"edit", "id"=>"1"\} permitted: false>}
