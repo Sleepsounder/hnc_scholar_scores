@@ -98,6 +98,7 @@ class ScoresController < ApplicationController
   def eligible_applicants
     Applicant.includes([:scores], [:users], [:removed_applicants]).select do |applicant|
       !applicant.disqualified? &&
+        applicant.scores.count < 3 &&
         (applicant.scores.count + applicant.pending_scores.count < 3) &&
         (applicant.users.all? { |user| user.id != current_user.id }) &&
         (applicant.removed_applicants.all? { |ra| ra.user_id != current_user.id })
