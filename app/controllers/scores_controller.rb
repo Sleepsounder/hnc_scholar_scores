@@ -11,6 +11,7 @@ class ScoresController < ApplicationController
     end
     fewest_scores_count = @applicants.map { |a| a.scores.count }.min
     applicants_with_fewest_scores = @applicants.select { |a| a.scores.count == fewest_scores_count }
+    #TODO: @applicant should be calculated when selected the "Review and Application We Suggest" button not upon loading the home page.
     @applicant = applicants_with_fewest_scores.min_by { |a| a.pending_scores.count }
   end
 
@@ -24,6 +25,7 @@ class ScoresController < ApplicationController
       flash[:alert] = "Please make a selection."
       redirect_to root_path
     else
+      # TODO: see TODO above in home method
       @applicant = found_applicant
       @score = found_applicant.scores.build
       @pending_score = current_user.pending_score ||
