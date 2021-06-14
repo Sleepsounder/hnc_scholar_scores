@@ -11,7 +11,7 @@ class ScoresController < ApplicationController
     end
     fewest_scores_count = @applicants.map { |a| a.scores.count }.min
     applicants_with_fewest_scores = @applicants.select { |a| a.scores.count == fewest_scores_count }
-    #TODO: @applicant should be calculated when selected the "Review and Application We Suggest" button not upon loading the home page.
+    # TODO: @applicant should be calculated when selected the "Review and Application We Suggest" button not upon loading the home page. # rubocop:disable Layout/LineLength
     @applicant = applicants_with_fewest_scores.min_by { |a| a.pending_scores.count }
   end
 
